@@ -1,0 +1,7 @@
+@rom_name FF2
+@rom_md5 374ed97be8bfd628f6b359a720549ecd
+@public 1
+
+普通にクリア
+
+魔法の本装備などのバグ技は未実行

@@ -1,0 +1,10 @@
+@rom_name エキサイトバイク
+@rom_md5 9b0727e0adb0a7b4f94e072b7cf28a5a
+@public 1
+
+一通りプレイ
+TASVideosのムービーを再生
+  http://tasvideos.org/542S.html
+  http://tasvideos.org/1035S.html
+  http://tasvideos.org/1869S.html
+  http://tasvideos.org/2383S.html

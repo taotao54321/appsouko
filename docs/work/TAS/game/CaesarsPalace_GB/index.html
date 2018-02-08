@@ -1,0 +1,44 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title>シーザースパレス(GB) TAS</title>
+</head>
+
+<body>
+
+<h1>シーザースパレス(GB) TAS</h1>
+
+<p>「<a href="http://www14.atwiki.jp/gball/">GBのゲーム制覇しましょ</a>」の
+記念として作成。</p>
+
+<p>22.62 (<a href="CP-1357F-Done.zip">vbmファイル</a>)</p>
+<iframe width="312" height="176" src="http://ext.nicovideo.jp/thumb/sm8694905" scrolling="no" style="border:solid 1px #CCC;" frameborder="0"><a href="http://www.nicovideo.jp/watch/sm8694905">【ニコニコ動画】[TAS] GB シーザースパレス in 22.62</a></iframe>
+
+<p>スロットの大ジャックポット(JP)を2回出すだけです。100万JP→500万JPルートも
+考えられますが、それだと少し遅くなるようです。各リール値はコイン投入及びレバー
+操作のタイミングで決定され、黒7になるのはフレームカウンタの256通りの値のうち
+4通りのみです。よって、黒7が4つ揃う確率は 1/64^4 = 1/16777216 となります(た
+だしガチプレイでこれが達成された例があります)。</p>
+
+<p>解析関係のことはGB制覇の過去ログを見れば色々書いてあります。JPスロットの
+リール値決定処理は ROM0:24F3, ブラックジャック(BJ)のカードシャッフル処理は
+ROM1:4042 にあります。</p>
+
+<p>なお、このゲームはBJに必勝法が存在するため、ツールアシストなしでもクリア
+可能です。BJのカードシャッフル結果は前回のデッキとフレームカウンタ(256通り)
+にのみ依存するので、前回のデッキを記録しておき、256通りのシャッフル結果をリ
+ストアップし、次回のデッキで最初に出てきたカードと照合すれば、それ以降のカー
+ドが予想できるようになります(GB制覇のWikiにツールがあります)。</p>
+
+<ul>
+  <li><a href="rand.cpp">フレームカウンタと乱数値の対応表作成ツール</a>, <a href="rand.txt">結果</a></li>
+  <li><a href="reel.cpp">乱数値と各リール値の対応表作成ツール</a>, <a href="reel.txt">結果</a></li>
+</ul>
+
+<hr>
+
+<p><a href="../../">Back</a></p>
+
+</body>
+</html>

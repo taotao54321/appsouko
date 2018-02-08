@@ -1,0 +1,97 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Wizardry(NES) 解析 - 宝箱開封</title>
+</head>
+
+<body>
+
+<h1>Wizardry(NES) 解析 - 宝箱開封</h1>
+
+<p>宝箱に対する各種コマンドの詳細。</p>
+
+
+<h2>INSPECT</h2>
+
+<p>INSPECT成功率はキャラの職業とAGIに依存する。また、INSPECTに失敗した場合は
+罠が発動する可能性がある。</p>
+
+<p>まず、MAGE, PRIEST, BISHOP, SAMURAI, LORDは特定の罠しか答えない(これは
+INSPECT失敗として扱われるため、罠が発動する可能性がある):</p>
+<ul>
+  <li>MAGE, SAMURAIは常に MAGE BLASTER と答える。</li>
+  <li>PRIEST, BISHOP, LORDは常に PRIEST BLASTER と答える。</li>
+</ul>
+
+<p>FIGHTER, THIEF, NINJAの場合、AGIに依存する確率でINSPECTに成功する:</p>
+<ul>
+  <li>THIEFは AGI*6 (%) の確率で成功する。ただし上限 95%。</li>
+  <li>NINJAは AGI*4 (%) の確率で成功する。</li>
+  <li>FIGHTERは AGI (%) の確率で成功する。</li>
+</ul>
+<p>これらの職業でINSPECTに失敗した場合はランダムな罠を答える。</p>
+
+<p>INSPECTに失敗した場合、(19-AGI)/20 の確率で罠が発動する。</p>
+
+<p>既にINSPECTを行った者が再度INSPECTを行った場合、前回のINSPECTと同じ罠を答
+える。つまりINSPECTは事実上1人1回しか行えない。なお、同一キャラの2回目以降の
+INSPECTで罠が発動することはない。</p>
+
+
+<h2>CALFO</h2>
+
+<p>CALFOはINSPECTと異なり、何度でもトライできる(CALFOをかける度に成功判定が
+行われる)。</p>
+
+<p>CALFOは 95% の確率で成功する。失敗した場合はランダムな罠を答える。</p>
+
+<p>沈黙状態で戦闘を終えたキャラもCALFOを唱えることができる。</p>
+
+
+<h2>DISARM</h2>
+
+<p>DISARMを行うキャラが事前にINSPECTを行っていた場合、そのキャラが答えた罠に
+カーソルが合わせられている。なお、CALFOはカーソル位置に影響しない。</p>
+
+<p>正しくない罠を指定すると必ず罠が発動する。正しい罠を指定した場合はDISARM
+成功判定が行われ、それが失敗した場合はさらに罠発動判定も行われる。</p>
+
+<p>正しい罠を指定した場合のDISARM成功率はキャラの職業、LV, および現在の階層
+に依存し、次式で表される:</p>
+<blockquote>
+  (DISARM成功率) = (LV/256 - (現在の階層) - 7 + (職業ボーナス)) / 70<br>
+  ※職業ボーナスはTHIEF, NINJAの場合 +50, その他の職業では 0<br>
+  ※階層は [1, 10]<br>
+  ※成功率が負になった場合は0として扱う
+</blockquote>
+
+<p>DISARMに失敗した場合、(20-AGI)/20 の確率で罠が発動する。</p>
+
+<p>以上より、B10FでDISARMを100%成功させるためには、LV 9472 以上のTHIEFまたは
+NINJAが必要となる。THIEF, NINJA以外ならば LV 22272 以上が必要。</p>
+
+
+<h2>OPEN</h2>
+
+<p>罠のかかった箱をOPENしても罠が発動しないことがある(表示上は罠がかかってい
+なかった場合と同様)。</p>
+
+<p>罠のかかった箱をOPENした場合の罠回避率はキャラのLVに依存する。まず、[0,
+3] の乱数 r を発生し、</p>
+<ul>
+  <li>r &lt; LV/256 ならば罠は発動しない</li>
+  <li>r &gt; LV/256 ならば罠が発動</li>
+</ul>
+
+<p>r == LV/256 の場合は、(LV%256)/256 の確率で罠は発動しない(% は余りを求め
+る演算子)。</p>
+
+<p>以上より、LV 1024 以上のキャラがOPENを行えば罠にかかることはない。</p>
+
+
+<hr>
+
+<p><a href="./">Back</a></p>
+
+</body>
+</html>

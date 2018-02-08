@@ -1,0 +1,5 @@
+Summary: nghash - MD5 to NGFiles.txt hash
+Name: nghash
+Author: TaoTao
+
+MD5 を Jane の NGFiles.txt 用ハッシュに変換するツール。

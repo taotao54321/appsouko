@@ -1,0 +1,8 @@
+Summary: lsexport - DLLのエクスポートシンボル一覧を得る
+Name: lsexport
+Author: TaoTao
+Homepage: http://www6.atpages.jp/appsouko/work/lsexport/
+
+DLLのエクスポートシンボルを全て取得し、序数と名前をタブ区切りで出力する。出
+力結果から仲介DLLのスケルトンコード(C++)を生成するスクリプト proxydll.py を
+同梱。

@@ -1,0 +1,9 @@
+Summary: tasryoko - 巫女さんファイター涼子ちゃん (PC) TASツール
+Name: tasryoko
+Author: TaoTao
+Homepage: http://www6.atpages.jp/appsouko/work/TAS/game/MikoRyoko_PC/
+
+『巫女さんファイター涼子ちゃん』(http://www.studio-ryokucha.com/ryouko.html)
+にTAS機能を追加するツール。コマ送り、ステート機能あり。
+
+今のところあまり安定していない。過度の期待は禁物。

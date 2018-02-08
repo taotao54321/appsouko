@@ -1,0 +1,79 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title>Wizardry(NES) TAS</title>
+</head>
+
+<body>
+
+<h1>Wizardry(NES) TAS</h1>
+
+<p>とりあえず 45.82 のTASを作成
+(<a href="http://tasvideos.org/1227M.html">TASVideosに掲載されました</a>
+→ <a href="wizardry1-tas-taotao.opt.fcm">fcmoptimで最適化したfcm</a>)。
+理論値的にはあと2～3秒ほど縮まりそうですが…。相変わらずランダム入力Bot頼み
+なので方法論的に目新しいところはありません。</p>
+
+<iframe width="312" height="176" src="http://ext.nicovideo.jp/thumb/sm5130023" scrolling="no" style="border:solid 1px #CCC;" frameborder="0"><a href="http://www.nicovideo.jp/watch/sm5130023">【ニコニコ動画】[TAS] NES Wizardry in 45.82</a></iframe>
+
+<p>大まかな流れを一応書いておきます:</p>
+<ul>
+  <li>ソフトリセットでメーカーロゴをスキップ</li>
+  <li>STR18のTHIEFを作成</li>
+  <li>作成したTHIEFと初期から存在するPRIESTでPTを結成</li>
+  <li>エレベーターでB4Fへ</li>
+  <li>玄室で敵を倒し、テレポーターで第2のエレベーターへ。B9Fへ</li>
+  <li>B4Fで警報を踏んだためエンカウント。友好モンスターにして戦闘を回避</li>
+  <li>玄室で敵を倒し、EPEE of EXCELLENCE, RING of MOVEMENT, DAGGER of THIEVESを入手</li>
+  <li>戦利品を装備し、THIEFをNINJAにする</li>
+  <li>即エンカウントして戦闘中MALORでB10FのWERDNA玄室前へ</li>
+  <li>クリティカルとディスペルでWERDNA達を撃破</li>
+</ul>
+
+
+<h2>改善案</h2>
+
+<p>キャラメイクを行わずにデフォルトのTHIEFとPRIESTで出発し、B4FでSWORD of
+SLICINGを入手、B9FでSCROLL of DARKNESS, RING of MOVEMENT, DAGGER of THIEVES
+を入手、というのが最速ルートのような気がします。デフォルトのTHIEFはSTRENGTH
+が低いため、NINJAになってSWORD of SLICINGを装備してもWERDNAには攻撃を当てら
+れませんが、SCROLL of DARKNESSを使ってやれば一応 0.05% 程度の確率でクリティ
+カルになるようです。ただしTHIEFはSWORD of SLICINGを装備できないため装備が二
+度手間になること、各種メッセージ表示で多少時間を食われることなどを考えると、
+短縮できるとしても1秒強程度かなと思います。</p>
+
+<p>なお、VAMPIRE(不確定名UNSEEN ENTITY)はクリティカルで倒すと行数の関係でメッ
+セージ表示の際30F強?程度のロスが生じるので、SCROLL of DARKNESSを使う場合、
+WERDNA戦1ターン目はNINJAがSCROLLを使用、PRIESTがディスペル、という形にする必
+要があります。よってB9Fのお宝は全てTHIEFに持たせる必要があるのですが、同じ人
+にアイテムを3つ取らせようとするとなぜか乱数調整がやたら難しくなるため難航中
+です。</p>
+
+<p>あとは細かいラグや乱数調整に伴うロスの最小化ですが、乱数値の予測が難しい
+ため今のところ見通しは立っていません。当面は興味のある部分からチマチマとプロ
+グラム解析を進めていこうかと考えています。</p>
+
+
+<h2>プログラム解析</h2>
+
+<p>解析資料は量が多くなってきたので
+<a href="../../../Game/Wiz1_NES/">別ページ</a>に分けました。</p>
+
+
+<h2>メモ</h2>
+
+<ul>
+  <li>ソフトリセットでメーカーロゴを飛ばせるが、これはUSA版限定と思われる</li>
+  <li>ソフトリセットでB4Fの警報を踏んだフラグを消せるが、リセットして冒険を
+  再開する方が遅い。ただし、SRAM領域への書き込みが頻繁に行われるので、もしか
+  するとソフトリセットを利用した意外な短縮法があるかも</li>
+</ul>
+
+
+<hr>
+
+<p><a href="../../">Back</a></p>
+
+</body>
+</html>

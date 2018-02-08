@@ -1,0 +1,118 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Wizardry(NES) 解析 - モンスタータイプ</title>
+</head>
+
+<body>
+
+<h1>Wizardry(NES) 解析 - モンスタータイプ</h1>
+
+<p>モンスタータイプ、モンスタータイプ別ビットマスクについて。また、これらに
+関連するバグについても触れる。</p>
+
+
+<h2>モンスタータイプ</h2>
+
+<p>モンスタータイプは以下の16種類(ただし値4, 14, 15に該当するモンスターは存
+在しない):</p>
+<table border="1">
+<thead>
+  <tr><th>値</th><th>名称</th></tr>
+</thead>
+<tbody>
+  <tr><td align="right">0</td><td>戦士</td></tr>
+  <tr><td align="right">1</td><td>魔術師</td></tr>
+  <tr><td align="right">2</td><td>僧侶</td></tr>
+  <tr><td align="right">3</td><td>盗賊</td></tr>
+  <tr><td align="right">4</td><td>小人・忍者(存在しない)</td></tr>
+  <tr><td align="right">5</td><td>巨人</td></tr>
+  <tr><td align="right">6</td><td>神話</td></tr>
+  <tr><td align="right">7</td><td>竜</td></tr>
+  <tr><td align="right">8</td><td>動物</td></tr>
+  <tr><td align="right">9</td><td>獣人</td></tr>
+  <tr><td align="right">10</td><td>不死</td></tr>
+  <tr><td align="right">11</td><td>悪魔</td></tr>
+  <tr><td align="right">12</td><td>昆虫</td></tr>
+  <tr><td align="right">13</td><td>魔法生物</td></tr>
+  <tr><td align="right">14</td><td>(存在しない)</td></tr>
+  <tr><td align="right">15</td><td>(存在しない)</td></tr>
+</tbody>
+</table>
+
+
+<h2>モンスタータイプ別ビットマスク</h2>
+
+<p>どのモンスタータイプに対して打撃防御や倍打が有効かを示すために2Byteのビッ
+トマスクが使われる。形式は「本来は」以下の通り:</p>
+<table border="1">
+<thead>
+  <tr><th>bit</th><th>タイプ</th></tr>
+</thead>
+<tbody>
+  <tr><td align="right">bit15</td><td>(タイプ15に対応。該当モンスターなし)</td></tr>
+  <tr><td align="right">bit14</td><td>(タイプ14に対応。該当モンスターなし)</td></tr>
+  <tr><td align="right">bit13</td><td>魔法生物</td></tr>
+  <tr><td align="right">bit12</td><td>昆虫</td></tr>
+  <tr><td align="right">bit11</td><td>悪魔</td></tr>
+  <tr><td align="right">bit10</td><td>不死</td></tr>
+  <tr><td align="right">bit9</td><td>獣人</td></tr>
+  <tr><td align="right">bit8</td><td>動物</td></tr>
+  <tr><td align="right">bit7</td><td>竜</td></tr>
+  <tr><td align="right">bit6</td><td>神話</td></tr>
+  <tr><td align="right">bit5</td><td>巨人</td></tr>
+  <tr><td align="right">bit4</td><td>小人・忍者(該当モンスターなし)</td></tr>
+  <tr><td align="right">bit3</td><td>盗賊</td></tr>
+  <tr><td align="right">bit2</td><td>僧侶</td></tr>
+  <tr><td align="right">bit1</td><td>魔術師</td></tr>
+  <tr><td align="right">bit0</td><td>戦士</td></tr>
+</tbody>
+</table>
+
+<p>なのだが、後述のバグのため、1Byte目と2Byte目が入れ替わり、以下のようにな
+る:</p>
+<table border="1">
+<thead>
+  <tr><th>bit</th><th>タイプ</th></tr>
+</thead>
+<tbody>
+  <tr><td align="right">bit15</td><td>竜</td></tr>
+  <tr><td align="right">bit14</td><td>神話</td></tr>
+  <tr><td align="right">bit13</td><td>巨人</td></tr>
+  <tr><td align="right">bit12</td><td>小人・忍者(該当モンスターなし)</td></tr>
+  <tr><td align="right">bit11</td><td>盗賊</td></tr>
+  <tr><td align="right">bit10</td><td>僧侶</td></tr>
+  <tr><td align="right">bit9</td><td>魔術師</td></tr>
+  <tr><td align="right">bit8</td><td>戦士</td></tr>
+  <tr><td align="right">bit7</td><td>(タイプ15に対応。該当モンスターなし)</td></tr>
+  <tr><td align="right">bit6</td><td>(タイプ14に対応。該当モンスターなし)</td></tr>
+  <tr><td align="right">bit5</td><td>魔法生物</td></tr>
+  <tr><td align="right">bit4</td><td>昆虫</td></tr>
+  <tr><td align="right">bit3</td><td>悪魔</td></tr>
+  <tr><td align="right">bit2</td><td>不死</td></tr>
+  <tr><td align="right">bit1</td><td>獣人</td></tr>
+  <tr><td align="right">bit0</td><td>動物</td></tr>
+</tbody>
+</table>
+
+
+<h2>モンスタータイプ関連のバグ</h2>
+
+<p>タイプ別倍打判定のコードにはバグがあり、タイプ別倍打とは全く別のアドレス
+の値を参照してしまう。また、モンスタータイプ別ビットマスクを処理するためのデー
+タも間違っており、1Byte目と2Byte目が入れ替わって処理されてしまう。推測だが、
+タイプ別倍打のバグに対して誤った修正を加えたために二重のバグを生む結果になっ
+たのではないかと思われる。</p>
+
+<p>ビットマスクのByteが入れ替わってしまうのは、データ
+<code>$DC97-$DCA6</code> と<code>$DCA7-$DCB6</code> が逆になっているのが原因
+なので、これらのデータを入れ替えれば解決するはず。タイプ別倍打のバグについて
+は<a href="battle_fight.html">敵への打撃攻撃</a>の項目を参照。</p>
+
+
+<hr>
+
+<p><a href="./">Back</a></p>
+
+</body>
+</html>

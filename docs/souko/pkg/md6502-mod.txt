@@ -1,0 +1,10 @@
+Summary: md6502-mod - 6502 disassembler
+Name: md6502-mod
+Author: TaoTao
+Homepage: http://www6.atpages.jp/appsouko/work/md6502-mod/
+
+Minachun氏作6502逆アセンブラ md6502 の改造版。
+大きいデータ領域を指定すると出力バッファが溢れるバグを修正済。
+
+オリジナルの md6502 は以下のURLから入手できる:
+http://www.geocities.co.jp/SiliconValley/5457/

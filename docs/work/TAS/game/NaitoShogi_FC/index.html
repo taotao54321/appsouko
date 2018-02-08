@@ -1,0 +1,68 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title>内藤九段将棋秘伝(FC) TAS</title>
+</head>
+
+<body>
+
+<h1>内藤九段将棋秘伝(FC) TAS</h1>
+
+<p>とりあえず既存の知識の範囲内で最短を求めてみようということで作成。</p>
+
+<p>25.64 (<a href="Naito-1541F-Done.zip">fm2ファイル</a>)</p>
+<iframe width="312" height="176" src="http://ext.nicovideo.jp/thumb/sm8775843" scrolling="no" style="border:solid 1px #CCC;" frameborder="0"><a href="http://www.nicovideo.jp/watch/sm8775843">【ニコニコ動画】[TAS] FC 内藤九段将棋秘伝 in 25.64</a></iframe>
+
+<p>このゲームは、同一局面であっても手順前後があるとCOMの応手や思考時間が変化
+することがあります。例えば、平手、プレイヤー先手で開始し、初手から56歩、34歩、
+66歩と66歩、34歩、56歩の2通りを試してみるとCOMの応手が変化することが確認でき
+ます。</p>
+
+<p>というわけで、このTASでは既知の最短手順のうち最も速いものを選び、更に手順
+前後を総当たりして最速となるものを選んでいます(56歩に代えて76歩～55角～66角
+を先にする手順の方がカーソル移動で2F得しますが、思考時間で3F損します)。手順
+自体は以下の動画からパクってます:</p>
+<iframe width="312" height="176" src="http://ext.nicovideo.jp/thumb/sm1427313" scrolling="no" style="border:solid 1px #CCC;" frameborder="0"><a href="http://www.nicovideo.jp/watch/sm1427313">【ニコニコ動画】FC　『本将棋　内藤九段将棋秘伝』　16手目でCOMに勝利</a></iframe>
+
+<p>なお、カーソルは縦横だけでなく斜めにも動かせます。</p>
+
+<p>他に有名な15手パターンとして以下のものがありますが:</p>
+<object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/3m06TYlFaFg&amp;hl=ja&amp;fs=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/3m06TYlFaFg&amp;hl=ja&amp;fs=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"></embed></object>
+<p>これは手順前後を総当たりしても1628Fが限界のようです。また、検索すると<a
+href="http://tsuru.tri6.net/mixi/diary/737599295.html">14手パターン</a>も見
+つかりますが、これは1800F以上かかってしまうようです。</p>
+
+<p>全手順を総当たりしたわけではないので、当然ながらこのTASが最速である保証は
+全くありません。COMの指し手にランダム要素はなさそうなので、13～16手程度であ
+れば総当たりも一応可能とは思われますが、個人でやるにはちょっと厳しそうなので
+保留中。思考ルーチンを解析する手もありますが、なかなか手強くてまだよくわかっ
+ていません。</p>
+
+<p>なお、このゲームは各手合割について定跡データを持っており、平手の場合は四
+間飛車か中飛車を指すようにコーディングされていますが、実際には四間飛車しか指
+してきません(実機では稀に中飛車も指してきた気もしますが、記憶違いかも)。フレー
+ムカウンタが奇数かどうかで戦型を決めているのですが、そのコードが実行される時
+点では常にフレームカウンタが奇数になってしまうようです(原因は調査中)。ちなみ
+に、平手で開始した後 $56 を 0x9B -&gt; 0x74 と書き換えると中飛車を指してくる
+ことが確認できます。</p>
+
+<p>このゲームは盤上の駒の利きを常に管理していますが、飛び駒(飛、角、香)につ
+いては、他の駒にぶつかったところから1マス先までしか考慮しないようです。よっ
+て、飛の下に香を打つ手などが効果的になる場合があります。</p>
+
+<p>電源投入直後のみ可能なパターンがある、という説を見かけましたが、コードを
+見る限りハードリセットとソフトリセットは区別していないようです。</p>
+
+<ul>
+  <li><a href="memory.txt">メモリマップ</a></li>
+  <li><a href="rom.txt">ROMマップ</a></li>
+  <li><a href="/appsouko/work/CDL/pub/">CDLファイル</a></li>
+</ul>
+
+<hr>
+
+<p><a href="../../">Back</a></p>
+
+</body>
+</html>

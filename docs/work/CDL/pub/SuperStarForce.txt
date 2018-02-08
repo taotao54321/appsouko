@@ -1,0 +1,5 @@
+@rom_name スーパースターフォース
+@rom_md5 68cc8b9ef3ebc61e987c316dc47915b4
+@public 1
+
+一通りプレイ

@@ -1,0 +1,165 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Wizardry(NES) 解析 - 敵の行動</title>
+</head>
+
+<body>
+
+<h1>Wizardry(NES) 解析 - 敵の行動</h1>
+
+<p>戦闘における敵の行動決定処理について。</p>
+
+
+<h2>行動決定の流れ</h2>
+
+<p>ターン開始時(PTキャラのコマンドを全て確定させた時)に全敵キャラの行動が決
+定される。</p>
+
+<p>敵キャラ1体の行動は以下のような流れで決定される(行動が決定された時点でそ
+れ以降の処理は省略される):</p>
+<ul>
+  <li>攻撃対象決定</li>
+  <li>PT先制の場合、何もしない</li>
+  <li>敵先制でない場合、呪文を唱えるかどうか(唱えるならどの呪文を唱えるか)を決定</li>
+  <li>ブレスを吐くかどうかを決定</li>
+  <li>仲間を呼ぶかどうかを決定</li>
+  <li>逃走するかどうかを決定</li>
+  <li>打撃攻撃を行うかどうかを決定</li>
+  <li>ここまでで行動が決まらなかった場合はPARRYを行う</li>
+</ul>
+
+
+<h2>攻撃対象決定</h2>
+
+<p>単純に乱数でPT内の生存者のいずれかを選ぶ。ここで決定された対象が打撃攻撃
+や単体攻撃呪文の対象となる(打撃攻撃の場合は後衛には攻撃できないので補正が入
+る)。</p>
+
+
+<h2>呪文</h2>
+
+<p>敵先制の場合、呪文を唱えることはない。</p>
+
+<p>呪文を唱える確率、および唱える呪文は敵キャラのモンスタータイプ、
+MAGE/PRIEST呪文LVに依存する。また、呪文を唱えた場合、所属グループの呪文LVが
+下がることがある(MAGE呪文ならMAGE呪文LV, PRIEST呪文ならPRIEST呪文LVが下がる。
+なお、呪文LVはグループ単位で管理されていることに注意)。</p>
+
+<h3>呪文を唱えるかどうかの判定</h3>
+
+<p>まず敵キャラの所属グループのMAGE呪文LVを調べ、非0ならばMAGE呪文を唱えるか
+どうかの判定を行う。敵キャラのモンスタータイプが魔術師ならば100%, それ以外の
+場合は 3/4 の確率でMAGE呪文を唱える。</p>
+
+<p>MAGE呪文を唱えない場合、敵キャラの所属グループのPRIEST呪文LVを調べ、非0な
+らばPRIEST呪文を唱えるかどうかの判定を行う。敵キャラのモンスタータイプが僧侶
+ならば100%, それ以外の場合は 3/4 の確率でPRIEST呪文を唱える(これより前にMAGE
+呪文判定を行っているので、僧侶系でもMAGE呪文を唱えることはできることに注意。
+これによりBISHOPがMAGE呪文を使えるようになっている)。</p>
+
+<h3>使用呪文の決定</h3>
+
+<p>呪文を唱えることになった場合、まず呪文LV低下判定を行う。呪文LV低下率は所
+属グループの生存者数(DEAD以上で死亡とみなす)に依存し、次式で表される:</p>
+<blockquote>
+  (呪文LV低下率) = 1 / ((グループ生存者数)+2)
+</blockquote>
+<p>呪文LV低下判定に引っ掛かった場合、対応する種類(MAGE/PRIEST)の呪文LVが1減
+少する。この結果呪文LVが0になった場合は、呪文LVを1に戻し、この敵キャラは呪文
+を唱えない(つまり、ブレス以降の処理へ移行する)ことにして処理を終える。</p>
+
+<p>次に、使用する呪文のLVを決定する。まず (使用呪文LV) = (所属グループの呪文
+LV) とし、77/256 の確率で使用呪文LVをデクリメントし続ける。使用呪文LVが0になっ
+た場合は1にする。</p>
+
+<p>最後に、使用呪文LV内の呪文の内どれを使うかを決定する。敵サイドの場合、各
+呪文LVにはそれぞれ2種類の呪文(同じ呪文の場合もある)が割り当てられており、一
+方は 85/256, 他方は171/256 の確率で唱えられる。以下に呪文表を示す:</p>
+
+<table border="1">
+<caption>MAGE呪文</caption>
+<thead>
+  <tr><th>LV</th><th>呪文1 (85/256)</th><th>呪文2 (171/256)</th></tr>
+</thead>
+<tbody>
+  <tr><td align="center">1</td><td>KATINO</td><td>HALITO</td></tr>
+  <tr><td align="center">2</td><td>DILTO</td><td>SOPIC</td></tr>
+  <tr><td align="center">3</td><td>MOLITO</td><td>MAHALITO</td></tr>
+  <tr><td align="center">4</td><td>DALTO</td><td>LAHALITO</td></tr>
+  <tr><td align="center">5</td><td>LAHALITO</td><td>MADALTO</td></tr>
+  <tr><td align="center">6</td><td>MADALTO</td><td>ZILWAN</td></tr>
+  <tr><td align="center">7</td><td>TILTOWAIT</td><td>TILTOWAIT</td></tr>
+</tbody>
+</table>
+
+<br>
+
+<table border="1">
+<caption>PRIEST呪文</caption>
+<thead>
+  <tr><th>LV</th><th>呪文1 (85/256)</th><th>呪文2 (171/256)</th></tr>
+</thead>
+<tbody>
+  <tr><td align="center">1</td><td>BADIOS</td><td>BADIOS</td></tr>
+  <tr><td align="center">2</td><td>MONTINO</td><td>MONTINO</td></tr>
+  <tr><td align="center">3</td><td>BADIOS</td><td>BADIAL</td></tr>
+  <tr><td align="center">4</td><td>BADIAL</td><td>BADIAL</td></tr>
+  <tr><td align="center">5</td><td>BADIALMA</td><td>BADI</td></tr>
+  <tr><td align="center">6</td><td>LORTO</td><td>MABADI</td></tr>
+  <tr><td align="center">7</td><td>MABADI</td><td>MABADI</td></tr>
+</tbody>
+</table>
+
+
+<h2>ブレス</h2>
+
+<p>ブレス属性が非0の場合、153/256 の確率でブレスを吐く。</p>
+
+
+<h2>仲間を呼ぶ</h2>
+
+<p>敵キャラが仲間を呼ぶフラグを持っており、かつ所属グループの生存者数(DEAD以
+上で死亡とみなす)が6以下の場合、3/4 の確率で仲間を呼ぶ。</p>
+
+
+<h2>逃走</h2>
+
+<p>敵キャラが逃走フラグを持っており、かつ</p>
+<blockquote>
+  (敵の合計LV) &lt; (PTの合計LV)<br>
+  ※敵についてはグループ単位でなく個体単位での合計<br>
+  ※敵、PTともステータス異常にかかっている者のLVは加えない
+</blockquote>
+<p>ならば、166/256 の確率で逃走する。</p>
+
+
+<h2>打撃攻撃</h2>
+
+<p>まず、グループ内で後方に位置している敵キャラは攻撃を行わない可能性がある:</p>
+<ul>
+  <li>敵第 1 グループの 5～9 体目は 5/10 の確率で攻撃しない</li>
+  <li>敵第 2 グループの 4～9 体目は 4/10 の確率で攻撃しない</li>
+  <li>敵第 3 グループの 3～9 体目は 3/10 の確率で攻撃しない</li>
+  <li>敵第 4 グループの 2～9 体目は 2/10 の確率で攻撃しない</li>
+</ul>
+
+<p>次に攻撃対象を決定する。既に攻撃対象は乱数で決めてあるが、後衛には攻撃で
+きないので、後衛 n 人目は前衛 n 人目に直す。つまり、PT前衛3人は等確率で攻撃
+されることになる。</p>
+
+<p>最後にタイプ別打撃防御判定を行う。攻撃対象者が敵キャラの<a
+href="monster_type.html">モンスタータイプ</a>に対応する打撃防御を持っている
+場合、敵キャラは 1/2 の確率で攻撃を行わない。なお、タイプ別打撃防御は攻撃対
+象者の全装備品(呪われていたりアラインメント不一致でも構わない)のタイプ別打撃
+防御の論理和となる。<a href="monster_type.html">モンスタータイプ</a>の項目で
+述べた通り、タイプ別打撃防御は本来の値の1Byte目と2Byte目を入れ替えて処理され
+ることに注意。</p>
+
+
+<hr>
+
+<p><a href="./">Back</a></p>
+
+</body>
+</html>

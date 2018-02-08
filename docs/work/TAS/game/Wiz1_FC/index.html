@@ -1,0 +1,93 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title>ウィザードリィ(FC) TAS</title>
+</head>
+
+<body>
+
+<h1>ウィザードリィ(FC) TAS</h1>
+
+<p>とりあえず 1 分切りは達成。50 秒切りが可能かどうかはまだ何ともいえない(タ
+イマー設定はたぶん不要なので、それだけで 1 秒近くは短縮できそうだが)。</p>
+
+<p>52.83 (<a href="Wiz1-002.fcm">fcmファイル</a> → <a href="Wiz1-002.opt.fcm">fcmoptimで最適化したもの</a>)</p>
+<iframe width="312" height="176" src="http://ext.nicovideo.jp/thumb/sm4104173" scrolling="no" style="border:solid 1px #CCC;" frameborder="0"><a href="http://www.nicovideo.jp/watch/sm4104173">【ニコニコ動画】FC ウィザードリィ TAS 52.83</a></iframe>
+<p>現段階では逆アセンブル解析はほとんど行っていません。</p>
+
+<p>乱数値はフレームごとに 2000～3000 程度増加する他、方向キー入力によって微
+妙に変化します。が、変化に規則性が見当たらないため、手動での乱数調整はかなり
+面倒です。デバッガで追ってみたところ、フレーム処理を終えた時点からひたすら無
+限ループで乱数値をインクリメントし、NMI 割り込みが発生したら抜けるようになっ
+ている模様。入力処理ルーチンを解析すれば乱数値の変化も予測できるのだろうか??</p>
+
+<p>今のところは乱数値が予測できないので、Lua スクリプトによる Bot アタックで
+ゴリ押ししています。乱数調整に関してはこれでもかなりよい結果が得られるようで
+す。</p>
+
+<p>ただし、一部のメッセージが表示されるまでにかかる時間にばらつきがあります。
+このラグ?の最小化まで考えると、やはり逆アセンブル解析が必要になりそうです。</p>
+
+<p>また、一部の場面では事前に Lua スクリプトで全乱数値に対する結果をリストアッ
+プして調査を行っています。ただしここにもちょっとした穴があり、厳密には乱数依
+存の結果は「前フレームの乱数値」ではなく「前フレームの乱数値とそれまでの入力」
+に依存する可能性があるため、やはり逆アセンブル解析しないと完璧とはいえなさそ
+うです(実際、乱数値が同じなのに事前に作成した表と微妙に異なる結果が出るケー
+スがあった)。</p>
+
+<p>なお、一部の Lua スクリプトでは 2 段階のステートセーブを行っているため、
+Bot の試行数がそのまま追記回数に反映されてしまっています。Bot を入力記録方式
+にすればこの問題は解消されますが、まだ追記回数を気にするような段階でもないの
+でそのままにしています。</p>
+
+<p>作成した資料などを置いておきます(自分用なので全然まとまってませんが):</p>
+<ul>
+  <li><a href="memory.txt">メモリマップ</a></li>
+  <li><a href="Wiz1-B9EnemyBot.lua">B9 玄室敵調整 Bot</a> (モンスター ID 80 以上、HP 24 以下、1 匹のみ)</li>
+  <li><a href="Wiz1-B9MALORBot.lua">B9 MALOR 先調整 Bot</a> (WERDNA 玄室前)</li>
+  <li><a href="Wiz1-VLBot.lua">VAMPIRE LOAD 撃破 Bot</a> (なるべくラグを少なく)</li>
+  <li>
+  <a href="Wiz1-W_DMG.lua">WERDNA への与ダメージ調査スクリプト</a>、<a href="Wiz1-W_DMG.txt">結果</a>
+  (与ダメージ確定 1 フレーム前で乱数値を連続的に変化させる)
+  </li>
+  <li><a href="char-decode.c">文字列デコードツール</a> ※ソースのみ</li>
+</ul>
+
+<p>Bot その他のスクリプトは上記以外にも多数作成しましたが、似たり寄ったりな
+ので省略。なお、Bot の入力生成ルーチンは全て事前に手動で調査した上で作成して
+います。泥臭いですが、前述の表示ラグの件などがあってなかなかルーチンの使いま
+わしができませんでした。</p>
+
+<p>WERDNA への与ダメージ表を見ればわかる通り、近い乱数値ではほとんど同じよう
+な結果しか起こりません。よって、数フレームキー入力を行った程度ではまともな乱
+数調整ができないので、なるべく早い段階から Bot によるランダム入力を開始する
+必要があります。数フレーム待てば乱数値は大きく変化しますが、あくまでこれは最
+後の手段。</p>
+
+<p>メモ:</p>
+<ul>
+  <li>FC版のボーナスポイント上限は 29。ただし 26, 27, 28 は出現しない(全乱数
+  値に対する結果から。ただし前述の理由により 100% とは断言できない)</li>
+</ul>
+
+<p>参考資料:</p>
+<ul>
+  <li><a href="http://www.pekori.jp/~emonoya/">得物屋24時間</a></li>
+  <li><a href="http://www.geocities.co.jp/Playtown-Denei/4273/wiz1/wiz1_kouryaku.htm">FC版WIZARDRY (PROVING GROUND OF MAD OVERLOAD) 完全攻略!!</a></li>
+  <li><a href="http://multix.jp/wizardry/">We Love WIZARDRY for WonderSwan</a></li>
+  <li><a href="http://marin69.hp.infoseek.co.jp/">Wizardry Institute of Analysis</a></li>
+  <li>
+  熊恭太郎雑記 Wizの情報集め
+  <a href="http://d.hatena.ne.jp/kumashige/20060720/1153328504">その1</a>,
+  <a href="http://d.hatena.ne.jp/kumashige/20060922/1158853235">その2</a>
+  </li>
+</ul>
+
+
+<hr>
+
+<p><a href="../../">Back</a></p>
+
+</body>
+</html>

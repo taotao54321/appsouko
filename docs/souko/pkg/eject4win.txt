@@ -1,0 +1,6 @@
+Summary: eject4win - eject(1) for Windows
+Name: eject4win
+Author: TaoTao
+Homepage: http://www6.atpages.jp/appsouko/work/eject4win/
+
+eject(1) の Windows 劣化移植版。

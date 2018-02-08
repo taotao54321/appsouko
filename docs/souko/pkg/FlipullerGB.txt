@@ -1,0 +1,6 @@
+Summary: FlipullerGB - Flipull (GB) solver
+Name: FlipullerGB
+Author: TaoTao
+Homepage: http://www6.atpages.jp/appsouko/work/TAS/game/Flipull_FC/
+
+フリップル(GB)のソルバ。

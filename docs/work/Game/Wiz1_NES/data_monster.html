@@ -1,0 +1,1665 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Wizardry(NES) 解析 - モンスターリスト</title>
+</head>
+
+<body>
+
+<h1>Wizardry(NES) 解析 - モンスターリスト</h1>
+
+<p>モンスターは全101種。</p>
+
+<p>HPダイス個数がモンスターLVとなる。</p>
+
+<p>「宝」の列の数値は、1つ目が徘徊アイテムテーブルID、2つ目が玄室アイテムテー
+ブルID。</p>
+
+<p>後続モンスター出現率が 255/256 の場合は必ず後続が出現する(256/256 に補正
+されると考えてよい)。</p>
+
+<table border="1">
+<thead>
+  <tr>
+    <th>ID</th>
+    <th>確定名</th>
+    <th>不確定名</th>
+    <th>タイプ</th>
+    <th>数</th>
+    <th>HP</th>
+    <th>AC</th>
+    <th>打撃</th>
+    <th>無効化</th>
+    <th>EXP</th>
+    <th>宝</th>
+    <th>後続</th>
+    <th>備考</th>
+  </tr>
+</thead>
+
+<tbody>
+  <tr>
+    <td align="right">0</td>
+    <td>Bubbly slime<br>Bubbly slimes</td>
+    <td>Slime<br>Slimes</td>
+    <td align="center">動物</td>
+    <td align="center">2d2</td>
+    <td align="center">1d3+1</td>
+    <td align="right">12</td>
+    <td align="center">1d1</td>
+    <td align="right">0/256</td>
+    <td align="right">55</td>
+    <td align="right">0<br>10</td>
+    <td align="right">Orc (26/256)</td>
+    <td>抵抗: 友呪</td>
+  </tr>
+
+  <tr>
+    <td align="right">1</td>
+    <td>Orc<br>Orcs</td>
+    <td>Small humanoid<br>Small humanoids</td>
+    <td align="center">戦士</td>
+    <td align="center">3d2</td>
+    <td align="center">1d4</td>
+    <td align="right">10</td>
+    <td align="center">1d4</td>
+    <td align="right">0/256</td>
+    <td align="right">235</td>
+    <td align="right">0<br>10</td>
+    <td align="right">Kobold (51/256)</td>
+    <td>特殊: 眠逃<br>抵抗: 火</td>
+  </tr>
+
+  <tr>
+    <td align="right">2</td>
+    <td>Kobold<br>Kobolds</td>
+    <td>Small humanoid<br>Small humanoids</td>
+    <td align="center">戦士</td>
+    <td align="center">2d2+1</td>
+    <td align="center">2d3+1</td>
+    <td align="right">8</td>
+    <td align="center">1d2+1<br>1d2+1</td>
+    <td align="right">0/256</td>
+    <td align="right">415</td>
+    <td align="right">0<br>10</td>
+    <td align="right">Orc (38/256)</td>
+    <td>特殊: 眠逃<br>抵抗: 友冷</td>
+  </tr>
+
+  <tr>
+    <td align="right">3</td>
+    <td>Undead kobold<br>Undead kobolds</td>
+    <td>Skeleton<br>Skeletons</td>
+    <td align="center">不死</td>
+    <td align="center">1d6+1</td>
+    <td align="center">2d3+2</td>
+    <td align="right">10</td>
+    <td align="center">1d4+1</td>
+    <td align="right">0/256</td>
+    <td align="right">230</td>
+    <td align="right">0<br>10</td>
+    <td align="right">Kobold (26/256)</td>
+    <td>抵抗: 火冷</td>
+  </tr>
+
+  <tr>
+    <td align="right">4</td>
+    <td>Rogue<br>Rogues</td>
+    <td>Scruffy man<br>Scruffy men</td>
+    <td align="center">盗賊</td>
+    <td align="center">1d4+1</td>
+    <td align="center">2d5+1</td>
+    <td align="right">10</td>
+    <td align="center">1d4<br>2d2+1</td>
+    <td align="right">0/256</td>
+    <td align="right">380</td>
+    <td align="right">0<br>10</td>
+    <td align="right">Orc (51/256)</td>
+    <td>特殊: 眠逃</td>
+  </tr>
+
+  <tr>
+    <td align="right">5</td>
+    <td>Bushwacker<br>Bushwackers</td>
+    <td>Scruffy man<br>Scruffy men</td>
+    <td align="center">戦士</td>
+    <td align="center">1d4+1</td>
+    <td align="center">3d6+1</td>
+    <td align="right">8</td>
+    <td align="center">1d6+1<br>2d4+1</td>
+    <td align="right">0/256</td>
+    <td align="right">620</td>
+    <td align="right">0<br>10</td>
+    <td align="right">Zombie (51/256)</td>
+    <td>特殊: 眠逃</td>
+  </tr>
+
+  <tr>
+    <td align="right">6</td>
+    <td>Highwayman<br>Highwaymen</td>
+    <td>Man in chain<br>Men in chain</td>
+    <td align="center">戦士</td>
+    <td align="center">2d6</td>
+    <td align="center">3d4+2</td>
+    <td align="right">6</td>
+    <td align="center">1d2+1<br>1d2+1<br>1d2+1<br>1d2+1</td>
+    <td align="right">0/256</td>
+    <td align="right">840</td>
+    <td align="right">0<br>10</td>
+    <td align="right">Zombie (51/256)</td>
+    <td>特殊: 首眠逃</td>
+  </tr>
+
+  <tr>
+    <td align="right">7</td>
+    <td>Zombie<br>Zombies</td>
+    <td>Weird humanoid<br>Weird humanoids</td>
+    <td align="center">不死</td>
+    <td align="center">1d6+1</td>
+    <td align="center">1d10+1</td>
+    <td align="right">4</td>
+    <td align="center">1d6</td>
+    <td align="right">0/256</td>
+    <td align="right">520</td>
+    <td align="right">0<br>10</td>
+    <td align="right">Creeping crud (51/256)</td>
+    <td>特殊: 麻</td>
+  </tr>
+
+  <tr>
+    <td align="right">8</td>
+    <td>Creeping crud<br>Creeping cruds</td>
+    <td>Slime<br>Slimes</td>
+    <td align="center">動物</td>
+    <td align="center">1d6+1</td>
+    <td align="center">3d4</td>
+    <td align="right">6</td>
+    <td align="center">1d3+1</td>
+    <td align="right">0/256</td>
+    <td align="right">550</td>
+    <td align="right">0<br>10</td>
+    <td align="right">Bubbly slime (61/256)</td>
+    <td>特殊: 毒<br>抵抗: 冷呪</td>
+  </tr>
+
+  <tr>
+    <td align="right">9</td>
+    <td>Gas cloud<br>Gas clouds</td>
+    <td>Gas cloud<br>Gas clouds</td>
+    <td align="center">魔法生物</td>
+    <td align="center">2d4</td>
+    <td align="center">2d4</td>
+    <td align="right">10</td>
+    <td align="center">1d4</td>
+    <td align="right">0/256</td>
+    <td align="right">350</td>
+    <td align="right">0<br>10</td>
+    <td align="right">Bubbly slime (38/256)</td>
+    <td>MAG: 2<br>特殊: 麻逃</td>
+  </tr>
+
+  <tr>
+    <td align="right">10</td>
+    <td>Lvl 1 Mage<br>Lvl 1 Mages</td>
+    <td>Man in robes<br>Men in robes</td>
+    <td align="center">魔術師</td>
+    <td align="center">1d1</td>
+    <td align="center">1d4+1</td>
+    <td align="right">4</td>
+    <td align="center">2d2</td>
+    <td align="right">0/256</td>
+    <td align="right">475</td>
+    <td align="right">1<br>11</td>
+    <td align="right">Highwayman (51/256)</td>
+    <td>MAG: 1<br>特殊: 眠逃</td>
+  </tr>
+
+  <tr>
+    <td align="right">11</td>
+    <td>Lvl 1 Cleric<br>Lvl 1 Clerics</td>
+    <td>Cleric<br>Clerics</td>
+    <td align="center">僧侶</td>
+    <td align="center">1d4+1</td>
+    <td align="center">1d8</td>
+    <td align="right">5</td>
+    <td align="center">1d8</td>
+    <td align="right">0/256</td>
+    <td align="right">515</td>
+    <td align="right">1<br>11</td>
+    <td align="right">Rogue (64/256)</td>
+    <td>PRI: 1<br>特殊: 眠逃</td>
+  </tr>
+
+  <tr>
+    <td align="right">12</td>
+    <td>Creeping coin?<br>Creeping coins?</td>
+    <td>Small object<br>Small objects</td>
+    <td align="center">魔法生物</td>
+    <td align="center">9d1</td>
+    <td align="center">1d1</td>
+    <td align="right">4</td>
+    <td align="center">1d1</td>
+    <td align="right">0/256</td>
+    <td align="right">920</td>
+    <td align="right">2<br>4</td>
+    <td align="right">Creeping coin? (255/256)</td>
+    <td>ブレス: 吸<br>特殊: 呼<br>抵抗: 火冷毒吸石</td>
+  </tr>
+
+  <tr>
+    <td align="right">13</td>
+    <td>Lvl 1 Ninja<br>Lvl 1 Ninjas</td>
+    <td>Kimonoed man<br>Kimonoed men</td>
+    <td align="center">戦士</td>
+    <td align="center">2d4</td>
+    <td align="center">2d4+2</td>
+    <td align="right">5</td>
+    <td align="center">1d4<br>1d4<br>1d4</td>
+    <td align="right">0/256</td>
+    <td align="right">600</td>
+    <td align="right">1<br>11</td>
+    <td align="right">Lvl 1 Ninja (51/256)</td>
+    <td>特殊: 首眠</td>
+  </tr>
+
+  <tr>
+    <td align="right">14</td>
+    <td>Vorpal bunny<br>Vorpal bunnies</td>
+    <td>Rabbit<br>Rabbits</td>
+    <td align="center">動物</td>
+    <td align="center">2d3+2</td>
+    <td align="center">3d6+2</td>
+    <td align="right">6</td>
+    <td align="center">1d6<br>1d8</td>
+    <td align="right">0/256</td>
+    <td align="right">735</td>
+    <td align="right">1<br>11</td>
+    <td align="right">Capybara (51/256)</td>
+    <td>特殊: 首逃<br>抵抗: 冷</td>
+  </tr>
+
+  <tr>
+    <td align="right">15</td>
+    <td>Capybara<br>Capybaras</td>
+    <td>Giant rodent<br>Giant rodents</td>
+    <td align="center">動物</td>
+    <td align="center">2d4+1</td>
+    <td align="center">4d4</td>
+    <td align="right">8</td>
+    <td align="center">1d10</td>
+    <td align="right">0/256</td>
+    <td align="right">520</td>
+    <td align="right">1<br>11</td>
+    <td align="right">Coyote (51/256)</td>
+    <td>特殊: 毒逃</td>
+  </tr>
+
+  <tr>
+    <td align="right">16</td>
+    <td>Giant toad<br>Giant toads</td>
+    <td>Amphibian<br>Amphibians</td>
+    <td align="center">動物</td>
+    <td align="center">2d2+4</td>
+    <td align="center">4d5</td>
+    <td align="right">7</td>
+    <td align="center">1d4<br>1d6<br>2d3+2</td>
+    <td align="right">0/256</td>
+    <td align="right">795</td>
+    <td align="right">1<br>11</td>
+    <td align="right">Coyote (51/256)</td>
+    <td>特殊: 毒逃<br>抵抗: 火</td>
+  </tr>
+
+  <tr>
+    <td align="right">17</td>
+    <td>Coyote<br>Coyotes</td>
+    <td>Mangy dog<br>Mangy dogs</td>
+    <td align="center">動物</td>
+    <td align="center">4d2</td>
+    <td align="center">4d6</td>
+    <td align="right">8</td>
+    <td align="center">4d4</td>
+    <td align="right">0/256</td>
+    <td align="right">780</td>
+    <td align="right">1<br>11</td>
+    <td align="right">Vorpal bunny (64/256)</td>
+    <td>特殊: 逃<br>抵抗: 毒吸石</td>
+  </tr>
+
+  <tr>
+    <td align="right">18</td>
+    <td>Lvl 3 Cleric<br>Lvl 3 Clerics</td>
+    <td>Cleric<br>Clerics</td>
+    <td align="center">僧侶</td>
+    <td align="center">2d2+3</td>
+    <td align="center">3d8+1</td>
+    <td align="right">4</td>
+    <td align="center">1d8+2</td>
+    <td align="right">0/256</td>
+    <td align="right">990</td>
+    <td align="right">1<br>11</td>
+    <td align="right">Lvl 1 Cleric (77/256)</td>
+    <td>PRI: 2<br>特殊: 毒眠逃</td>
+  </tr>
+
+  <tr>
+    <td align="right">19</td>
+    <td>Lvl 3 Samurai<br>Lvl 3 Samurai</td>
+    <td>Kimonoed man<br>Kimonoed men</td>
+    <td align="center">戦士</td>
+    <td align="center">4d2</td>
+    <td align="center">3d6+4</td>
+    <td align="right">5</td>
+    <td align="center">1d4+1<br>1d6+1<br>1d4+1</td>
+    <td align="right">0/256</td>
+    <td align="right">795</td>
+    <td align="right">1<br>11</td>
+    <td align="right">Creeping coin? (51/256)</td>
+    <td>MAG: 1<br>特殊: 逃</td>
+  </tr>
+
+  <tr>
+    <td align="right">20</td>
+    <td>Lvl 3 Ninja<br>Lvl 3 Ninjas</td>
+    <td>Kimonoed man<br>Kimonoed men</td>
+    <td align="center">戦士</td>
+    <td align="center">2d4+2</td>
+    <td align="center">3d8</td>
+    <td align="right">3</td>
+    <td align="center">1d4<br>1d4<br>1d4<br>1d4<br>1d4</td>
+    <td align="right">0/256</td>
+    <td align="right">1360</td>
+    <td align="right">2<br>12</td>
+    <td align="right">Lvl 1 Ninja (51/256)</td>
+    <td>特殊: 毒首</td>
+  </tr>
+
+  <tr>
+    <td align="right">21</td>
+    <td>Were bear<br>Were bears</td>
+    <td>Bear<br>Bears</td>
+    <td align="center">動物</td>
+    <td align="center">2d3+2</td>
+    <td align="center">5d8</td>
+    <td align="right">6</td>
+    <td align="center">3d6+1</td>
+    <td align="right">0/256</td>
+    <td align="right">1320</td>
+    <td align="right">2<br>12</td>
+    <td align="right">Vorpal bunny (77/256)</td>
+    <td>特殊: 毒麻逃<br>抵抗: 冷毒<br>ヒーリング: 1</td>
+  </tr>
+
+  <tr>
+    <td align="right">22</td>
+    <td>Dragon fly<br>Dragon flies</td>
+    <td>Fly<br>Flies</td>
+    <td align="center">竜</td>
+    <td align="center">1d3+1</td>
+    <td align="center">2d8</td>
+    <td align="right">4</td>
+    <td align="center">1d4<br>1d4<br>1d6</td>
+    <td align="right">51/256</td>
+    <td align="right">1275</td>
+    <td align="right">2<br>12</td>
+    <td align="right">Bubbly slime (0/256)</td>
+    <td>ブレス: 火<br>特殊: 眠<br>抵抗: 火</td>
+  </tr>
+
+  <tr>
+    <td align="right">23</td>
+    <td>Rotting corpse<br>Rotting corpses</td>
+    <td>Weird humanoid<br>Weird humanoids</td>
+    <td align="center">不死</td>
+    <td align="center">1d5</td>
+    <td align="center">2d8</td>
+    <td align="right">6</td>
+    <td align="center">1d3<br>1d3<br>1d6</td>
+    <td align="right">0/256</td>
+    <td align="right">680</td>
+    <td align="right">2<br>12</td>
+    <td align="right">Grave mist (26/256)</td>
+    <td>特殊: 麻</td>
+  </tr>
+
+  <tr>
+    <td align="right">24</td>
+    <td>Ogre<br>Ogres</td>
+    <td>Ogre<br>Ogres</td>
+    <td align="center">戦士</td>
+    <td align="center">1d8</td>
+    <td align="center">4d8+1</td>
+    <td align="right">5</td>
+    <td align="center">2d6</td>
+    <td align="right">0/256</td>
+    <td align="right">960</td>
+    <td align="right">2<br>12</td>
+    <td align="right">Vorpal bunny (51/256)</td>
+    <td>特殊: 眠逃</td>
+  </tr>
+
+  <tr>
+    <td align="right">25</td>
+    <td>Huge spider<br>Huge spiders</td>
+    <td>Insect<br>Insects</td>
+    <td align="center">昆虫</td>
+    <td align="center">1d8</td>
+    <td align="center">2d8+2</td>
+    <td align="right">6</td>
+    <td align="center">1d6</td>
+    <td align="right">0/256</td>
+    <td align="right">600</td>
+    <td align="right">2<br>12</td>
+    <td align="right">Boring beetle (26/256)</td>
+    <td>特殊: 毒眠</td>
+  </tr>
+
+  <tr>
+    <td align="right">26</td>
+    <td>Wererat<br>Wererats</td>
+    <td>Wererat<br>Wererats</td>
+    <td align="center">獣人</td>
+    <td align="center">1d4</td>
+    <td align="center">3d8+1</td>
+    <td align="right">6</td>
+    <td align="center">1d8</td>
+    <td align="right">0/256</td>
+    <td align="right">755</td>
+    <td align="right">2<br>12</td>
+    <td align="right">Coyote (128/256)</td>
+    <td>特殊: 眠<br>抵抗: 呪</td>
+  </tr>
+
+  <tr>
+    <td align="right">27</td>
+    <td>Boring beetle<br>Boring beetles</td>
+    <td>Insect<br>Insects</td>
+    <td align="center">昆虫</td>
+    <td align="center">1d8</td>
+    <td align="center">5d8</td>
+    <td align="right">3</td>
+    <td align="center">5d4</td>
+    <td align="right">0/256</td>
+    <td align="right">1120</td>
+    <td align="right">2<br>12</td>
+    <td align="right">(25) Huge spider (51/256)</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">28</td>
+    <td>Gas dragon<br>Gas dragons</td>
+    <td>Dragon<br>Dragons</td>
+    <td align="center">竜</td>
+    <td align="center">1d4</td>
+    <td align="center">5d8</td>
+    <td align="right">3</td>
+    <td align="center">1d4<br>1d4<br>3d6</td>
+    <td align="right">0/256</td>
+    <td align="right">2075</td>
+    <td align="right">2<br>12</td>
+    <td align="right">Dragon fly (102/256)</td>
+    <td>MAG: 1<br>ブレス: 毒</td>
+  </tr>
+
+  <tr>
+    <td align="right">29</td>
+    <td>Cleric<br>Clerics</td>
+    <td>Cleric<br>Clerics</td>
+    <td align="center">僧侶</td>
+    <td align="center">1d6</td>
+    <td align="center">3d8+1</td>
+    <td align="right">4</td>
+    <td align="center">1d6+2</td>
+    <td align="right">0/256</td>
+    <td align="right">870</td>
+    <td align="right">2<br>12</td>
+    <td align="right">Gas dragon (154/256)</td>
+    <td>PRI: 2<br>特殊: 眠</td>
+  </tr>
+
+  <tr>
+    <td align="right">30</td>
+    <td>Swordsman<br>Swordsmen</td>
+    <td>Man in armor<br>Men in armor</td>
+    <td align="center">戦士</td>
+    <td align="center">1d6</td>
+    <td align="center">3d10</td>
+    <td align="right">3</td>
+    <td align="center">2d7</td>
+    <td align="right">0/256</td>
+    <td align="right">960</td>
+    <td align="right">3<br>13</td>
+    <td align="right">Attack dog (90/256)</td>
+    <td>特殊: 眠</td>
+  </tr>
+
+  <tr>
+    <td align="right">31</td>
+    <td>Huge spider<br>Huge spiders</td>
+    <td>Insect<br>Insects</td>
+    <td align="center">昆虫</td>
+    <td align="center">1d8</td>
+    <td align="center">2d8+2</td>
+    <td align="right">6</td>
+    <td align="center">1d6</td>
+    <td align="right">0/256</td>
+    <td align="right">600</td>
+    <td align="right">3<br>13</td>
+    <td align="right">Shade (26/256)</td>
+    <td>特殊: 毒眠</td>
+  </tr>
+
+  <tr>
+    <td align="right">32</td>
+    <td>Attack dog<br>Attack dogs</td>
+    <td>Animal<br>Animals</td>
+    <td align="center">動物</td>
+    <td align="center">1d6</td>
+    <td align="center">4d8</td>
+    <td align="right">1</td>
+    <td align="center">1d6</td>
+    <td align="right">0/256</td>
+    <td align="right">1120</td>
+    <td align="right">3<br>13</td>
+    <td align="right">Dragon fly (51/256)</td>
+    <td>特殊: 眠逃</td>
+  </tr>
+
+  <tr>
+    <td align="right">33</td>
+    <td>Gargoyle<br>Gargoyles</td>
+    <td>Gargoyle<br>Gargoyles</td>
+    <td align="center">魔法生物</td>
+    <td align="center">1d6</td>
+    <td align="center">4d8+4</td>
+    <td align="right">5</td>
+    <td align="center">1d3<br>1d3<br>1d6<br>1d4</td>
+    <td align="right">128/256</td>
+    <td align="right">2435</td>
+    <td align="right">3<br>13</td>
+    <td align="right">Bubbly slime (0/256)</td>
+    <td>抵抗: 呪</td>
+  </tr>
+
+  <tr>
+    <td align="right">34</td>
+    <td>Grave mist<br>Grave mists</td>
+    <td>Unseen entity<br>Unseen entity</td>
+    <td align="center">不死</td>
+    <td align="center">1d6</td>
+    <td align="center">4d8</td>
+    <td align="right">4</td>
+    <td align="center">1d4<br>1d4<br>1d8</td>
+    <td align="right">0/256</td>
+    <td align="right">1080</td>
+    <td align="right">3<br>13</td>
+    <td align="right">Shade (51/256)</td>
+    <td>特殊: 麻</td>
+  </tr>
+
+  <tr>
+    <td align="right">35</td>
+    <td>Dragon puppy<br>Dragon puppies</td>
+    <td>Animal<br>Animals</td>
+    <td align="center">竜</td>
+    <td align="center">1d6</td>
+    <td align="center">5d10</td>
+    <td align="right">4</td>
+    <td align="center">1d10</td>
+    <td align="right">0/256</td>
+    <td align="right">2280</td>
+    <td align="right">3<br>13</td>
+    <td align="right">Wererat (26/256)</td>
+    <td>ブレス: 冷</td>
+  </tr>
+
+  <tr>
+    <td align="right">36</td>
+    <td>Werewolf<br>Werewolves</td>
+    <td>Wolf<br>Wolves</td>
+    <td align="center">獣人</td>
+    <td align="center">1d6</td>
+    <td align="center">4d8+3</td>
+    <td align="right">5</td>
+    <td align="center">2d4<br>2d4</td>
+    <td align="right">0/256</td>
+    <td align="right">975</td>
+    <td align="right">3<br>13</td>
+    <td align="right">Wererat (64/256)</td>
+    <td>抵抗: 呪</td>
+  </tr>
+
+  <tr>
+    <td align="right">37</td>
+    <td>Shade<br>Shades</td>
+    <td>Unseen entity<br>Unseen entity</td>
+    <td align="center">不死</td>
+    <td align="center">1d6</td>
+    <td align="center">3d8+3</td>
+    <td align="right">7</td>
+    <td align="center">1d4+1</td>
+    <td align="right">0/256</td>
+    <td align="right">875</td>
+    <td align="right">3<br>13</td>
+    <td align="right">Rotting corpse (51/256)</td>
+    <td>抵抗: 呪<br>ドレイン: 1</td>
+  </tr>
+
+  <tr>
+    <td align="right">38</td>
+    <td>Wizard<br>Wizards</td>
+    <td>Cleric<br>Clerics</td>
+    <td align="center">僧侶</td>
+    <td align="center">1d6</td>
+    <td align="center">4d8</td>
+    <td align="right">4</td>
+    <td align="center">1d10</td>
+    <td align="right">0/256</td>
+    <td align="right">1135</td>
+    <td align="right">3<br>13</td>
+    <td align="right">Minor daimyo (26/256)</td>
+    <td>MAG: 1<br>PRI: 3<br>特殊: 眠</td>
+  </tr>
+
+  <tr>
+    <td align="right">39</td>
+    <td>Minor daimyo<br>Minor daimyos</td>
+    <td>Man in armor<br>Men in armor</td>
+    <td align="center">戦士</td>
+    <td align="center">1d6</td>
+    <td align="center">4d10</td>
+    <td align="right">2</td>
+    <td align="center">1d12</td>
+    <td align="right">0/256</td>
+    <td align="right">1200</td>
+    <td align="right">3<br>13</td>
+    <td align="right">Wizard (51/256)</td>
+    <td>特殊: 眠</td>
+  </tr>
+
+  <tr>
+    <td align="right">40</td>
+    <td>Lvl 5 Mage<br>Lvl 5 Mages</td>
+    <td>Man in robes<br>Men in robes</td>
+    <td align="center">魔術師</td>
+    <td align="center">1d6</td>
+    <td align="center">5d4</td>
+    <td align="right">10</td>
+    <td align="center">1d4</td>
+    <td align="right">0/256</td>
+    <td align="right">620</td>
+    <td align="right">4<br>14</td>
+    <td align="right">Lvl 4 Thief (51/256)</td>
+    <td>MAG: 3<br>特殊: 眠</td>
+  </tr>
+
+  <tr>
+    <td align="right">41</td>
+    <td>Lvl 4 Thief<br>Lvl 4 Thieves</td>
+    <td>Man in leather<br>Men in leather</td>
+    <td align="center">盗賊</td>
+    <td align="center">1d6</td>
+    <td align="center">4d8+3</td>
+    <td align="right">10</td>
+    <td align="center">1d6<br>2d6</td>
+    <td align="right">0/256</td>
+    <td align="right">740</td>
+    <td align="right">4<br>14</td>
+    <td align="right">Wizard (51/256)</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">42</td>
+    <td>Killer wolf<br>Killer wolves</td>
+    <td>Animal<br>Animals</td>
+    <td align="center">動物</td>
+    <td align="center">1d6</td>
+    <td align="center">6d8</td>
+    <td align="right">0</td>
+    <td align="center">2d4<br>2d4</td>
+    <td align="right">0/256</td>
+    <td align="right">1460</td>
+    <td align="right">4<br>14</td>
+    <td align="right">Dragon puppy (38/256)</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">43</td>
+    <td>Spirit<br>Spitits</td>
+    <td>Unseen entity<br>Unseen entities</td>
+    <td align="center">神話</td>
+    <td align="center">1d6</td>
+    <td align="center">7d3+2</td>
+    <td align="right">2</td>
+    <td align="center">1d4</td>
+    <td align="right">64/256</td>
+    <td align="right">1405</td>
+    <td align="right">4<br>22</td>
+    <td align="right">Gargoyle (51/256)</td>
+    <td>MAG: 3<br>特殊: 毒<br>抵抗: 呪<br>ヒーリング: 1</td>
+  </tr>
+
+  <tr>
+    <td align="right">44</td>
+    <td>Giant spider<br>Giant spiders</td>
+    <td>Insect<br>Insects</td>
+    <td align="center">昆虫</td>
+    <td align="center">1d6</td>
+    <td align="center">4d8+4</td>
+    <td align="right">4</td>
+    <td align="center">2d4</td>
+    <td align="right">0/256</td>
+    <td align="right">960</td>
+    <td align="right">4<br>22</td>
+    <td align="right">(25) Huge spider (51/256)</td>
+    <td>特殊: 毒</td>
+  </tr>
+
+  <tr>
+    <td align="right">45</td>
+    <td>Weretiger<br>Weretigers</td>
+    <td>Animal<br>Animals</td>
+    <td align="center">獣人</td>
+    <td align="center">1d8</td>
+    <td align="center">5d8</td>
+    <td align="right">4</td>
+    <td align="center">2d6<br>2d6<br>1d4</td>
+    <td align="right">0/256</td>
+    <td align="right">1405</td>
+    <td align="right">4<br>14</td>
+    <td align="right">Werewolf (51/256)</td>
+    <td>特殊: 毒眠<br>抵抗: 呪<br>ヒーリング: 1</td>
+  </tr>
+
+  <tr>
+    <td align="right">46</td>
+    <td>Medusalizard<br>Medusalizards</td>
+    <td>Strange animal<br>Strange animals</td>
+    <td align="center">神話</td>
+    <td align="center">1d6</td>
+    <td align="center">5d8</td>
+    <td align="right">6</td>
+    <td align="center">1d3</td>
+    <td align="right">0/256</td>
+    <td align="right">1040</td>
+    <td align="right">4<br>22</td>
+    <td align="right">Spirit (51/256)</td>
+    <td>特殊: 石</td>
+  </tr>
+
+  <tr>
+    <td align="right">47</td>
+    <td>Lvl 5 Cleric<br>Lvl 5 Clerics</td>
+    <td>Cleric<br>Clerics</td>
+    <td align="center">僧侶</td>
+    <td align="center">1d5</td>
+    <td align="center">5d8</td>
+    <td align="right">4</td>
+    <td align="center">1d6+2</td>
+    <td align="right">0/256</td>
+    <td align="right">1220</td>
+    <td align="right">4<br>14</td>
+    <td align="right">Lvl 6 Ninja (51/256)</td>
+    <td>PRI: 3</td>
+  </tr>
+
+  <tr>
+    <td align="right">48</td>
+    <td>Lvl 6 Ninja<br>Lvl 6 Ninjas</td>
+    <td>Man in black<br>Men in black</td>
+    <td align="center">戦士</td>
+    <td align="center">1d5</td>
+    <td align="center">6d10</td>
+    <td align="right">6</td>
+    <td align="center">1d6<br>1d6<br>1d6</td>
+    <td align="right">0/256</td>
+    <td align="right">1520</td>
+    <td align="right">4<br>14</td>
+    <td align="right">(50) Master Thief (51/256)</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">49</td>
+    <td>Lvl 7 Mage<br>Lvl 7 Mages</td>
+    <td>Man in robes<br>Men in robes</td>
+    <td align="center">魔術師</td>
+    <td align="center">1d6</td>
+    <td align="center">7d4</td>
+    <td align="right">8</td>
+    <td align="center">1d4</td>
+    <td align="right">0/256</td>
+    <td align="right">1000</td>
+    <td align="right">4<br>14</td>
+    <td align="right">Lvl 6 Ninja (51/256)</td>
+    <td>MAG: 4<br>特殊: 眠</td>
+  </tr>
+
+  <tr>
+    <td align="right">50</td>
+    <td>Master Thief<br>Master Thieves</td>
+    <td>Man in leather<br>Men in leather</td>
+    <td align="center">盗賊</td>
+    <td align="center">1d6</td>
+    <td align="center">4d6</td>
+    <td align="right">4</td>
+    <td align="center">1d6<br>1d6<br>2d6</td>
+    <td align="right">0/256</td>
+    <td align="right">960</td>
+    <td align="right">5<br>15</td>
+    <td align="right">Lvl 5 Cleric (26/256)</td>
+    <td>特殊: 眠逃</td>
+  </tr>
+
+  <tr>
+    <td align="right">51</td>
+    <td>Major daimyo<br>Major daimyos</td>
+    <td>Man in armor<br>Men in armor</td>
+    <td align="center">戦士</td>
+    <td align="center">1d5</td>
+    <td align="center">7d12</td>
+    <td align="right">0</td>
+    <td align="center">1d10<br>1d4</td>
+    <td align="right">51/256</td>
+    <td align="right">2340</td>
+    <td align="right">5<br>15</td>
+    <td align="right">Lvl 5 Cleric (128/256)</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">52</td>
+    <td>High Cleric<br>High Clerics</td>
+    <td>Cleric<br>Clerics</td>
+    <td align="center">僧侶</td>
+    <td align="center">1d6</td>
+    <td align="center">8d8</td>
+    <td align="right">3</td>
+    <td align="center">1d8+2</td>
+    <td align="right">0/256</td>
+    <td align="right">2160</td>
+    <td align="right">5<br>23</td>
+    <td align="right">Champ Samurai (51/256)</td>
+    <td>PRI: 5</td>
+  </tr>
+
+  <tr>
+    <td align="right">53</td>
+    <td>Champ Samurai<br>Champ Samurai</td>
+    <td>Man in armor<br>Men in armor</td>
+    <td align="center">戦士</td>
+    <td align="center">1d6</td>
+    <td align="center">10d10</td>
+    <td align="right">2</td>
+    <td align="center">1d12+2</td>
+    <td align="right">0/256</td>
+    <td align="right">2395</td>
+    <td align="right">5<br>23</td>
+    <td align="right">(52) High Cleric (64/256)</td>
+    <td>MAG: 1</td>
+  </tr>
+
+  <tr>
+    <td align="right">54</td>
+    <td>Arch Mage<br>Arch Mages</td>
+    <td>Man in robes<br>Men in robes</td>
+    <td align="center">魔術師</td>
+    <td align="center">1d6</td>
+    <td align="center">8d4+2</td>
+    <td align="right">9</td>
+    <td align="center">1d4</td>
+    <td align="right">0/256</td>
+    <td align="right">790</td>
+    <td align="right">5<br>23</td>
+    <td align="right">Champ Samurai (77/256)</td>
+    <td>MAG: 2</td>
+  </tr>
+
+  <tr>
+    <td align="right">55</td>
+    <td>Master Thief<br>Master Thieves</td>
+    <td>Man in leather<br>Men in leather</td>
+    <td align="center">盗賊</td>
+    <td align="center">1d6</td>
+    <td align="center">6d6</td>
+    <td align="right">3</td>
+    <td align="center">1d8<br>3d8</td>
+    <td align="right">0/256</td>
+    <td align="right">1140</td>
+    <td align="right">5<br>15</td>
+    <td align="right">(54) Arch Mage (64/256)</td>
+    <td>特殊: 逃</td>
+  </tr>
+
+  <tr>
+    <td align="right">56</td>
+    <td>Gaze hound<br>Gaze hounds</td>
+    <td>Strange animal<br>Strange animals</td>
+    <td align="center">動物</td>
+    <td align="center">1d5</td>
+    <td align="center">4d8</td>
+    <td align="right">-1</td>
+    <td align="center">1d2</td>
+    <td align="right">0/256</td>
+    <td align="right">1235</td>
+    <td align="right">5<br>15</td>
+    <td align="right">Gaze hound (51/256)</td>
+    <td>特殊: 麻逃<br>抵抗: 呪</td>
+  </tr>
+
+  <tr>
+    <td align="right">57</td>
+    <td>Ogre Lord<br>Ogre Lords</td>
+    <td>Ogre<br>Ogres</td>
+    <td align="center">魔術師</td>
+    <td align="center">1d5</td>
+    <td align="center">8d8</td>
+    <td align="right">4</td>
+    <td align="center">1d12</td>
+    <td align="right">0/256</td>
+    <td align="right">1790</td>
+    <td align="right">5<br>15</td>
+    <td align="right">Troll (26/256)</td>
+    <td>MAG: 3<br>ヒーリング: 1</td>
+  </tr>
+
+  <tr>
+    <td align="right">58</td>
+    <td>Troll<br>Trolls</td>
+    <td>Strange animal<br>Strange animals</td>
+    <td align="center">戦士</td>
+    <td align="center">1d3</td>
+    <td align="center">6d8+6</td>
+    <td align="right">4</td>
+    <td align="center">1d4+4<br>1d4+4<br>1d4+4</td>
+    <td align="right">0/256</td>
+    <td align="right">1720</td>
+    <td align="right">5<br>15</td>
+    <td align="right">Troll (13/256)</td>
+    <td>ヒーリング: 3</td>
+  </tr>
+
+  <tr>
+    <td align="right">59</td>
+    <td>Lifestealer<br>Lifestealers</td>
+    <td>Unseen entity<br>Unseen entities</td>
+    <td align="center">不死</td>
+    <td align="center">1d1</td>
+    <td align="center">5d8+3</td>
+    <td align="right">3</td>
+    <td align="center">1d4</td>
+    <td align="right">51/256</td>
+    <td align="right">2240</td>
+    <td align="right">5<br>15</td>
+    <td align="right">Lifestealer (128/256)</td>
+    <td>MAG: 3<br>PRI: 3<br>抵抗: 毒吸石呪<br>ドレイン: 2</td>
+  </tr>
+
+  <tr>
+    <td align="right">60</td>
+    <td>Nightstalker<br>Nightstalkers</td>
+    <td>Unseen entity<br>Unseen entities</td>
+    <td align="center">不死</td>
+    <td align="center">2d3</td>
+    <td align="center">5d8+3</td>
+    <td align="right">4</td>
+    <td align="center">1d6</td>
+    <td align="right">64/256</td>
+    <td align="right">1635</td>
+    <td align="right">6<br>16</td>
+    <td align="right">Ogre Lord (59/256)</td>
+    <td>抵抗: 呪<br>ドレイン: 1</td>
+  </tr>
+
+  <tr>
+    <td align="right">61</td>
+    <td>Wyvern<br>Wyverns</td>
+    <td>Strange animal<br>Strange animals</td>
+    <td align="center">動物</td>
+    <td align="center">1d6</td>
+    <td align="center">7d8+7</td>
+    <td align="right">3</td>
+    <td align="center">2d8<br>1d6</td>
+    <td align="right">0/256</td>
+    <td align="right">1540</td>
+    <td align="right">6<br>16</td>
+    <td align="right">Spirit (51/256)</td>
+    <td>特殊: 毒</td>
+  </tr>
+
+  <tr>
+    <td align="right">62</td>
+    <td>Lvl 8 Cleric<br>Lvl 8 Clerics</td>
+    <td>Cleric<br>Clerics</td>
+    <td align="center">僧侶</td>
+    <td align="center">1d5</td>
+    <td align="center">7d8</td>
+    <td align="right">3</td>
+    <td align="center">1d8</td>
+    <td align="right">0/256</td>
+    <td align="right">1720</td>
+    <td align="right">6<br>16</td>
+    <td align="right">Wyvern (51/256)</td>
+    <td>PRI: 4</td>
+  </tr>
+
+  <tr>
+    <td align="right">63</td>
+    <td>Lvl 10 Fighter<br>Lvl 10 Fighters</td>
+    <td>Man in armor<br>Men in armor</td>
+    <td align="center">戦士</td>
+    <td align="center">1d6</td>
+    <td align="center">7d10</td>
+    <td align="right">0</td>
+    <td align="center">1d12<br>1d12</td>
+    <td align="right">0/256</td>
+    <td align="right">1900</td>
+    <td align="right">6<br>16</td>
+    <td align="right">Lvl 10 Fighter (26/256)</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">64</td>
+    <td>Lvl 7 Mage<br>Lvl 7 Mages</td>
+    <td>Man in robes<br>Men in robes</td>
+    <td align="center">魔術師</td>
+    <td align="center">1d6</td>
+    <td align="center">7d4</td>
+    <td align="right">8</td>
+    <td align="center">1d4</td>
+    <td align="right">0/256</td>
+    <td align="right">1240</td>
+    <td align="right">6<br>16</td>
+    <td align="right">Wyvern (77/256)</td>
+    <td>MAG: 5</td>
+  </tr>
+
+  <tr>
+    <td align="right">65</td>
+    <td>Lvl 7 Thief<br>Lvl 7 Thieves</td>
+    <td>Man in leather<br>Men in leather</td>
+    <td align="center">盗賊</td>
+    <td align="center">1d5</td>
+    <td align="center">7d6</td>
+    <td align="right">4</td>
+    <td align="center">1d8<br>3d8</td>
+    <td align="right">0/256</td>
+    <td align="right">1220</td>
+    <td align="right">6<br>16</td>
+    <td align="right">Lvl 8 Cleric (51/256)</td>
+    <td>特殊: 逃</td>
+  </tr>
+
+  <tr>
+    <td align="right">66</td>
+    <td>Lvl 8 Ninja<br>Lvl 8 Ninjas</td>
+    <td>Monk<br>Monks</td>
+    <td align="center">戦士</td>
+    <td align="center">1d3</td>
+    <td align="center">8d4</td>
+    <td align="right">4</td>
+    <td align="center">2d6<br>1d6</td>
+    <td align="right">0/256</td>
+    <td align="right">1020</td>
+    <td align="right">6<br>16</td>
+    <td align="right">Nightstalker (51/256)</td>
+    <td>特殊: 首</td>
+  </tr>
+
+  <tr>
+    <td align="right">67</td>
+    <td>Earth giant<br>Earth giants</td>
+    <td>Giant<br>Giants</td>
+    <td align="center">巨人</td>
+    <td align="center">1d5</td>
+    <td align="center">1d1+40</td>
+    <td align="right">9</td>
+    <td align="center">2d8<br>2d8</td>
+    <td align="right">218/256</td>
+    <td align="right">20675</td>
+    <td align="right">6<br>16</td>
+    <td align="right">Bubbly slime (0/256)</td>
+    <td>抵抗: 呪</td>
+  </tr>
+
+  <tr>
+    <td align="right">68</td>
+    <td>Lesser demon<br>Lesser demons</td>
+    <td>Demon<br>Demons</td>
+    <td align="center">悪魔</td>
+    <td align="center">1d1</td>
+    <td align="center">10d8</td>
+    <td align="right">4</td>
+    <td align="center">2d6<br>2d6<br>1d3<br>1d3<br>1d4+4</td>
+    <td align="right">154/256</td>
+    <td align="right">5100</td>
+    <td align="right">6<br>16</td>
+    <td align="right">Lvl 8 Ninja (205/256)</td>
+    <td>MAG: 3<br>特殊: 呼</td>
+  </tr>
+
+  <tr>
+    <td align="right">69</td>
+    <td>Chimera<br>Chimeras</td>
+    <td>Strange animal<br>Strange animals</td>
+    <td align="center">動物</td>
+    <td align="center">1d4</td>
+    <td align="center">9d6</td>
+    <td align="right">2</td>
+    <td align="center">1d3<br>1d3<br>1d4<br>1d4<br>2d4<br>3d4</td>
+    <td align="right">0/256</td>
+    <td align="right">3515</td>
+    <td align="right">6<br>16</td>
+    <td align="right">(54) Arch Mage (51/256)</td>
+    <td>ブレス: 火<br>抵抗: 火</td>
+  </tr>
+
+  <tr>
+    <td align="right">70</td>
+    <td>Fire giant<br>Fire giants</td>
+    <td>Giant<br>Giants</td>
+    <td align="center">巨人</td>
+    <td align="center">1d4</td>
+    <td align="center">11d8+4</td>
+    <td align="right">3</td>
+    <td align="center">5d6</td>
+    <td align="right">0/256</td>
+    <td align="right">2115</td>
+    <td align="right">7<br>17</td>
+    <td align="right">Lesser demon (26/256)</td>
+    <td>抵抗: 火</td>
+  </tr>
+
+  <tr>
+    <td align="right">71</td>
+    <td>Gorgon<br>Gorgons</td>
+    <td>Strange animal<br>Strange animals</td>
+    <td align="center">神話</td>
+    <td align="center">1d1</td>
+    <td align="center">8d8</td>
+    <td align="right">2</td>
+    <td align="center">2d6</td>
+    <td align="right">0/256</td>
+    <td align="right">2920</td>
+    <td align="right">7<br>17</td>
+    <td align="right">Chimera (128/256)</td>
+    <td>ブレス: 石</td>
+  </tr>
+
+  <tr>
+    <td align="right">72</td>
+    <td>Lvl 8 Wizard<br>Lvl 8 Wizards</td>
+    <td>Cleric<br>Clerics</td>
+    <td align="center">僧侶</td>
+    <td align="center">1d6</td>
+    <td align="center">8d8</td>
+    <td align="right">2</td>
+    <td align="center">1d8+4</td>
+    <td align="right">0/256</td>
+    <td align="right">2060</td>
+    <td align="right">7<br>17</td>
+    <td align="right">Gorgon (51/256)</td>
+    <td>MAG: 3<br>PRI: 4</td>
+  </tr>
+
+  <tr>
+    <td align="right">73</td>
+    <td>Lvl 8 Fighter<br>Lvl 8 Fighters</td>
+    <td>Man in armor<br>Men in armor</td>
+    <td align="center">戦士</td>
+    <td align="center">1d6</td>
+    <td align="center">8d10</td>
+    <td align="right">-1</td>
+    <td align="center">1d12+2<br>1d12+2</td>
+    <td align="right">0/256</td>
+    <td align="right">2140</td>
+    <td align="right">7<br>17</td>
+    <td align="right">Lvl 8 Fighter (51/256)</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">74</td>
+    <td>Lvl 10 Mage<br>Lvl 10 Mages</td>
+    <td>Man in robes<br>Men in robes</td>
+    <td align="center">魔術師</td>
+    <td align="center">1d6</td>
+    <td align="center">10d4</td>
+    <td align="right">10</td>
+    <td align="center">1d4</td>
+    <td align="right">0/256</td>
+    <td align="right">1400</td>
+    <td align="right">7<br>17</td>
+    <td align="right">Gorgon (77/256)</td>
+    <td>MAG: 5</td>
+  </tr>
+
+  <tr>
+    <td align="right">75</td>
+    <td>Thief<br>Thieves</td>
+    <td>Man in leather<br>Men in leather</td>
+    <td align="center">盗賊</td>
+    <td align="center">1d5</td>
+    <td align="center">9d6</td>
+    <td align="right">4</td>
+    <td align="center">1d8<br>1d3<br>3d8<br>2d10</td>
+    <td align="right">0/256</td>
+    <td align="right">1640</td>
+    <td align="right">7<br>17</td>
+    <td align="right">Gorgon (51/256)</td>
+    <td>特殊: 逃</td>
+  </tr>
+
+  <tr>
+    <td align="right">76</td>
+    <td>Master Ninja<br>Master Ninjas</td>
+    <td>Man in robes<br>Men in robes</td>
+    <td align="center">戦士</td>
+    <td align="center">1d5</td>
+    <td align="center">10d4</td>
+    <td align="right">3</td>
+    <td align="center">1d10+3<br>1d10+3<br>1d10+3</td>
+    <td align="right">0/256</td>
+    <td align="right">1280</td>
+    <td align="right">7<br>17</td>
+    <td align="right">(64) Lvl 7 Mage (77/256)</td>
+    <td>特殊: 首</td>
+  </tr>
+
+  <tr>
+    <td align="right">77</td>
+    <td>Murphy's ghost<br>Murphy's ghosts</td>
+    <td>Unseen entity<br>Unseen entities</td>
+    <td align="center">不死</td>
+    <td align="center">1d1</td>
+    <td align="center">10d10+10</td>
+    <td align="right">-3</td>
+    <td align="center">1d1+1</td>
+    <td align="right">102/256</td>
+    <td align="right">4450</td>
+    <td align="right">3<br>3</td>
+    <td align="right">Murphy's ghost (205/256)</td>
+    <td>特殊: 眠<br>抵抗: 火冷毒吸石呪<br>ヒーリング: 1</td>
+  </tr>
+
+  <tr>
+    <td align="right">78</td>
+    <td>Will o' wisp<br>Will o' wisps</td>
+    <td>Unseen entity<br>Unseen entities</td>
+    <td align="center">魔法生物</td>
+    <td align="center">1d2</td>
+    <td align="center">10d8</td>
+    <td align="right">-8</td>
+    <td align="center">2d8</td>
+    <td align="right">243/256</td>
+    <td align="right">43320</td>
+    <td align="right">7<br>17</td>
+    <td align="right">Bubbly slime (0/256)</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">79</td>
+    <td>Bleeb<br>Bleebs</td>
+    <td>Strange animal<br>Strange animals</td>
+    <td align="center">動物</td>
+    <td align="center">1d8</td>
+    <td align="center">10d8</td>
+    <td align="right">0</td>
+    <td align="center">1d8+1<br>1d8+1</td>
+    <td align="right">0/256</td>
+    <td align="right">3300</td>
+    <td align="right">7<br>17</td>
+    <td align="right">Master Ninja (51/256)</td>
+    <td>特殊: 逃呼<br>抵抗: 友火冷毒吸石呪</td>
+  </tr>
+
+  <tr>
+    <td align="right">80</td>
+    <td>Frost giant<br>Frost giants</td>
+    <td>Giant<br>Giants</td>
+    <td align="center">巨人</td>
+    <td align="center">1d4</td>
+    <td align="center">1d8+50</td>
+    <td align="right">6</td>
+    <td align="center">3d10</td>
+    <td align="right">243/256</td>
+    <td align="right">41355</td>
+    <td align="right">8<br>18</td>
+    <td align="right">Thief (77/256)</td>
+    <td>抵抗: 冷</td>
+  </tr>
+
+  <tr>
+    <td align="right">81</td>
+    <td>Fire dragon<br>Fire dragons</td>
+    <td>Dragon<br>Dragon</td>
+    <td align="center">竜</td>
+    <td align="center">1d4</td>
+    <td align="center">12d8</td>
+    <td align="right">-1</td>
+    <td align="center">1d4<br>1d4<br>4d4</td>
+    <td align="right">0/256</td>
+    <td align="right">5000</td>
+    <td align="right">8<br>18</td>
+    <td align="right">Bubbly slime (0/256)</td>
+    <td>MAG: 5<br>ブレス: 火</td>
+  </tr>
+
+  <tr>
+    <td align="right">82</td>
+    <td>High Cleric<br>High Clerics</td>
+    <td>Cleric<br>Clerics</td>
+    <td align="center">僧侶</td>
+    <td align="center">1d1</td>
+    <td align="center">11d8</td>
+    <td align="right">2</td>
+    <td align="center">1d8<br>1d8</td>
+    <td align="right">0/256</td>
+    <td align="right">3300</td>
+    <td align="right">8<br>18</td>
+    <td align="right">Fire giant (255/256)</td>
+    <td>PRI: 6</td>
+  </tr>
+
+  <tr>
+    <td align="right">83</td>
+    <td>High wizard<br>High wizards</td>
+    <td>Man in robes<br>Men in robes</td>
+    <td align="center">魔術師</td>
+    <td align="center">1d1</td>
+    <td align="center">12d4</td>
+    <td align="right">4</td>
+    <td align="center">1d4</td>
+    <td align="right">0/256</td>
+    <td align="right">2395</td>
+    <td align="right">8<br>18</td>
+    <td align="right">Lvl 8 Wizard (255/256)</td>
+    <td>MAG: 6<br>抵抗: 火</td>
+  </tr>
+
+  <tr>
+    <td align="right">84</td>
+    <td>Master Thief<br>Master Thieves</td>
+    <td>Man in leather<br>Men in leather</td>
+    <td align="center">盗賊</td>
+    <td align="center">1d1</td>
+    <td align="center">12d6</td>
+    <td align="right">2</td>
+    <td align="center">1d8<br>5d8</td>
+    <td align="right">0/256</td>
+    <td align="right">1935</td>
+    <td align="right">8<br>18</td>
+    <td align="right">Lvl 8 Fighter (255/256)</td>
+    <td>特殊: 逃<br>抵抗: 毒</td>
+  </tr>
+
+  <tr>
+    <td align="right">85</td>
+    <td>Hatamoto<br>Hatamotos</td>
+    <td>Man in robes<br>Men in robes</td>
+    <td align="center">戦士</td>
+    <td align="center">1d1</td>
+    <td align="center">12d4</td>
+    <td align="right">-1</td>
+    <td align="center">3d8<br>3d8<br>3d8</td>
+    <td align="right">0/256</td>
+    <td align="right">1600</td>
+    <td align="right">8<br>18</td>
+    <td align="right">Lvl 10 Mage (255/256)</td>
+    <td>特殊: 首</td>
+  </tr>
+
+  <tr>
+    <td align="right">86</td>
+    <td>Vampire<br>Vampires</td>
+    <td>Unseen entity<br>Unseen entities</td>
+    <td align="center">不死</td>
+    <td align="center">1d4</td>
+    <td align="center">11d8</td>
+    <td align="right">-1</td>
+    <td align="center">2d8<br>1d4<br>1d4</td>
+    <td align="right">51/256</td>
+    <td align="right">3330</td>
+    <td align="right">8<br>18</td>
+    <td align="right">Vampire (38/256)</td>
+    <td>MAG: 3<br>特殊: 麻<br>抵抗: 毒吸石<br>ドレイン: 2<br>ヒーリング: 1</td>
+  </tr>
+
+  <tr>
+    <td align="right">87</td>
+    <td>Greater demon<br>Greater demons</td>
+    <td>Demon<br>Demons</td>
+    <td align="center">悪魔</td>
+    <td align="center">1d6</td>
+    <td align="center">11d8</td>
+    <td align="right">-3</td>
+    <td align="center">2d12<br>1d6<br>1d4<br>1d4<br>1d4</td>
+    <td align="right">243/256</td>
+    <td align="right">44570</td>
+    <td align="right">8<br>18</td>
+    <td align="right">Lvl 8 Ninja (179/256)</td>
+    <td>MAG: 5<br>特殊: 毒麻呼<br>ヒーリング: 1</td>
+  </tr>
+
+  <tr>
+    <td align="right">88</td>
+    <td>Poison giant<br>Poison giants</td>
+    <td>Giant<br>Giants</td>
+    <td align="center">巨人</td>
+    <td align="center">1d4</td>
+    <td align="center">1d1+80</td>
+    <td align="right">3</td>
+    <td align="center">4d10</td>
+    <td align="right">243/256</td>
+    <td align="right">41320</td>
+    <td align="right">8<br>18</td>
+    <td align="right">Will o' wisp (128/256)</td>
+    <td>ブレス: 毒</td>
+  </tr>
+
+  <tr>
+    <td align="right">89</td>
+    <td>Dragon zombie<br>Dragon zombies</td>
+    <td>Dragon<br>Dragons</td>
+    <td align="center">不死</td>
+    <td align="center">1d4</td>
+    <td align="center">12d8</td>
+    <td align="right">-2</td>
+    <td align="center">1d8<br>1d8<br>3d12</td>
+    <td align="right">64/256</td>
+    <td align="right">5360</td>
+    <td align="right">8<br>18</td>
+    <td align="right">Bleeb (26/256)</td>
+    <td>MAG: 5<br>ブレス: 吸</td>
+  </tr>
+
+  <tr>
+    <td align="right">90</td>
+    <td>Raver Lord<br>Raver Lords</td>
+    <td>Man in armor<br>Men in armor</td>
+    <td align="center">動物</td>
+    <td align="center">1d1</td>
+    <td align="center">15d10</td>
+    <td align="right">10</td>
+    <td align="center">3d12<br>3d12</td>
+    <td align="right">0/256</td>
+    <td align="right">4155</td>
+    <td align="right">9<br>19</td>
+    <td align="right">(82) High Cleric (255/256)</td>
+    <td>MAG: 5<br>PRI: 4<br>抵抗: 火<br>ヒーリング: 2</td>
+  </tr>
+
+  <tr>
+    <td align="right">91</td>
+    <td>High master<br>High masters</td>
+    <td>Conehead<br>Coneheads</td>
+    <td align="center">戦士</td>
+    <td align="center">1d1</td>
+    <td align="center">15d4</td>
+    <td align="right">-2</td>
+    <td align="center">3d12<br>3d12<br>3d6</td>
+    <td align="right">0/256</td>
+    <td align="right">3000</td>
+    <td align="right">9<br>19</td>
+    <td align="right">Hatamoto (255/256)</td>
+    <td>特殊: 首<br>抵抗: 火冷毒吸石呪</td>
+  </tr>
+
+  <tr>
+    <td align="right">92</td>
+    <td>Flack<br>Fleck</td>
+    <td>Strange animal<br>Strange animals</td>
+    <td align="center">動物</td>
+    <td align="center">1d1</td>
+    <td align="center">15d12</td>
+    <td align="right">-3</td>
+    <td align="center">4d8+3</td>
+    <td align="right">0/256</td>
+    <td align="right">9200</td>
+    <td align="right">9<br>19</td>
+    <td align="right">Murphy's ghost (255/256)</td>
+    <td>ブレス: 冷<br>特殊: 石毒麻首<br>抵抗: 友火冷毒吸石呪</td>
+  </tr>
+
+  <tr>
+    <td align="right">93</td>
+    <td>Arch Mage<br>Arch Mages</td>
+    <td>Man in robes<br>Men in robes</td>
+    <td align="center">魔術師</td>
+    <td align="center">1d1</td>
+    <td align="center">20d4</td>
+    <td align="right">0</td>
+    <td align="center">1d4</td>
+    <td align="right">0/256</td>
+    <td align="right">3160</td>
+    <td align="right">9<br>19</td>
+    <td align="right">High wizard (255/256)</td>
+    <td>MAG: 6</td>
+  </tr>
+
+  <tr>
+    <td align="right">94</td>
+    <td>Maelific<br>Maelifics</td>
+    <td>Unseen being<br>Unseen beings</td>
+    <td align="center">不死</td>
+    <td align="center">1d0+1</td>
+    <td align="center">25d4</td>
+    <td align="right">-5</td>
+    <td align="center">1d4<br>1d0+1</td>
+    <td align="right">128/256</td>
+    <td align="right">7460</td>
+    <td align="right">9<br>19</td>
+    <td align="right">Poison giant (255/256)</td>
+    <td>MAG: 7<br>特殊: 毒麻<br>ドレイン: 3<br>ヒーリング: 3</td>
+  </tr>
+
+  <tr>
+    <td align="right">95</td>
+    <td>Vampire Lord<br>Vampire Lords</td>
+    <td>Unseen entity<br>Unseen entities</td>
+    <td align="center">不死</td>
+    <td align="center">1d1</td>
+    <td align="center">20d8</td>
+    <td align="right">-5</td>
+    <td align="center">1d4</td>
+    <td align="right">0/256</td>
+    <td align="right">7320</td>
+    <td align="right">9<br>19</td>
+    <td align="right">Vampire (255/256)</td>
+    <td>MAG: 6<br>特殊: 麻<br>ドレイン: 4<br>ヒーリング: 4</td>
+  </tr>
+
+  <tr>
+    <td align="right">96</td>
+    <td>W E R D N A<br>W E R D N A</td>
+    <td>Man in robes<br>Men in robes</td>
+    <td align="center">魔術師</td>
+    <td align="center">1d1</td>
+    <td align="center">10d10+200</td>
+    <td align="right">-7</td>
+    <td align="center">8d5<br>8d5</td>
+    <td align="right">179/256</td>
+    <td align="right">15880</td>
+    <td align="right">20<br>20</td>
+    <td align="right">Vampire Lord (255/256)</td>
+    <td>MAG: 7<br>PRI: 7<br>特殊: 石毒麻首<br>抵抗: 火冷毒<br>ドレイン: 4<br>ヒーリング: 5</td>
+  </tr>
+
+  <tr>
+    <td align="right">97</td>
+    <td>High Ninja<br>High Ninjas</td>
+    <td>Man in kimono<br>Men in kimono</td>
+    <td align="center">戦士</td>
+    <td align="center">1d1</td>
+    <td align="center">12d4</td>
+    <td align="right">-1</td>
+    <td align="center">3d8<br>3d8<br>3d8</td>
+    <td align="right">0/256</td>
+    <td align="right">1600</td>
+    <td align="right">0<br>0</td>
+    <td align="right">Bubbly slime (0/256)</td>
+    <td>特殊: 首</td>
+  </tr>
+
+  <tr>
+    <td align="right">98</td>
+    <td>High Cleric<br>High Clerics</td>
+    <td>Cleric<br>Clerics</td>
+    <td align="center">僧侶</td>
+    <td align="center">2d1</td>
+    <td align="center">8d8</td>
+    <td align="right">2</td>
+    <td align="center">1d8+4</td>
+    <td align="right">0/256</td>
+    <td align="right">2200</td>
+    <td align="right">0<br>0</td>
+    <td align="right">High Ninja (255/256)</td>
+    <td>PRI: 5</td>
+  </tr>
+
+  <tr>
+    <td align="right">99</td>
+    <td>Lvl 7 Mage<br>Lvl 7 Mages</td>
+    <td>Man in robes<br>Men in robes</td>
+    <td align="center">魔術師</td>
+    <td align="center">2d1</td>
+    <td align="center">7d4</td>
+    <td align="right">8</td>
+    <td align="center">1d4</td>
+    <td align="right">0/256</td>
+    <td align="right">1000</td>
+    <td align="right">0<br>0</td>
+    <td align="right">(98) High Cleric (255/256)</td>
+    <td>MAG: 4<br>特殊: 眠</td>
+  </tr>
+
+  <tr>
+    <td align="right">100</td>
+    <td>Lvl 7 Fighter<br>Lvl 7 Fighters</td>
+    <td>Man in armor<br>Men in armor</td>
+    <td align="center">戦士</td>
+    <td align="center">2d1</td>
+    <td align="center">7d10</td>
+    <td align="right">0</td>
+    <td align="center">1d12<br>1d12</td>
+    <td align="right">0/256</td>
+    <td align="right">1900</td>
+    <td align="right">21<br>21</td>
+    <td align="right">(99) Lvl 7 Mage (255/256)</td>
+    <td></td>
+  </tr>
+</tbody>
+</table>
+
+
+<hr>
+
+<p><a href="./">Back</a></p>
+
+</body>
+</html>

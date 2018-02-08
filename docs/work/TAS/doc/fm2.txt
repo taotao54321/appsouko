@@ -1,0 +1,23 @@
+FCEUX FM2ファイルフォーマット
+=============================
+
+TASVideos資料: http://tasvideos.org/FM2.html
+
+FCEUXは今のところFM2ファイルの先頭9Byteが "version 3" となっているものしか受
+け付けない。
+
+FCEUXは改行コードがLF/CRLF/CRのいずれであっても受け付けるが、一応TASVideosの
+資料ではLF/CRLFのみということになっている。
+
+FCEUXは入力データの途中で (キー,値) のペアが現れるファイルも受け付ける。これ
+は仕様なのかどうか微妙だが、subtitleなどは入力データの途中に挿入される場合も
+あるかもしれないので、一応そのようなファイルも読めるに越したことはないだろう。
+
+FCEUXは comment <ckey> <cvalue> の行について <ckey>, <cvalue> が複数のスペー
+スで区切られていると、2つ目以降のスペースを <cvalue> の一部として扱ってしま
+う模様(drivers/win/replay.cpp の ReplayMetadataDialogProc() 参照)。これにつ
+いては複数のスペースはまとめて区切りとして扱った方がいいかも。
+
+入力データ行であるか否かを問わず、行頭の空白文字は単に読み飛ばされる模様。
+
+入力データの形式: RLDUTSBA

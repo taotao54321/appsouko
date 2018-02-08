@@ -1,0 +1,40 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>TAS 関連の雑多なメモ</title>
+</head>
+
+<body>
+
+<h1>TAS 関連の雑多なメモ</h1>
+
+<p>RPG のメニュー操作は同時押しの活用で数F短縮できることがある。</p>
+
+<p>ボタン連打は無入力フレームを挟む必要があるが、同じ機能のボタンが2つ以上あ
+るならそれらを交互に押すことで無入力フレームを消去できることがある。</p>
+
+<p>FCEU のメモリビューアから &quot;Memory Poke&quot; で直接メモリを書き換え
+られる。</p>
+
+<p>FCEU の Lua スクリプトを実行するとなぜか 1 フレーム余計に進む。もしこれが
+問題になるならスクリプトの最後でどこかのスロットにステートセーブしておくこと。
+</p>
+
+<p>.fcm ファイルには ROM ファイルの MD5 (厳密には、.nes ファイルから 16 Byte
+の iNES ヘッダを取り除いた ROM バイナリの MD5)も記録される。なお、この MD5
+は FCEU の Movie Replay ダイアログで表示されるが、その際各バイトの上位ニブル
+と下位ニブルが入れ替わって表示されてしまうので注意(0.98.28 で確認。md5.c 内
+の <code>md5_asciistr()</code> のバグと思われる)。</p>
+
+<ul>
+  <li><a href="http://d.hatena.ne.jp/GOCHA/20080323/snes9x_sync">Snes9xのSync Settingsまとめ</a></li>
+  <li><a href="http://d.hatena.ne.jp/GOCHA/20080323/snes9x_lazymacro">Snes9xのマクロの書式</a></li>
+</ul>
+
+
+<hr>
+
+<p><a href="../">Back</a></p>
+
+</body>
+</html>

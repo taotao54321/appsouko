@@ -1,0 +1,6 @@
+Summary: mcmdump - mednafen-rr movie (MCM) input data dumper
+Name: mcmdump
+Author: TaoTao
+Homepage: http://www6.atpages.jp/appsouko/work/TAS/doc/mednafen.html
+
+mednafen-rr のムービーファイル(.mcm)の入力データをダンプする。

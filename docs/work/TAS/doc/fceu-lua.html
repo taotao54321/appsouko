@@ -1,0 +1,232 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>FCEU Lua API 簡易リファレンス</title>
+</head>
+
+<body>
+
+<h1>FCEU Lua API 簡易リファレンス</h1>
+
+<p>今のところドキュメントが存在しないようなので、適当にまとめてみるテスト。
+FCEU 0.98.28 のソースを参照しています。なお、Lua スクリプト機能は FCEU
+0.98.27 以降で利用可能。</p>
+
+<p>FCEU 0.98.27 のバイナリアーカイブにいくつかのサンプルスクリプトが同梱され
+ています。</p>
+
+<p>追記: FCEUX のヘルプファイルで Lua についても文書化されたので、そちらを参
+照した方が正確だと思います。ただしFCEUX 固有の関数もあるようなのでこちらも一
+応残しておきます。</p>
+
+<p>追記: qFox氏の<a href="http://cbc.qfox.nl/emulua">EmuLua Reference</a>は
+エミュレータごとの対応状況なども載っていて内容が充実しています。</p>
+
+<p>追記: FCEUXなど、最新のTAS用エミュレータは
+<a href="http://bitop.luajit.org/">Lua BitOp</a>を内蔵しているようです。</p>
+
+<h2>エミュレータ操作</h2>
+
+<dl>
+  <dt><code><b>FCEU.speedmode(string </b><i>mode</i><b>)</b></code></dt>
+  <dd>
+  <p>エミュレーション速度を設定する。<i>mode</i> は以下のいずれか:</p>
+  <dl>
+    <dt><code>&quot;normal&quot;</code></dt>
+    <dd>常速</dd>
+    <dt><code>&quot;nothrottle&quot;</code></dt>
+    <dd>速度制御を無効化するが、全フレームを描画する</dd>
+    <dt><code>&quot;turbo&quot;</code></dt>
+    <dd>速度制御を無効化し、描画を一部サボる</dd>
+    <dt><code>&quot;maximum&quot;</code></dt>
+    <dd>速度制御を無効化し、一切の描画を行わない</dd>
+  </dl>
+  <p>Bot として動作させるような場合は <code>&quot;maximum&quot;</code> にし
+  てしまっても問題ないだろう。</p>
+  </dd>
+
+  <dt><code><b>FCEU.frameadvance()</b></code></dt>
+  <dd>
+  <p>1 フレーム進める。</p>
+  </dd>
+
+  <dt><code><b>FCEU.pause()</b></code></dt>
+  <dd>
+  <p>※筆者は使ったことがないので詳細は未調査</p>
+  <p>ポーズする。</p>
+  <p>(ソースのコメントより)フレーム境界以外から呼び出すこともできるが、現在
+  のフレームの処理は終了する。その場合、この関数は直ちに復帰する。</p>
+  </dd>
+
+  <dt><code><b>FCEU.message(string </b><i>msg</i><b>)</b></code></dt>
+  <dd>
+  <p>画面にメッセージを表示する。</p>
+  <p>表示領域はステートセーブ/ロード等のメッセージと共用なので、メッセージを
+  ずっと表示し続けることはできない。そのような用途には
+  <code>gui.text()</code> が適していると思われる。</p>
+  </dd>
+</dl>
+
+<h2>メモリ操作</h2>
+
+<dl>
+  <dt><code><b>memory.readbyte(U16 </b><i>addr</i><b>)</b></code></dt>
+  <dd>
+  <p>メモリアドレス <i>addr</i> の値を読み取る。</p>
+  </dd>
+
+  <dt><code><b>memory.writebyte(U16 </b><i>addr</i><b>, U8 </b><i>value</i><b>)</b></code></dt>
+  <dd>
+  <p>メモリアドレス <i>addr</i> に値 <i>value</i> を書き込む。</p>
+  </dd>
+
+  <dt><code><b>memory.readbytesigned(U16 </b><i>addr</i><b>)</b></code></dt>
+  <dd>
+  <p>※詳細未調査</p>
+  <p>(ソースのコメントより)Not for the signed versions though</p>
+  </dd>
+
+  <dt><code><b>memory.register(U16 </b><i>addr</i><b>, function </b><i>func</i><b>)</b></code></dt>
+  <dd>
+  <p>メモリアドレス <i>addr</i> に書き込みが発生したら関数 <i>func</i> を呼
+  び出すように登録する。</p>
+  <p><i>func</i> には引数は一切渡されない。<i>func</i> が呼び出された時点で
+  は書き込みが終了している。</p>
+  </dd>
+</dl>
+
+<h2>パッド操作</h2>
+
+<p>パッド ID は 1～4 で指定する(それぞれ 1P～4P に対応)。</p>
+
+<p>パッド入力状態は Lua のテーブルで表現される。テーブルのキーは
+<code>&quot;A&quot;</code>, <code>&quot;B&quot;</code>,
+<code>&quot;select&quot;</code>, <code>&quot;start&quot;</code>,
+<code>&quot;up&quot;</code>, <code>&quot;down&quot;</code>,
+<code>&quot;left&quot;</code>, <code>&quot;right&quot;</code>で、値はボタン
+が押されているなら <code>1</code>、押されていなければ<code>nil</code> となる。
+</p>
+
+<p>たとえば、上キーとBボタンを押した状態は</p>
+<blockquote><pre>
+inp = { up = 1, B = 1 }
+</pre></blockquote>
+<p>というように表現する。</p>
+
+<dl>
+  <dt><code><b>joypad.read(U8 </b><i>which</i><b> = 1)</b></code></dt>
+  <dd>
+  <p>パッド ID <i>which</i> のパッド入力状態を読み取る。</p>
+  <p>※なぜか入力を受け付けなくなることがあるので、これを使って「ボタンが押
+  されたらループを抜ける」みたいなことはしない方がよさげ
+  (<code>joypad.set()</code> を呼んでいるとユーザからの入力は無視されてしま
+  うのかも??)。</p>
+  </dd>
+
+  <dt><code><b>joypad.set(U8 </b><i>which</i><b>, table </b><i>buttons</i><b>)</b></code></dt>
+  <dd>
+  <p>パッド ID <i>which</i> のパッド入力状態を設定する。</p>
+  <p><code>FCEU.frameadvance()</code> を行うと入力が反映され、入力状態はクリ
+  アされる。ボタンを押しっぱなしにするような場合は毎フレームこの関数を呼ぶこ
+  と。</p>
+  <p>※ソースのコメントは <code>joypad.write()</code> と誤表記しているので注
+  意。</p>
+  </dd>
+</dl>
+
+<h2>セーブステート操作</h2>
+
+<dl>
+  <dt><code><b>savestate.create(U8 </b><i>which</i><b> = nil)</b></code></dt>
+  <dd>
+  <p>セーブステートオブジェクトを作成する。</p>
+  <p><i>which</i> に 1～10 の値を指定すると、ユーザから(キーボードショートカッ
+  ト等で)アクセス可能なセーブステートが使われる。</p>
+  </dd>
+
+  <dt><code><b>savestate.save(object </b><i>state</i><b>)</b></code></dt>
+  <dd>
+  <p>ステートセーブする。</p>
+  </dd>
+
+  <dt><code><b>savestate.load(object </b><i>state</i><b>)</b></code></dt>
+  <dd>
+  <p>ステートロードする。</p>
+  </dd>
+</dl>
+
+<h2>ムービー操作</h2>
+
+<dl>
+  <dt><code><b>movie.mode()</b></code></dt>
+  <dd>
+  <p>ムービー記録/再生中かどうかを調べる。<code>&quot;record&quot;</code>,
+  <code>&quot;playback&quot;</code>, <code>nil</code> のいずれかが返る。</p>
+  </dd>
+
+  <dt><code><b>movie.framecount()</b></code></dt>
+  <dd>
+  <p>ムービー中のフレームカウンタの値を読み取る。ムービー中でなければ
+  <code>nil</code> が返る。</p>
+  </dd>
+
+  <dt><code><b>movie.stop()</b></code></dt>
+  <dd>
+  <p>ムービーを停止する。</p>
+  </dd>
+</dl>
+
+<h2>GUI関連</h2>
+
+<p>とりあえずよく使いそうなものだけ。他はソースを参照。</p>
+
+<dl>
+  <dt><code><b>gui.text(U8 </b><i>x</i><b>, U8 </b><i>y</i><b>, string </b><i>msg</i><b>)</b></code></dt>
+  <dd>
+  <p>指定位置にテキストを表示する。</p>
+  </dd>
+
+  <dt><code><b>gui.popup(string </b><i>msg</i><b>, string </b><i>type</i><b> = &quot;ok&quot;)</b></code></dt>
+  <dd>
+  <p>ポップアップメッセージを表示する。<i>type</i> は
+  <code>&quot;ok&quot;</code>, <code>&quot;yesno&quot;</code>,
+  <code>&quot;yesnocancel&quot;</code> のいずれか。</p>
+  <p><i>type</i> に <code>&quot;ok&quot;</code> 以外を指定した場合は、
+  <code>&quot;yes&quot;</code>, <code>&quot;no&quot;</code>,
+  <code>&quot;cancel&quot;</code> のいずれかが返る。</p>
+  </dd>
+</dl>
+
+<h2>ビット演算</h2>
+
+<p>Lua はビット演算をサポートしていないので…。</p>
+
+<dl>
+  <dt><code><b>AND(int </b><i>one</i><b>, int </b><i>two</i><b>, ..., int </b><i>n</i><b>)</b></code></dt>
+  <dd>
+  <p>AND演算</p>
+  </dd>
+
+  <dt><code><b>OR(int </b><i>one</i><b>, int </b><i>two</i><b>, ..., int </b><i>n</i><b>)</b></code></dt>
+  <dd>
+  <p>OR演算</p>
+  </dd>
+
+  <dt><code><b>XOR(int </b><i>one</i><b>, int </b><i>two</i><b>, ..., int </b><i>n</i><b>)</b></code></dt>
+  <dd>
+  <p>XOR演算</p>
+  </dd>
+
+  <dt><code><b>BIT(int </b><i>one</i><b>, int </b><i>two</i><b>, ..., int </b><i>n</i><b>)</b></code></dt>
+  <dd>
+  <p>指定されたビットセットの数値表現を返す。</p>
+  </dd>
+</dl>
+
+
+<hr>
+
+<p><a href="../">Back</a></p>
+
+</body>
+</html>

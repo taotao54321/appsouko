@@ -1,0 +1,14 @@
+Summary: fceutools - tools for manipulating FCM/FM2/FCS
+Name: fceutools
+Author: TaoTao
+Homepage: http://www6.atpages.jp/appsouko/work/fceutools/
+
+FCEU/FCEUX用のFCM/FM2/FCSファイルを扱うコマンドラインツール集。
+
+  fcmcheck	FCMファイルの正当性チェック、情報表示
+  fcmoptim	FCMファイルの最適化(初期ステート無効化、ゴミ除去)
+  fm2check	FM2ファイルの正当性チェック、情報表示
+  fcmtofm2	FCM -> FM2変換
+  fm2tofcm	FM2 -> FCM変換
+  fcscheck	FCSファイルの正当性チェック、情報表示
+  fcscomp	FCEUX用FCSファイルの圧縮/展開

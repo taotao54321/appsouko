@@ -1,0 +1,117 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Wizardry(NES) 解析</title>
+</head>
+
+<body>
+
+<h1>Wizardry(NES) 解析</h1>
+
+<p>NES(USA)版 Wizardry #1の解析資料。まだまだ手探り状態なので誤りが含まれて
+いる可能性あり。FC(日本)版にも適用できる部分が多いが、全くの同一仕様ではない
+ので注意。</p>
+
+<p>NES版では僧侶はCLERIC, 司教はWIZARDと表記されるが、ここではPRIEST, BISHOP
+と表記する。その他の用語も一部他機種のものに置き換えているので注意(例:
+MAGE's MISERY → MAGE BLASTER など)。</p>
+
+<p>特に断らない場合、除算は小数点以下切り捨てとする。たとえば 5/2 は2。ただ
+し確率に関する記述は別(51/256 などと書かれていたら約20%ということ。分子と分
+母それぞれの内部での除算はやはり小数点以下切り捨てとする)。</p>
+
+<p>特に断らない場合、確率に関しては乱数値総当たり調査までは行っていないので、
+確率に関する記述はあくまで目安として考えてほしい。</p>
+
+<p>キャラステータスのうちPOISON, 沈黙は別に管理されているので、特に断らずに
+「ステータス異常」と言った場合はPOISONおよび沈黙を含まないものとする。</p>
+
+<p>解析によって判明した事実のうち、特に興味深いものは
+<a href="tips.html">小ネタ</a>として別にまとめておく。</p>
+
+
+<h2>プログラム概観</h2>
+<ul>
+  <li><a href="prog_spec.txt">基本的な仕様</a></li>
+  <li><a href="prog_struct.txt">データ構造</a></li>
+  <li><a href="prog_rom.txt">ROMマップ</a></li>
+  <li><a href="prog_memory.txt">メモリマップ</a></li>
+  <li><a href="prog_routine.txt">重要ルーチン</a></li>
+  <li>乱数</li>
+</ul>
+
+
+<h2>システム関連</h2>
+<ul>
+  <li><a href="pt_status.html">PTステータス</a></li>
+  <li><a href="chara_status.html">キャラステータス</a></li>
+  <li><a href="fortune.html">運勢値</a></li>
+  <li><a href="element.html">属性</a> (element)</li>
+  <li><a href="monster_type.html">モンスタータイプ</a></li>
+  <li><a href="spell_detail.html">呪文詳細</a></li>
+</ul>
+
+
+<h2>戦闘関連</h2>
+<ul>
+  <li><a href="battle_system.html">戦闘システム全般</a></li>
+  <li>エンカウント時の処理</li>
+  <li><a href="battle_order.html">行動順</a></li>
+  <li><a href="battle_enemy_act.html">敵の行動</a></li>
+  <li><a href="battle_fight.html">敵への打撃攻撃</a></li>
+  <li><a href="battle_fight_enemy.html">敵からの打撃攻撃</a></li>
+  <li><a href="battle_spell_damage.html">呪文攻撃</a></li>
+  <li><a href="battle_dispell.html">ディスペル</a></li>
+  <li><a href="battle_breath.html">ブレス</a></li>
+  <li><a href="battle_run.html">逃走</a></li>
+  <li><a href="chest_command.html">宝箱開封</a></li>
+  <li><a href="chest_trap.html">宝箱罠</a></li>
+</ul>
+
+
+<h2>ダンジョン関連</h2>
+<ul>
+  <li><a href="dungeon_map.html">ダンジョンマップ</a></li>
+</ul>
+
+
+<h2>城、キャンプ関連</h2>
+<ul>
+  <li><a href="training_create.html">キャラメイク</a></li>
+  <li>クラスチェンジ</li>
+  <li>宿泊</li>
+  <li>レベルアップ</li>
+  <li><a href="identify.html">アイテム鑑定</a></li>
+</ul>
+
+
+<h2>各種データ</h2>
+<ul>
+  <li><a href="data_item.html">アイテム</a></li>
+  <li>アイテムテーブル</li>
+  <li><a href="data_monster.html">モンスター</a></li>
+  <li>モンスターテーブル</li>
+  <li>初期キャラクタ</li>
+  <li><a href="data_spell.html">呪文</a></li>
+</ul>
+
+
+<h2>その他</h2>
+<ul>
+  <li><a href="usajpn.html">FC版との相違点</a></li>
+</ul>
+
+
+<hr>
+
+<p>解析の手掛かりを得るために
+<a href="http://www.pekori.jp/~emonoya/">得物屋24時間</a>さん、その他いくつ
+かの攻略サイトの情報を参考にさせて頂いてます。また、各種用語はなるべく得物屋
+さんに準拠するようにしています。</p>
+
+<p><a href="dungeon_map.html">ダンジョンマップ</a>の形式は
+<a href="http://multix.jp/wizardry/">We Love WIZARDRY for WonderSwan</a>さん
+のものをパクってます。また、座標部分の画像を勝手に使わせていただきました^^;</p>
+
+</body>
+</html>

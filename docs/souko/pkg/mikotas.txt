@@ -1,0 +1,7 @@
+Summary: mikotas - 巫女さんファイター涼子ちゃん TASツール
+Name: mikotas
+Author: TaoTao
+Homepage: http://www6.atpages.jp/appsouko/work/TAS/game/MikoRyoko_PC/
+
+『巫女さんファイター涼子ちゃん』にTAS機能を追加するツール。今のところコマ送
+り(frame advance)機能のみ。

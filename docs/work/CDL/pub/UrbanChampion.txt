@@ -1,0 +1,10 @@
+@rom_name アーバンチャンピオン
+@rom_md5 cb7f1463c90cdcdf5ef315c125f12fe2
+@public 1
+
+141面クリア
+2Pプレイ
+TASVideosのムービーを全て再生
+  http://tasvideos.org/1090S.html
+  http://tasvideos.org/2455S.html
+  http://tasvideos.org/2952S.html

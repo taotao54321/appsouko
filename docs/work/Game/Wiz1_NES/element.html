@@ -1,0 +1,52 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Wizardry(NES) 解析 - 属性</title>
+</head>
+
+<body>
+
+<h1>Wizardry(NES) 解析 - 属性</h1>
+
+<p>属性と属性抵抗について。</p>
+
+
+<h2>属性</h2>
+
+<p>属性は以下のものがある(ビットフラグなので複合可能):</p>
+<table border="1">
+<thead>
+  <tr><th>値</th><th>名称</th></tr>
+</thead>
+<tbody>
+  <tr><td>0x01</td><td>友好</td></tr>
+  <tr><td>0x02</td><td>火</td></tr>
+  <tr><td>0x04</td><td>冷気</td></tr>
+  <tr><td>0x08</td><td>毒</td></tr>
+  <tr><td>0x10</td><td>吸収</td></tr>
+  <tr><td>0x20</td><td>石化</td></tr>
+  <tr><td>0x40</td><td>呪文</td></tr>
+  <tr><td>0x80</td><td>(未解析)</td></tr>
+</tbody>
+</table>
+
+<p>キャラが属性抵抗を持つ場合、その属性を持つ攻撃に対するダメージ軽減などの
+効果が得られる。PTキャラの属性抵抗は全所持アイテム(装備する必要はない)の属性
+抵抗の論理和となる。敵キャラは種類ごとに固有の属性抵抗を持つ。</p>
+
+<p>エンカウント時に友好属性抵抗を持つ敵がメイン敵となった場合、決して友好的
+にならない。</p>
+
+<p>無属性の攻撃呪文は存在しない。TILTOWAIT, MALIKTOなどの呪文は無属性ではな
+く友好属性であり、友好属性抵抗を持つ者にはダメージを軽減されてしまう。</p>
+
+<p>PTキャラが打撃攻撃を受けた際の毒、麻痺、石化、ドレイン、クリティカルにつ
+いては全く関係ない種類の属性抵抗が参照される。詳細は
+<a href="battle_fight_enemy.html">敵からの打撃攻撃</a>を参照。</p>
+
+<hr>
+
+<p><a href="./">Back</a></p>
+
+</body>
+</html>

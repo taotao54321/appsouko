@@ -1,0 +1,54 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Wizardry(NES) 解析 - ディスペル</title>
+</head>
+
+<body>
+
+<h1>Wizardry(NES) 解析 - ディスペル</h1>
+
+<p>DISPELLコマンドの仕様および成功率について。</p>
+
+
+<h2>仕様</h2>
+
+<p>不死系以外のモンスターはDISPELLできない。また、ステータス異常にかかってい
+る敵もDISPELLできない。</p>
+
+<p>DISPELL成功判定は対象グループ内の敵1体ごとに行われる。</p>
+
+
+<h2>DISPELL成功率</h2>
+
+<p>不死系モンスターに対してDISPELLを行った場合、ステータス異常にかかっていな
+い敵1体に対するDISPELL成功率は、術者と対象モンスターのLVに依存する。ただし最
+低成功率5%が保証されている。</p>
+
+<p>まず、「ディスペル力」、「ディスペル抵抗力」を以下のように定義する:</p>
+<blockquote>
+  (ディスペル力) = 5*(術者のLV) + 50<br>
+  (ディスペル抵抗力) = 10*(対象モンスターのLV)
+</blockquote>
+
+<p>ディスペル力が 0xFF を超えた場合、ディスペル抵抗力によらずDISPELLは必ず成
+功する。ディスペル力が 0xFF 以下の場合のDISPELL成功率は次式で表される(百分率):</p>
+<blockquote>
+  (DISPELL成功率) = (ディスペル力) - (ディスペル抵抗力) (%)<br>
+  ※5未満の場合は5に補正<br>
+  ※100以上ならば必ずDISPELLできる
+</blockquote>
+
+<p>以上より、LV 42 以上のキャラならば、仕様の項の条件を満たしていればDISPELL
+は必ず成功する。</p>
+
+<p>高いディスペル抵抗力を持つ不死系モンスターとしては、MAELIFIC(LV 25),
+VAMPIRE LORD(LV 20)などが挙げられる。</p>
+
+
+<hr>
+
+<p><a href="./">Back</a></p>
+
+</body>
+</html>

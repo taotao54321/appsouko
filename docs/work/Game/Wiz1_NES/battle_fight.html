@@ -1,0 +1,200 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Wizardry(NES) 解析 - 敵への打撃攻撃</title>
+</head>
+
+<body>
+
+<h1>Wizardry(NES) 解析 - 敵への打撃攻撃</h1>
+
+<p>FIGHTコマンドによる敵への打撃攻撃について。</p>
+
+
+<h2>対象決定</h2>
+
+<p>指定した敵グループ内でDEAD未満の状態にある者のうち先頭にいるものが攻撃対
+象となる(この処理は実際に攻撃を行う時点で行われる)。グループ内の全員がDEAD以
+上の状態ならば何も起こらない。</p>
+
+
+<h2>命中力</h2>
+
+<p>命中率に寄与する要素のうちPTキャラ側に属するものを「命中力」と呼称する。</p>
+
+<p>命中力はキャラの職業、LV, STR, 装備に依存し、次式で表される:</p>
+<blockquote>
+  (命中力) = (LVボーナス) + (STRボーナス) + (全装備品のST値合計)
+</blockquote>
+<p>ここで、LVボーナスは</p>
+<ul>
+  <li>FIGHTER, PRIEST, SAMURAI, LORD, NINJA の場合、LV/3 + 2</li>
+  <li>MAGE, THIEF, BISHOP の場合、LV/5</li>
+</ul>
+<p>である(ただし、LVが 0xFF を超える場合は 0xFF として計算する)。STRボーナス
+は</p>
+<ul>
+  <li>STR &gt;= 16 の場合、STR-15</li>
+  <li>6 &lt;= STR &lt; 16 の場合、0</li>
+  <li>STR &lt; 6 の場合、STR-6 (負になる)</li>
+</ul>
+<p>である。装備品については、アラインメントが一致していない場合ST値を -1 と
+して扱う(それ以外の呪い装備はST値をそのまま使う)。</p>
+
+<p>命中力が負になった場合はそのまま負として扱う。</p>
+
+
+<h2>命中率</h2>
+
+<p>攻撃1回ごとに命中判定が行われる。攻撃1回当たりの命中率は攻撃者の命中力、
+攻撃対象<a href="battle_system.html">グループ番号</a>、攻撃対象のACに依存す
+る。まず、「命中判定値」を以下のように定義する:</p>
+<blockquote>
+  (命中判定値) = 19 + (グループ番号) - (AC) - (命中力)<br>
+  ※負になったら0に、19を超えたら19に補正
+</blockquote>
+
+<p>このとき、攻撃1回当たりの命中率は次式で表される:</p>
+<blockquote>
+  (命中率) = (19-(命中判定値)) / 20
+</blockquote>
+<p>つまり、命中判定値が19ならば攻撃は決して命中しない。また、命中率は最大
+19/20 である。</p>
+
+<p>命中判定値の計算ではオーバーフロー/アンダーフローが考慮されていないが、各
+種データを見る限りオーバーフロー/アンダーフローが発生することはないはず。</p>
+
+
+<h2>攻撃回数</h2>
+
+<p>攻撃回数はキャラの職業、LV, 装備武器のAT値に依存し、以下のように決まる: </p>
+<ul>
+  <li>MAGE, PRIEST, THIEF, BISHOP の場合、max(1, (武器AT値))</li>
+  <li>FIGHTER, SAMURAI, LORD の場合、max(LV/5 + 1, (武器AT値))</li>
+  <li>NINJA の場合、max(LV/5 + 2, (武器AT値))</li>
+</ul>
+<p>ただし、LVによる攻撃回数は10が上限。なお、武器AT値に関しては上限がないの
+で、AT値が10を超える武器を装備していれば10回を超える攻撃が可能(実際にはそん
+な武器はないが)。</p>
+
+
+<h2>ダメージ</h2>
+
+<p>攻撃が1回命中するごとにダイスを振ってダメージを計算し、その合計がダメージ
+となる。その際のダイス式は攻撃者のSTRと装備武器に依存し、以下のようになる:</p>
+<blockquote>
+  (ダイス個数) = (武器のダイス個数)<br>
+  (ダイス面数) = (武器のダイス面数)<br>
+  (ダイス追加値) = (武器のダイス追加値) + (STRボーナス)
+</blockquote>
+<p>ここで、STRボーナスは STR &gt;= 16 の場合 STR-15, それ以外の場合は0。また、
+素手は 2d2 の武器として扱う。</p>
+
+<p>なお、職業がNINJAであっても素手のダメージダイス式には影響しない。</p>
+
+
+<h2>倍打</h2>
+
+<p>倍打条件を満たした場合、ダメージの項で得られたダメージが更に2倍になる。倍打条件は</p>
+<ul>
+  <li>対象がステータス異常にかかっている</li>
+  <li>対象の<a href="monster_type.html">モンスタータイプ</a>に対応するタイプ別倍打フラグが立っている</li>
+</ul>
+<p>のいずれか(両方を満たしてもダメージは2倍のまま)。ただし、モンスタータイプ
+による倍打判定処理にはバグがあり、誤ったアドレスの値をタイプ別倍打として使っ
+てしまう。これについては以下で詳しく述べる。</p>
+
+<p>本来は攻撃者の全装備品(呪われていたりアラインメント不一致でも構わない)の
+タイプ別倍打の論理和が使われるべきなのだが、バグのため「攻撃対象の位置」に依
+存した値がタイプ別倍打として使われてしまう。以下に対応表を示す(位置 (a,b) は
+「敵第aグループ目のb体目」を表す。また、ドレインフラグは既にドレインを受けて
+いる場合1, そうでない場合0。訓練所内IDはキャラの訓練所内での番号
+(0-origin)):</p>
+<table border="1">
+<thead>
+  <tr><th>位置</th><th>タイプ別倍打1Byte目</th><th>タイプ別倍打2Byte目</th></tr>
+</thead>
+<tbody>
+  <tr><td align="center">(1,1)</td><td>PT1人目の(本来の)タイプ別倍打2Byte目</td><td>PT1人目のドレインフラグ</td></tr>
+  <tr><td align="center">(1,2)</td><td>PT2人目の(本来の)タイプ別倍打2Byte目</td><td>PT2人目のドレインフラグ</td></tr>
+  <tr><td align="center">(1,3)</td><td>PT3人目の(本来の)タイプ別倍打2Byte目</td><td>PT3人目のドレインフラグ</td></tr>
+  <tr><td align="center">(1,4)</td><td>PT4人目の(本来の)タイプ別倍打2Byte目</td><td>PT4人目のドレインフラグ</td></tr>
+  <tr><td align="center">(1,5)</td><td>PT5人目の(本来の)タイプ別倍打2Byte目</td><td>PT5人目のドレインフラグ</td></tr>
+  <tr><td align="center">(1,6)</td><td>PT6人目の(本来の)タイプ別倍打2Byte目</td><td>PT6人目のドレインフラグ</td></tr>
+  <tr><td align="center">(1,7)</td><td>PT1人目のドレインフラグ</td><td>PT1人目のLV下位Byte</td></tr>
+  <tr><td align="center">(1,8)</td><td>PT2人目のドレインフラグ</td><td>PT2人目のLV下位Byte</td></tr>
+  <tr><td align="center">(1,9)</td><td>PT3人目のドレインフラグ</td><td>PT3人目のLV下位Byte</td></tr>
+
+  <tr><td align="center">(2,1)</td><td>PT4人目のドレインフラグ</td><td>PT4人目のLV下位Byte</td></tr>
+  <tr><td align="center">(2,2)</td><td>PT5人目のドレインフラグ</td><td>PT5人目のLV下位Byte</td></tr>
+  <tr><td align="center">(2,3)</td><td>PT6人目のドレインフラグ</td><td>PT6人目のLV下位Byte</td></tr>
+  <tr><td align="center">(2,4)</td><td>PT1人目のLV下位Byte</td><td>PT1人目のLV上位Byte</td></tr>
+  <tr><td align="center">(2,5)</td><td>PT2人目のLV下位Byte</td><td>PT2人目のLV上位Byte</td></tr>
+  <tr><td align="center">(2,6)</td><td>PT3人目のLV下位Byte</td><td>PT3人目のLV上位Byte</td></tr>
+  <tr><td align="center">(2,7)</td><td>PT4人目のLV下位Byte</td><td>PT4人目のLV上位Byte</td></tr>
+  <tr><td align="center">(2,8)</td><td>PT5人目のLV下位Byte</td><td>PT5人目のLV上位Byte</td></tr>
+  <tr><td align="center">(2,9)</td><td>PT6人目のLV下位Byte</td><td>PT6人目のLV上位Byte</td></tr>
+
+  <tr><td align="center">(3,1)</td><td>PT1人目のLV上位Byte</td><td>PT1人目のAC</td></tr>
+  <tr><td align="center">(3,2)</td><td>PT2人目のLV上位Byte</td><td>PT2人目のAC</td></tr>
+  <tr><td align="center">(3,3)</td><td>PT3人目のLV上位Byte</td><td>PT3人目のAC</td></tr>
+  <tr><td align="center">(3,4)</td><td>PT4人目のLV上位Byte</td><td>PT4人目のAC</td></tr>
+  <tr><td align="center">(3,5)</td><td>PT5人目のLV上位Byte</td><td>PT5人目のAC</td></tr>
+  <tr><td align="center">(3,6)</td><td>PT6人目のLV上位Byte</td><td>PT6人目のAC</td></tr>
+  <tr><td align="center">(3,7)</td><td>PT1人目のAC</td><td>PT1人目のPOISON値</td></tr>
+  <tr><td align="center">(3,8)</td><td>PT2人目のAC</td><td>PT2人目のPOISON値</td></tr>
+  <tr><td align="center">(3,9)</td><td>PT3人目のAC</td><td>PT3人目のPOISON値</td></tr>
+
+  <tr><td align="center">(4,1)</td><td>PT4人目のAC</td><td>PT4人目のPOISON値</td></tr>
+  <tr><td align="center">(4,2)</td><td>PT5人目のAC</td><td>PT5人目のPOISON値</td></tr>
+  <tr><td align="center">(4,3)</td><td>PT6人目のAC</td><td>PT6人目のPOISON値</td></tr>
+  <tr><td align="center">(4,4)</td><td>PT1人目のPOISON値</td><td>0x60 + (PT1人目の訓練所内ID)</td></tr>
+  <tr><td align="center">(4,5)</td><td>PT2人目のPOISON値</td><td>0x60 + (PT2人目の訓練所内ID)</td></tr>
+  <tr><td align="center">(4,6)</td><td>PT3人目のPOISON値</td><td>0x60 + (PT3人目の訓練所内ID)</td></tr>
+  <tr><td align="center">(4,7)</td><td>PT4人目のPOISON値</td><td>0x60 + (PT4人目の訓練所内ID)</td></tr>
+  <tr><td align="center">(4,8)</td><td>PT5人目のPOISON値</td><td>0x60 + (PT5人目の訓練所内ID)</td></tr>
+  <tr><td align="center">(4,9)</td><td>PT6人目のPOISON値</td><td>0x60 + (PT6人目の訓練所内ID)</td></tr>
+</tbody>
+</table>
+
+<p>このタイプ別倍打に関するバグは、該当コード PRG #6 <code>$B95B</code> にお
+いて <code>X</code> に攻撃対象の番号を代入したまま元に戻していないのが原因で
+発生している。これを修正するには、<code>$B963</code> の直前で</p>
+<blockquote><pre>
+  ldx $027C
+</pre></blockquote>
+<p>を行うようにすればよい(実際にはスペースが足りないので空き領域にサブルーチ
+ンを作成するなどの処置が必要だろう)。</p>
+
+<p>なお、<a href="monster_type.html">モンスタータイプ</a>の項目で述べた通り、
+タイプ別倍打そのものも本来の値の1Byte目と2Byte目を入れ替えて処理されるので、
+結果的に、PT内の n 人目が位置 (1,n) にいるタイプ0～7の敵を攻撃する場合は本来
+の(制作者が意図していたであろう)倍打判定が行われることになる。</p>
+
+
+<h2>クリティカル</h2>
+
+<p>攻撃者が非0のクリティカルフラグを持つ場合、1回でも攻撃が命中するとクリティ
+カル判定が行われ、成功すると対象は即死する。</p>
+
+<p>NINJAは常にクリティカルフラグを持つ。また、クリティカルフラグを付与する装
+備品も存在する。ただし、アラインメントが一致しない装備品ではクリティカルフラ
+グは得られない。なお、NINJAがアラインメントの一致しない装備を持っていてもク
+リティカルフラグは失われない。</p>
+
+<p>クリティカル成功率は攻撃者と対象のLVに依存する。まず、CLV = (攻撃者のLV)
+(上限 25) として成功率 CLV/50 の確率判定を行い、成功したら更に成功率 (24-(対
+象のLV)) / 35 (負の場合は0%) の確率判定を行い、これも成功するとクリティカル
+が発動する。</p>
+
+<p>以上より、MAELIFIC(LV 25)に対しては決してクリティカルが発動しない。
+VAMPIRE LORD(LV 20)あたりも攻撃者のLVが低いと0%となる可能性もありそうだが未
+調査(乱数値総当たり調査予定)。</p>
+
+
+<hr>
+
+<p><a href="./">Back</a></p>
+
+</body>
+</html>

@@ -1,0 +1,261 @@
+#=====================================================================
+# HuC6280 opcode data sheet
+#=====================================================================
+#
+# code	name	adr	cyc	doc
+0	BRK	none	8	1
+1	ORA	ix	7	1
+2	SXY	none	3	1
+3	ST0	im	5	1
+4	TSB	zp	6	1
+5	ORA	zp	4	1
+6	ASL	zp	6	1
+7	RMB0	zp	7	1
+8	PHP	none	3	1
+9	ORA	im	2	1
+10	ASL	none	2	1
+11				0
+12	TSB	ab	7	1
+13	ORA	ab	5	1
+14	ASL	ab	7	1
+15	BBR0	zprel	6	1
+16	BPL	rel	2	1
+17	ORA	iy	7	1
+18	ORA	zpind	7	1
+19	ST1	im	5	1
+20	TRB	zp	6	1
+21	ORA	zpx	4	1
+22	ASL	zpx	6	1
+23	RMB1	zp	7	1
+24	CLC	none	2	1
+25	ORA	aby	5	1
+26	INC	none	2	1
+27				0
+28	TRB	ab	7	1
+29	ORA	abx	5	1
+30	ASL	abx	7	1
+31	BBR1	zprel	6	1
+32	JSR	ab	7	1
+33	AND	ix	7	1
+34	SAX	none	3	1
+35	ST2	im	5	1
+36	BIT	zp	4	1
+37	AND	zp	4	1
+38	ROL	zp	6	1
+39	RMB2	zp	7	1
+40	PLP	none	4	1
+41	AND	im	2	1
+42	ROL	none	2	1
+43				0
+44	BIT	ab	5	1
+45	AND	ab	5	1
+46	ROL	ab	7	1
+47	BBR2	zprel	6	1
+48	BMI	rel	2	1
+49	AND	iy	7	1
+50	AND	zpind	7	1
+51				0
+52	BIT	zpx	4	1
+53	AND	zpx	4	1
+54	ROL	zpx	6	1
+55	RMB3	zp	7	1
+56	SEC	none	2	1
+57	AND	aby	5	1
+58	DEC	none	2	1
+59				0
+60	BIT	abx	5	1
+61	AND	abx	5	1
+62	ROL	abx	7	1
+63	BBR3	zprel	6	1
+64	RTI	none	7	1
+65	EOR	ix	7	1
+66	SAY	none	3	1
+67	TMA	im	4	1
+68	BSR	rel	8	1
+69	EOR	zp	4	1
+70	LSR	zp	6	1
+71	RMB4	zp	7	1
+72	PHA	none	3	1
+73	EOR	im	2	1
+74	LSR	none	2	1
+75				0
+76	JMP	ab	4	1
+77	EOR	ab	5	1
+78	LSR	ab	7	1
+79	BBR4	zprel	6	1
+80	BVC	rel	2	1
+81	EOR	iy	7	1
+82	EOR	zpind	7	1
+83	TAM	im	5	1
+84	CSL	none	3	1
+85	EOR	zpx	4	1
+86	LSR	zpx	6	1
+87	RMB5	zp	7	1
+88	CLI	none	2	1
+89	EOR	aby	5	1
+90	PHY	none	3	1
+91				0
+92				0
+93	EOR	abx	5	1
+94	LSR	abx	7	1
+95	BBR5	zprel	6	1
+96	RTS	none	7	1
+97	ADC	ix	7	1
+98	CLA	none	2	1
+99				0
+100	STZ	zp	4	1
+101	ADC	zp	4	1
+102	ROR	zp	6	1
+103	RMB6	zp	7	1
+104	PLA	none	4	1
+105	ADC	im	2	1
+106	ROR	none	2	1
+107				0
+108	JMP	abind	7	1
+109	ADC	ab	5	1
+110	ROR	ab	7	1
+111	BBR6	zprel	6	1
+112	BVS	rel	2	1
+113	ADC	iy	7	1
+114	ADC	zpind	7	1
+115	TII	blk	17	1
+116	STZ	zpx	4	1
+117	ADC	zpx	4	1
+118	ROR	zpx	6	1
+119	RMB7	zp	7	1
+120	SEI	none	2	1
+121	ADC	aby	5	1
+122	PLY	none	4	1
+123				0
+124	JMP	abindx	7	1
+125	ADC	abx	5	1
+126	ROR	abx	7	1
+127	BBR7	zprel	6	1
+128	BRA	rel	4	1
+129	STA	ix	7	1
+130	CLX	none	2	1
+131	TST	imzp	7	1
+132	STY	zp	4	1
+133	STA	zp	4	1
+134	STX	zp	4	1
+135	SMB0	zp	7	1
+136	DEY	none	2	1
+137	BIT	im	2	1
+138	TXA	none	2	1
+139				1
+140	STY	ab	5	1
+141	STA	ab	5	1
+142	STX	ab	5	1
+143	BBS0	zprel	6	1
+144	BCC	rel	2	1
+145	STA	iy	7	1
+146	STA	zpind	7	1
+147	TST	imab	8	1
+148	STY	zpx	4	1
+149	STA	zpx	4	1
+150	STX	zpy	4	1
+151	SMB1	zp	7	1
+152	TYA	none	2	1
+153	STA	aby	5	1
+154	TXS	none	2	1
+155				0
+156	STZ	ab	5	1
+157	STA	abx	5	1
+158	STZ	abx	5	1
+159	BBS1	zprel	6	1
+160	LDY	im	2	1
+161	LDA	ix	7	1
+162	LDX	im	2	1
+163	TST	imzpx	7	1
+164	LDY	zp	4	1
+165	LDA	zp	4	1
+166	LDX	zp	4	1
+167	SMB2	zp	7	1
+168	TAY	none	2	1
+169	LDA	im	2	1
+170	TAX	none	2	1
+171				0
+172	LDY	ab	5	1
+173	LDA	ab	5	1
+174	LDX	ab	5	1
+175	BBS2	zprel	6	1
+176	BCS	rel	2	1
+177	LDA	iy	7	1
+178	LDA	zpind	7	1
+179	TST	imabx	8	1
+180	LDY	zpx	4	1
+181	LDA	zpx	4	1
+182	LDX	zpy	4	1
+183	SMB3	zp	7	1
+184	CLV	none	2	1
+185	LDA	aby	5	1
+186	TSX	none	2	1
+187				0
+188	LDY	abx	5	1
+189	LDA	abx	5	1
+190	LDX	aby	5	1
+191	BBS3	zprel	6	1
+192	CPY	im	2	1
+193	CMP	ix	7	1
+194	CLY	none	2	1
+195	TDD	blk	17	1
+196	CPY	zp	4	1
+197	CMP	zp	4	1
+198	DEC	zp	6	1
+199	SMB4	zp	7	1
+200	INY	none	2	1
+201	CMP	im	2	1
+202	DEX	none	2	1
+203				0
+204	CPY	ab	5	1
+205	CMP	ab	5	1
+206	DEC	ab	7	1
+207	BBS4	zprel	6	1
+208	BNE	rel	2	1
+209	CMP	iy	7	1
+210	CMP	zpind	7	1
+211	TIN	blk	17	1
+212	CSH	none	3	1
+213	CMP	zpx	4	1
+214	DEC	zpx	6	1
+215	SMB5	zp	7	1
+216	CLD	none	2	1
+217	CMP	aby	5	1
+218	PHX	none	3	1
+219				0
+220				0
+221	CMP	abx	5	1
+222	DEC	abx	7	1
+223	BBS5	zprel	6	1
+224	CPX	im	2	1
+225	SBC	ix	7	1
+226				0
+227	TIA	blk	17	1
+228	CPX	zp	4	1
+229	SBC	zp	4	1
+230	INC	zp	6	1
+231	SMB6	zp	7	1
+232	INX	none	2	1
+233	SBC	im	2	1
+234	NOP	none	2	1
+235				0
+236	CPX	ab	5	1
+237	SBC	ab	5	1
+238	INC	ab	7	1
+239	BBS6	zprel	6	1
+240	BEQ	rel	2	1
+241	SBC	iy	7	1
+242	SBC	zpind	7	1
+243	TAI	blk	17	1
+244	SET	none	2	1
+245	SBC	zpx	4	1
+246	INC	zpx	6	1
+247	SMB7	zp	7	1
+248	SED	none	2	1
+249	SBC	aby	5	1
+250	PLX	none	4	1
+251				0
+252				0
+253	SBC	abx	5	1
+254	INC	abx	7	1
+255	BBS7	zprel	6	1

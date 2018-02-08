@@ -1,0 +1,28 @@
+Wizardry(NES) プログラム基本仕様
+================================
+
+マッパー	1
+16K PRGROM	8個
+8K CHRROM	16個
+ミラーリング	horizontal
+SRAM		あり
+Trainer		なし
+Four screen	disabled
+
+MMC1のPRGROM切り替え設定は、Low PRGROM switchingに固定されているものと思われ
+る。つまりHigh PRGROMには常に PRG #7 が入っている。
+
+負数は基本的に2の補数で表現される。
+
+文字列データは基本的にASCIIで格納されている。
+
+全PRGROMにおいて、0x3FE0から
+  "\x20\x20\x20\x20\x20\x20\x20\x20WIZARDRY"
+という16Byteの文字列が格納されている。
+
+PRG #0-6において、0x3FF0から
+  "\x28\xBE\xB3\x3D\x33\x04\x01\x07\xB1\xB9\xDA\xFF\xDA\xFF\xDA\xFF"
+という16Byteの文字列が格納されている。
+
+
+

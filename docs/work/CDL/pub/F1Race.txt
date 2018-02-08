@@ -1,0 +1,8 @@
+@rom_name F1レース
+@rom_md5 fe6e13d1382f94dc0a5391053c4096bc
+@public 1
+
+全コースをプレイ
+ターボ技実行
+LV3ターボなし最終面2周TASムービーを再生
+  http://www6.atpages.jp/appsouko/work/TAS/game/F1Race_FC/

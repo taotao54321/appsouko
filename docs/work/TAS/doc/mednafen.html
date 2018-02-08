@@ -1,0 +1,113 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>mednafen-rr メモ</title>
+</head>
+
+<body>
+
+<h1>mednafen-rr メモ</h1>
+
+<p><a href="http://code.google.com/p/mednafen-rr/">mednafen-rr</a>に関するメ
+モ。mednafen-rr 137 の時点で書いたものです。</p>
+
+<p>基本的な使い方は
+<a href="http://mednafen.sourceforge.net/">本家mednafen</a>のドキュメントを
+参照。なお、mednafen-rr は mednafen 0.8.A ベースのようです。</p>
+
+
+<h2>初期設定</h2>
+
+<p>mednafen.cfg が設定ファイルです(テキストファイルなので直接編集可能)。ホッ
+トキー設定を直接書き込む場合はキーコードを知る必要があるので、
+<a href="http://www.libsdl.org/">SDL</a>のソースコード内の SDL_keysym.h を適
+宜参照。</p>
+
+<p>キーボード操作は問題なく動作すると思いますが、ジョイスティックは環境によっ
+ては設定がうまくいかないかもしれません。私の環境(Windows XP SP3)ではうまくい
+かなかったので
+<a href="http://www.vector.co.jp/soft/win95/util/se101657.html">JoyToKey</a>
+で代用しました。</p>
+
+<p>エミュレータを終了するたびに設定ファイルが更新されるようなので、予期せぬ
+上書きに備えて設定ファイルのバックアップをとっておくのが無難と思います。</p>
+
+
+<h2>ムービーファイル</h2>
+
+<p>ムービーファイルの拡張子は .mcm で、フォーマットについては mednafen-rr の
+ページで説明されています。また、TASVideosにも
+<a href="http://tasvideos.org/MCM.html">MCMフォーマット資料</a>があります。</p>
+
+<p>PCEの場合、1フレーム当たりの入力データは11Byteとなります。PCE用の
+<a href="/appsouko/souko/pkg/mcmdump-0.1.0.tar.bz2">入力データダンプツール</a>
+を作ったので一応置いておきます。</p>
+
+<p>仕様なのかどうか不明ですが、mednafen-rr はどの時点でrecordingを終了しても
+recording中に到達した最大フレームまでの入力データを記録してしまうようです。
+なので、ムービーが完成したら末尾を適当に切り落とす必要があります。</p>
+
+
+<h2>動画出力</h2>
+
+<p>今のところ動画出力機能はないので、当面は適当な画面/音声キャプチャツールで
+しのぐしかなさそうです。私が試した範囲では
+<a href="http://amamaman.hp.infoseek.co.jp/">アマレココ</a>(フリー版)が一番
+マシな感じがしました(60FPSキャプチャでもあまりカクつかない。ただし色空間の問
+題なのか赤い部分がにじむ)。他に試したものについても一応書いておきます:</p>
+<dl>
+  <dt><a href="http://www.microsoft.com/japan/windows/windowsmedia/download/encode.aspx">WME</a> +
+  <a href="http://mosax.sakura.ne.jp/fswiki.cgi?page=SCFH+DSF">SCFH DSF</a></dt>
+  <dd>スペックの問題なのかもしれないが、高ビットレートで60FPSキャプチャする
+  とコマ落ちが激しい。</dd>
+  <dt><a href="http://www.farb-rausch.de/~fg/kkapture/">.kkapture</a></dt>
+  <dd>エミュレータの画面が真っ暗なまま動かない。正しく動かすにはエミュレータ
+  側に手を加える必要があるのかも?</dd>
+</dl>
+<p>追記: アマレココを使う場合、AMVコーデックを使わずに無圧縮AVIで書き出せば
+色のにじみは起こらなくなります(HDDの負荷は上がりますが、今時のHDDなら書き込
+み速度は足りるはず)。また、垂直同期を待つ設定にすると映像の歪みが軽減される
+かも。</p>
+
+<p>SVNログを見る限りではもうすぐ動画出力機能が追加されると思われます。</p>
+
+
+<h2>メモリウォッチ</h2>
+
+<p>今のところメモリウォッチ機能は内蔵されていないので、外部メモリビューアを
+使う必要があります。私は<a href="http://www.memoryhacking.com/">MHS</a>を使っ
+ています(mednafen-rr 137 の場合、プロセスメモリ $7BAA00 がPCE論理アドレス
+$2000 に対応)。</p>
+
+<p>mednafen-rr はなぜかデバッガが動かないようなので、メモリアドレスなどを調
+べる際は本家mednafenを使う方が便利です。mednafenのデバッガはUIがとっつきにく
+いのが難点ですが、実行履歴が表示されるなど機能的には結構充実しています。</p>
+
+
+<h2>不具合</h2>
+
+<p>長時間起動したままにしているとステートロード時に落ちることがあるので、ムー
+ビーのバックアップをとりつつこまめに再起動するのが無難と思います。</p>
+
+
+<h2>PCE関連資料</h2>
+
+<p>以下の資料を見ればPCEの概要はわかると思います:</p>
+<ul>
+  <li><a href="http://www.geocities.jp/team_zero_three/PCE/">PCE ハードウェア研究資料 - Kiの研究部屋</a></li>
+  <li><a href="http://www.geocities.co.jp/Playtown/2004/pcedoc/pce_docj.html">Unofficial PC-Engine documentation 邦訳</a></li>
+</ul>
+
+<p>mednafen-rr のページによると、PCEのフレームレートは以下のように計算されて
+いるようです:</p>
+<blockquote>
+  (7159090.90909090 / 455 / 263 * 65536 * 256) / 2^24 = 59.8261...
+</blockquote>
+
+
+<hr>
+
+<p><a href="../">Back</a></p>
+
+</body>
+</html>

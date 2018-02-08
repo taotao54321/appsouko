@@ -1,0 +1,158 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Wizardry(NES) 解析 - 運勢値</title>
+</head>
+
+<body>
+
+<h1>Wizardry(NES) 解析 - 運勢値</h1>
+
+<p>各PTキャラは「運勢値」という隠しパラメータを持っており、この値が罠にかかっ
+た際の罠回避率、ブレスダメージ軽減率などに影響する。運勢値は5種類存在する。
+各運勢値を「運勢値1」「運勢値2」のように表記する。</p>
+
+<p>基本的に運勢値が小さい方が各種確率判定において有利になるが、例外もある
+(MAGE BLASTER, PRIEST BLASTERは運勢値が小さいほど被害を受けやすい)</p>
+
+
+<h2>運勢値の算出</h2>
+
+<p>運勢値nは、キャラのLV, LUC, 職業、種族に依存する。まず、次式で値 A(n) を
+求める:</p>
+<blockquote>
+  A(n) = 19 - LV/5 - LUC/6 - (運勢値nの職業補正値) - (運勢値nの種族補正値)<br>
+  ※LVは 0xFF を超えていたら 0xFF に補正<br>
+  ※A(n) &lt; 0 の場合は A = 0 とする
+</blockquote>
+<p>ここで、職業補正値は以下の通り:</p>
+<table border="1">
+<thead>
+  <tr><th>職業</th><th>運勢値1</th><th>運勢値2</th><th>運勢値3</th><th>運勢値4</th><th>運勢値5</th></tr>
+</thead>
+<tbody>
+  <tr>
+    <th>FIG</th>
+    <td align="center">3</td>
+    <td align="center">0</td>
+    <td align="center">0</td>
+    <td align="center">0</td>
+    <td align="center">0</td>
+  </tr>
+  <tr>
+    <th>MAG</th>
+    <td align="center">0</td>
+    <td align="center">0</td>
+    <td align="center">0</td>
+    <td align="center">0</td>
+    <td align="center">3</td>
+  </tr>
+  <tr>
+    <th>PRI</th>
+    <td align="center">0</td>
+    <td align="center">3</td>
+    <td align="center">0</td>
+    <td align="center">0</td>
+    <td align="center">0</td>
+  </tr>
+  <tr>
+    <th>THI</th>
+    <td align="center">0</td>
+    <td align="center">0</td>
+    <td align="center">0</td>
+    <td align="center">3</td>
+    <td align="center">0</td>
+  </tr>
+  <tr>
+    <th>BIS</th>
+    <td align="center">0</td>
+    <td align="center">2</td>
+    <td align="center">2</td>
+    <td align="center">0</td>
+    <td align="center">2</td>
+  </tr>
+  <tr>
+    <th>SAM</th>
+    <td align="center">2</td>
+    <td align="center">0</td>
+    <td align="center">0</td>
+    <td align="center">0</td>
+    <td align="center">2</td>
+  </tr>
+  <tr>
+    <th>LOR</th>
+    <td align="center">2</td>
+    <td align="center">2</td>
+    <td align="center">0</td>
+    <td align="center">0</td>
+    <td align="center">0</td>
+  </tr>
+  <tr>
+    <th>NIN</th>
+    <td align="center">3</td>
+    <td align="center">2</td>
+    <td align="center">4</td>
+    <td align="center">3</td>
+    <td align="center">2</td>
+  </tr>
+</tbody>
+</table>
+
+<p>種族補正値は以下の通り:</p>
+<table border="1">
+<thead>
+  <tr><th>種族</th><th>運勢値1</th><th>運勢値2</th><th>運勢値3</th><th>運勢値4</th><th>運勢値5</th></tr>
+</thead>
+<tbody>
+  <tr>
+    <th>HUM</th>
+    <td align="center">1</td>
+    <td align="center">0</td>
+    <td align="center">0</td>
+    <td align="center">0</td>
+    <td align="center">0</td>
+  </tr>
+  <tr>
+    <th>ELF</th>
+    <td align="center">0</td>
+    <td align="center">0</td>
+    <td align="center">2</td>
+    <td align="center">0</td>
+    <td align="center">0</td>
+  </tr>
+  <tr>
+    <th>DWA</th>
+    <td align="center">0</td>
+    <td align="center">0</td>
+    <td align="center">0</td>
+    <td align="center">4</td>
+    <td align="center">0</td>
+  </tr>
+  <tr>
+    <th>GNO</th>
+    <td align="center">0</td>
+    <td align="center">2</td>
+    <td align="center">0</td>
+    <td align="center">0</td>
+    <td align="center">0</td>
+  </tr>
+  <tr>
+    <th>HOB</th>
+    <td align="center">0</td>
+    <td align="center">0</td>
+    <td align="center">0</td>
+    <td align="center">0</td>
+    <td align="center">3</td>
+  </tr>
+</tbody>
+</table>
+
+<p>以上で求めた A(n) に1を加えたものが運勢値nとなる。</p>
+
+
+<hr>
+
+<p><a href="./">Back</a></p>
+
+</body>
+</html>

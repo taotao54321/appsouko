@@ -1,0 +1,611 @@
+Wizardry (NES) ROM Map
+======================
+
+マッパー1。high PRGROMは PRG #7 に固定されている
+
+日本語版と異なり、基本的に文字はASCIIコードで格納されている
+
+全PRGROMにおいて、0x3FE0から
+  "\x20\x20\x20\x20\x20\x20\x20\x20WIZARDRY"
+という16Byteの文字列が格納されている。
+
+PRGROM #0-6において、0x3FF0から
+  "\x28\xBE\xB3\x3D\x33\x04\x01\x07\xB1\xB9\xDA\xFF\xDA\xFF\xDA\xFF"
+という16Byteの文字列が格納されている。
+
+
+データ構造
+----------
+
+enum MagicID{
+    // -- MAGE 全21種 --
+    MAGIC_HALITO = 0	// 敵:魔1
+    MAGIC_MOGREF = 1
+    MAGIC_KATINO = 2	// 敵:魔1
+    MAGIC_DUMAPIC = 3
+
+    MAGIC_DILTO = 4	// 敵:魔2
+    MAGIC_SOPIC = 5	// 敵:魔2
+
+    MAGIC_MAHALITO = 6	// 敵:魔3
+    MAGIC_MOLITO = 7	// 敵:魔3
+
+    MAGIC_MORLIS = 8
+    MAGIC_DALTO = 9	// 敵:魔4
+    MAGIC_LAHALITO = 10	// 敵:魔4
+
+    MAGIC_MAMORLIS = 11
+    MAGIC_MAKANITO = 12
+    MAGIC_MADALTO = 13	// 敵:魔5
+
+    MAGIC_LAKANITO = 14
+    MAGIC_ZILWAN = 15	// 敵:魔6
+    MAGIC_MASOPIC = 16
+    MAGIC_HAMAN = 17
+
+    MAGIC_MALOR = 18
+    MAGIC_MAHAMAN = 19
+    MAGIC_TILTOWAIT = 20	// 敵:魔7
+
+    // -- PRIEST 全29種 --
+    MAGIC_KALKI = 21
+    MAGIC_DIOS = 22
+    MAGIC_BADIOS = 23	// 敵:僧1
+    MAGIC_MILWA = 24
+    MAGIC_PORFIC = 25
+
+    MAGIC_MATU = 26
+    MAGIC_CALFO = 27
+    MAGIC_MANIFO = 28
+    MAGIC_MONTINO = 29	// 敵:僧2
+
+    MAGIC_LOMILWA = 30
+    MAGIC_DIALKO = 31
+    MAGIC_LATUMAPIC = 32
+    MAGIC_BAMATU = 33
+
+    MAGIC_DIAL = 34
+    MAGIC_BADIAL = 35	// 敵:僧3
+    MAGIC_LATUMOFIS = 36
+    MAGIC_MAPORFIC = 37
+
+    MAGIC_DIALMA = 38
+    MAGIC_BADIALMA = 39	// 敵:僧5
+    MAGIC_LITOKAN = 40
+    MAGIC_KANDI = 41
+    MAGIC_DI = 42
+    MAGIC_BADI = 43	// 敵:僧5
+
+    MAGIC_LORTO = 44	// 敵:僧6
+    MAGIC_MADI = 45
+    MAGIC_MABADI = 46	// 敵:僧6
+    MAGIC_LOKTOFEIT = 47
+
+    MAGIC_MALIKTO = 48
+    MAGIC_KADORTO = 49
+}
+
+
+// Size: 3
+struct DiceExpr{
+    U8	個数
+    U8	面数
+    U8	追加値
+}
+
+
+// Size: 0x40
+struct ItemData{
+    U8	unknown	不確定名_文字列長
+    char[16]	不確定名	// 余白は 0x20 で埋められている
+    U8	unknown	確定名_文字列長
+    char[16]	確定名	// 余白は 0x20 で埋められている
+
+    // -- 0x22 --
+    U8	種別
+    // 0x00:武器
+    // 0x01:鎧
+    // 0x02:盾
+    // 0x03:兜
+    // 0x04:小手
+    // 0x05:薬/巻物/イベントアイテム
+    // 0x06:その他の装備品
+
+    U8	アラインメント	// 0x02:中立, 0x04:悪, 0x07:全て
+
+    U8	店頭に並ぶか	// 0x00:Yes, 0xFF:No
+
+    U8	スペシャルパワー
+    // 0x01:STR+1
+    // 0x11:忍者に転職
+    // 0x16:最大HP+1
+    // 0x17:パーティーのHPフル
+    //
+    // SCROLL of PAIN: 0x00
+    // SCROLL of AGONY: 0x00
+    // RING of MOVEMENT: 0x00
+    // RING of DISPELLING: 0x00
+    // 全てのSTATUE/KEY/RIBBON: 0x00
+    // その他: 0xFF
+
+    U8	使用/SP発動時に壊れる確率(255分率)
+    U8	壊れた場合に変化するアイテムID
+
+    U48	買値	// Wiz10進表現
+    U8	初期在庫数	// 0xFF:無限
+
+    U8	使用時の効果(魔法ID)	// 0xFF:使用不可
+
+    // -- 0x30 --
+    U8	装備可能な職業	// 上位bitからNLSBTPMF
+
+    S8	ヒーリング
+
+    S8	AC修正値
+
+    S8	STR修正値
+    U8	最低攻撃回数
+    DiceExpr	ダメージダイス
+
+    U8	クリティカルフラグ?	// ARMOR of LORDS, SHURIKENのみ 0xFF, 他は全て 0x00
+
+    U16	タイプ別打撃防御
+    // bit15: 常に0
+    // bit14: 常に0
+    // bit13: 常に0(魔法生物?)
+    // bit12: 昆虫
+    // bit11: 悪魔
+    // bit10: 不死
+    // bit9: 獣人
+    // bit8: 動物
+    // bit7: 竜
+    // bit6: 神話
+    // bit5: 巨人?
+    // bit4: 小人・忍者?
+    // bit3: 盗賊?
+    // bit2: 僧侶?
+    // bit1: 魔術師
+    // bit0: 戦士?
+
+    U8	抵抗フラグ
+    // bit7: ?
+    // bit6: ?
+    // bit5: 吸
+    // bit4: 毒
+    // bit3: ?
+    // bit2: 火
+    // bit1: ?
+    // bit0: ?
+    //
+    // WERDNA'S AMULET: 0xFE
+
+    U16	タイプ別倍打
+    // bit15: 常に0
+    // bit14: 常に0
+    // bit13: 常に0(魔法生物?)
+    // bit12: 常に0(昆虫?)
+    // bit11: 悪魔?
+    // bit10: 不死?
+    // bit9: 獣人
+    // bit8: 常に0(動物?)
+    // bit7: 竜
+    // bit6: 常に0(神話?)
+    // bit5: 常に0(巨人?)
+    // bit4: 常に0(小人・忍者?)
+    // bit3: 常に0(盗賊?)
+    // bit2: 常に0(僧侶?)
+    // bit1: 魔術師
+    // bit0: 常に0(戦士?)
+
+    U8	unknown	// 常に 0
+    U8	unknown	// 常に 0
+}
+
+
+// Size: 0x6F
+struct MonsterData{
+    U8	不確定名単数形_文字列長
+    char[15]	不確定名単数形	// 余白は 0x20 で埋められている
+    U8	不確定名複数形_文字列長
+    char[15]	不確定名複数形	// 余白は 0x20 で埋められている
+    U8	確定名単数形_文字列長
+    char[15]	確定名単数形	// 余白は 0x20 で埋められている
+    U8	確定名複数形_文字列長
+    char[15]	確定名複数形	// 余白は 0x20 で埋められている
+
+    // -- 0x40 --
+    U8	モンスタータイプ
+    // 0x00:戦士, 0x01:魔術師, 0x02:僧侶, 0x03:盗賊, 0x04:小人・忍者(存在しない),
+    // 0x05:巨人, 0x06:神話, 0x07:竜, 0x08:動物, 0x09:獣人,
+    // 0x0A:不死, 0x0B:悪魔, 0x0C:昆虫, 0x0D:魔法生物
+
+    U8	unknown	// 常に 0
+
+    DiceExpr	出現数ダイス
+
+    DiceExpr	HPダイス(ダイス個数=モンスターLVとなる)
+
+    S8	AC
+
+    // 最大攻撃回数はCHIMERAの6
+    U8	攻撃回数
+    DiceExpr[6]	攻撃ごとのダメージダイス
+
+    U8	エナジードレインレベル
+    U8	ヒーリング
+
+    U8	アイテムテーブル(徘徊)
+    U8	アイテムテーブル(玄室)
+
+    // -- 0x60 --
+    U8	後続モンスターID
+    U8	後続モンスター出現確率(255分率)
+
+    U8	MAGE呪文レベル
+    U8	PRIEST呪文レベル
+
+    U8	unknown	// LVL 7 FIGHTERのみ 0x00, 他は全て 0xFF
+
+    U8	ブレス属性	// 0x20:石, 0x10:吸, 0x08:毒, 0x04:冷, 0x02:火
+
+    U8	呪文無効化率(255分率)
+
+    U8	抵抗フラグ
+    // bit7: 常に0
+    // bit6: 呪文(意味を持たない)
+    // bit5: 石(意味を持たない)
+    // bit4: 吸(意味を持たない)
+    // bit3: 毒
+    // bit2: 冷
+    // bit1: 火
+    // bit0: 友好的にならない
+
+    U8	弱点/特殊攻撃フラグ
+    // bit7: 常に0
+    // bit6: 仲間を呼ぶ
+    // bit5: 逃走する
+    // bit4: 弱点:眠
+    // bit3: 特殊:首
+    // bit2: 特殊:麻
+    // bit1: 特殊:毒
+    // bit0: 特殊:石
+
+    U8	unknown	// 常に 0
+    U8	unknown	// 常に 0
+    U8	unknown	// 常に 0
+
+    U24	EXP	// Wiz10進表現
+}
+
+
+// Size: 0x80
+struct CharaData{
+    U8	unknown
+
+    U8	名前_文字列長
+    char[8]	名前	// 余白は 0x20 で埋められている
+
+    U8	種族	// 0:HUMAN, 1:ELF, 2:DWARF, 3:GNOME, 4:HOBBIT
+    U8	職業	// 0:FIG, 1:MAG, 2:PRI, 3:THI, 4:BIS, 5:SAM, 6:LOR, 7:NIN
+    U8	アラインメント	// 0:善, 1:中立, 2:悪
+
+    U8	STRENGTH
+    U8	I.Q.
+    U8	PIETY
+    // -- 0x10 --
+    U8	VITALITY
+    U8	AGILITY
+    U8	LUCK
+
+    U48	GOLD	// Wiz10進表現
+    U48	EXP	// Wiz10進表現
+
+    U16	現在HP	// ビッグエンディアン
+    // -- 0x21 --
+    U16	最大HP	// ビッグエンディアン
+
+    U16	LV	// ビッグエンディアン
+
+    U8	STATUS
+    // 0:OK, 1:ASLEEP, 2:AFRAID, 3:PARALY, 4:STONED,
+    // 5:DEAD, 6:ASHED, 7:LOST, 8:POISON
+
+    S8	年齢
+    U8	週	// 0x34 で +1 歳
+
+    S8	AC
+
+    U8[7]	MAGE呪文現在MP
+    // -- 0x30 --
+    U8[7]	PRIEST呪文最大MP
+    U8[7]	MAGE呪文最大MP
+    U8[7]	PRIEST呪文最大MP
+
+    U8[7]	習得呪文(呪文ID順のビットセット)
+
+    U8[8]	アイテム状態
+    // bit7: 装備
+    // bit6: 
+    // bit5: 不確定名
+    // bit4: 
+    // bit3: 
+    // bit2: 
+    // bit1: 
+    // bit0: 
+
+    U8[8]	アイテムID
+
+    U8	アイテム個数
+
+    U8	unknown
+    U8	unknown
+    U8	unknown
+
+    U8[16]	unknown
+    U8[16]	unknown
+}
+
+
+PRGROM #0
+---------
+
+各種メッセージ、呪文名
+
+
+$BDE5-$BFD8 - Spell name
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+呪文1つ当たり10Byte。余白は 0x20 で埋められている
+
+
+$BFD9-$BFDF - Unknown
+~~~~~~~~~~~~~~~~~~~~~
+
+
+$BFE0-$BFFF - Signature
+~~~~~~~~~~~~~~~~~~~~~~~
+
+
+PRGROM #1
+---------
+
+著作権/スタッフ関連メッセージ
+
+半分以上空き領域
+
+ルーチン $C58B を見るとなんとなくデータの境界がわかる
+
+$8000-$808F - メッセージ格納アドレスの上位Byte
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+$8090-$811F - メッセージ格納アドレスの下位Byte
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+$8120-$81AF - メッセージ関係?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+$81B0-$823F - メッセージ関係?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+$8240-$82CF - メッセージ関係?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+$82D0-$835F - メッセージ関係?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+
+
+
+
+PRGROM #2
+---------
+
+
+
+PRGROM #3
+---------
+
+
+
+PRGROM #4
+---------
+
+アイテムデータ
+マップデータ
+
+$8000 - フロアデータの初期化に関連するルーチンと思われるが未解析
+
+$8100-$9A3F - Item data
+~~~~~~~~~~~~~~~~~~~~~~~
+
+struct ItemData[101]
+
+
+$9A40-$A9DF - マップデータ(壁および扉)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+B1FからB10Fまで400Byteずつ。
+各階は (0,0) から1行ずつ。
+
+$9A40-$9BCF	B1F
+$9BD0-$9D5F	B2F
+...
+
+
+
+$A9E0-$BBFF - マップデータ(マス目)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+階段とかダークゾーンとかの情報と思われる。調査中
+1階層400Byteと思われるが、階層の間に何か別のデータ(64Byte)が入ってるようだ。
+とりあえず $BA30 が B10F のデータの開始位置と思われる
+
+値の意味:
+  調査中だが、どうも階によって意味が変わるものがあるっぽい
+  共通なのは以下のものくらいか?
+
+  0x80: 玄室とみなされる領域
+  0x40: ダークゾーン
+  0x00: 普通のマス目
+
+
+$BFB3- - ジャンプテーブル
+
+
+PRGROM #5
+---------
+
+モンスターデータ
+デフォルトキャラデータ
+
+全てデータ領域?
+
+$8000-$B27F - Monster data
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+struct{
+    struct MonsterData
+    U8	// HIGHWAYMAN の直後のみ 3, 他は全て 0
+    char[16]	// 全て 0xFF で埋められている
+}[101]
+
+
+
+$B300-$B5FF - Default character data
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+struct CharaData[6]
+
+
+PRGROM #6
+---------
+
+OPその他のメッセージが少し
+
+$9CE9 でボーナスポイントを決定している
+
+$9D86- - ジャンプテーブル($9D79 参照)
+
+$9F0F- - ジャンプテーブル
+
+$A09F- - ジャンプテーブル
+
+$A610- - ジャンプテーブル($A528 参照)
+
+$AA41 - キャラデータ更新処理と思われる
+
+$AB8C - 装備アイテムの効果を付加するルーチン
+
+$B173- - ジャンプテーブル($B0AF 参照)
+
+$B2BC- - ジャンプテーブル
+
+$B8D7 - 打撃攻撃ルーチンの下請け
+
+$B8FE - 打撃攻撃ルーチン
+
+
+PRGROM #7
+---------
+
+$C003 - RESET割り込みルーチン
+
+$C069 - NMI割り込みルーチン
+
+$C141-$C144 - 各方向キーに対応するビットフラグ
+
+$C145 - 乱数値をインクリメントしつつNMIを待つルーチン(その他の処理も行うが)
+
+$C193 - MMC1制御レジスタに値を書き込むルーチン
+
+$C19D - low CHR-ROM 切り替えルーチン
+
+$C1A7 - high CHR-ROM 切り替えルーチン
+
+$C1B1 - PRG-ROM 切り替えルーチン($C1B3, $C1B5 がエントリポイントの場合も)
+
+$C1C9 - IRQ/BRK割り込みルーチン(単にRTIするだけ)
+
+$C2A9 - 乱数ルーチンの下請け(乱数値に依存した値を返す)
+
+$C58B - メッセージ表示ルーチン
+
+$C7A6 - メッセージ表示ルーチン(フォーマット機能付き?)
+
+$CD1A - ダイスを振るルーチン
+
+$CD4B - [0, n) の範囲の乱数を発生するルーチン
+
+$CF2A - モンスターデータを $7E03 以下にロードする処理と思われる
+
+$CFA9 - アイテムデータを $0500 以下にロードするルーチン
+
+$D29A - 移動時に座標を更新するルーチンと思われる
+
+$D2B9-$D2CA - ジャンプテーブル($D19B 参照)
+
+$D70E- - ジャンプテーブル($D149 参照)
+
+$DC97-$DCB6 - タイプ別倍打判定用フラグデータ
+
+$DCB7 - フロアデータ初期化処理?
+
+$E559- - ジャンプテーブル
+
+$E57F - ディスペル成功判定ルーチン
+
+$E8BB-$E8C2 - ジャンプテーブル
+
+$EBB7 - 宝箱の罠処理ルーチン
+
+$EBF2-$EC01 - 宝箱の罠に対応したジャンプテーブル
+
+$EC46 - CROSSBOW BOLTルーチン
+$EC50 - EXPLODING BOXルーチン
+$EC77 - STUNNERルーチン
+$EC89 - POISON NEEDLEルーチン
+$EC92 - GAS BOMBルーチン
+$ECAB - TELEPORTERルーチン
+$ECBC - MAGE BLASTERルーチン
+$ECDA - PRIEST BLASTERルーチン
+$ECF8 - ALARMルーチン
+
+$EDA8-$EDAA - 各アラインメントの職業制限
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+善、中立、悪の順に就ける職業のビットセットが1Byteずつ。
+
+
+$EDAB-$EDDA - 各職業の必要特性値
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+STR, IQ, PIE, VIT, AGI, LUC の順に8Byte(FIG, MAG, PRI, THI, BIS, SAM, LOR,
+NIN)ずつ
+
+
+$EDDB-$EE02 - 各種族固有の特性値
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+HUM, ELF, DWA, GNO, HOB の順に8Byteずつ。
+先頭6Byteが STR, IQ, PIE, VIT, AGI, LUC。残り2Byteは 0xFF で埋められている。
+
+
+$F567- - ジャンプテーブル($F461 参照)
+
+$F765- - ジャンプテーブル
+
+

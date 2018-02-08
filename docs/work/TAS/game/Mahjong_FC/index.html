@@ -1,0 +1,76 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title>麻雀 (FC) TAS</title>
+</head>
+
+<body>
+
+<h1>麻雀 (FC) TAS</h1>
+
+<p>とりあえず天和は出るのかどうか検証してみました。ついでに地和/人和も。</p>
+
+<p><a href="Mahjong-tenho.zip">fm2ファイル</a></p>
+<iframe width="312" height="176" src="http://ext.nicovideo.jp/thumb/sm14430069" scrolling="no" style="border:solid 1px #CCC;" frameborder="0"><a href="http://www.nicovideo.jp/watch/sm14430069">【ニコニコ動画】FC 麻雀 TASさんの天地人麻雀</a></iframe>
+
+<p>ただし、このムービーは実機では再現できません。FCEUXはタイミング制御が実機
+とは微妙に異なるらしく、乱数の位置がわずかにずれるためです。ただし乱数の位置
+が違うだけなので、正しく乱数調整すれば理論上は実機でも同じことが可能です。</p>
+
+<p>調査のために和了/テンパイ判定ツール
+<a href="/appsouko/work/majtools/">majtools</a>を作成しました。</p>
+
+
+<h2>メモ</h2>
+
+<p>乱数は256bit LFSRで、周期は32767です。循環が始まる前に237個の乱数が存在し、
+この乱数で配牌を生成すると非常に良い手になりますが、実際は配牌の段階でそれら
+の乱数は通り過ぎてしまっているので利用することはできないようです。また、LFSR
+以外のところでちょくちょく乱数に変更が加えられているようですが、結局はNMI待
+ち中の乱数更新処理で循環系列内の値に戻ってしまうようなので、配牌に関しては乱
+数表のみを参照すれば事足りると思われます。</p>
+
+<p>COMが和了るか、もしくは流局したときにカウンタ $50 がインクリメントされま
+す。この値が2以上だと配牌処理の内容が変化し、全体的に好配牌になります。この
+状態でないと天和は出ないようです。</p>
+
+<p>$50 &gt;= 2 のとき、天和の確率は 4/32767, 地和テンパイの確率は 67/32767
+となるようです。また、$50 &lt; 2 のとき、地和テンパイの確率は 9/32767 となる
+ようです。</p>
+
+<p>コードを見る限り、本当は初級ならば $50 &gt;= 1 で配牌を変化させたかったよ
+うですが、(おそらくコーディングミスにより)実際にはそうなっていません。</p>
+
+
+<h2>資料</h2>
+
+<ul>
+  <li><a href="memory.txt">メモリマップ</a></li>
+  <li><a href="rom.txt">ROMマップ</a></li>
+  <li><a href="rand.cpp">乱数シミュレータ</a></li>
+  <li><a href="rand.zip">乱数表</a></li>
+  <li><a href="hand.cpp">乱数と手牌の対応表生成ツール</a></li>
+  <li>
+    <a href="hand.zip">手牌表</a>
+    (<a href="/appsouko/work/majtools/">majtools</a>で和了/テンパイ判定済)
+  </li>
+  <li>
+    <a href="hand-convert.py">手牌をmajtools形式へ変換するPythonスクリプト</a>
+    (hand.cpp の出力結果を cut -f2 したものを食わせること)
+  </li>
+  <li><a href="Mahjong-info.lua">大まかな乱数位置を表示するLuaスクリプト</a> (かなり重い)</li>
+  <li><a href="Mahjong-setrand.lua">配牌時の乱数を任意に設定するLuaスクリプト</a> (on_exec_D2BF() を書き換えること)</li>
+  <li>
+    <a href="http://www.mediafire.com/file/6n96qpa53y6ggr4/Mahjong-trace.7z">FCEUX/VirtuaNESのトレースログ</a>
+    (<a href="http://d.hatena.ne.jp/taotao1942/20110513/1305292332">関連記事</a>参照)
+  </li>
+</ul>
+
+
+<hr>
+
+<p><a href="../../">Back</a></p>
+
+</body>
+</html>

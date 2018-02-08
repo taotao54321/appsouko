@@ -1,0 +1,10 @@
+@rom_name ダブルムーン伝説
+@rom_md5 38472922f5520c1a62cef0b291a0b9a9
+@public 1
+
+一通りプレイ
+以下のムービーを再生:
+  * 普通にクリア(ブラックナイト生存ED)
+    http://www6.atpages.jp/appsouko/work/GameMovie/pub/DoubleMoon-walkthrough.zip
+  * ガルガンダまでのtestrun
+    http://dehacked.2y.net/microstorage.php/info/60841049/DoubleMoon-test.fm2

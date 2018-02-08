@@ -1,0 +1,9 @@
+Summary: td6502 - 6502 disassembler
+Name: td6502
+Author: TaoTao
+Homepage: http://www6.atpages.jp/appsouko/work/td6502/
+
+精度を追求した6502逆アセンブラ。
+recursive traversal法によるコード/データ領域の判別を行う。
+設定ファイルによるコード/データ領域の明示的指定も可能(FCEUX CDLからの変換ス
+クリプト付属)。

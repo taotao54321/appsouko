@@ -1,0 +1,290 @@
+<html>
+<head>
+  <title>PRGROM CDL info</title>
+  <style type="text/css">
+  <!--
+  .code{
+      background-color: #F0E68C
+  }
+  .pcm{
+      background-color: #DDA0DD
+  }
+  .data{
+      background-color: #AFEEEE
+  }
+  .unknown{
+      background-color: #C0C0C0
+  }
+  -->
+  </style>
+</head>
+<body>
+
+<h1>PRGROM CDL info</h1>
+
+<table border="1">
+  <tr><th>address</th><th>type</th><th>size</th><th>note</th></tr>
+  <tr class="code"><td>$C000-$C0D1</td><td>code</td><td>0xD2</td><td></td></tr>
+  <tr class="unknown"><td>$C0D2-$C0D4</td><td>unknown</td><td>0x03</td><td></td></tr>
+  <tr class="code"><td>$C0D5-$C41C</td><td>code</td><td>0x348</td><td></td></tr>
+  <tr class="data"><td>$C41D-$C456</td><td>data</td><td>0x3A</td><td></td></tr>
+  <tr class="unknown"><td>$C457</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$C458</td><td>data</td><td>0x01</td><td></td></tr>
+  <tr class="unknown"><td>$C459</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$C45A</td><td>data</td><td>0x01</td><td></td></tr>
+  <tr class="unknown"><td>$C45B-$C45C</td><td>unknown</td><td>0x02</td><td></td></tr>
+  <tr class="data"><td>$C45D-$C496</td><td>data</td><td>0x3A</td><td></td></tr>
+  <tr class="unknown"><td>$C497</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$C498</td><td>data</td><td>0x01</td><td></td></tr>
+  <tr class="unknown"><td>$C499</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$C49A</td><td>data</td><td>0x01</td><td></td></tr>
+  <tr class="unknown"><td>$C49B-$C49C</td><td>unknown</td><td>0x02</td><td></td></tr>
+  <tr class="data"><td>$C49D-$C4C1</td><td>data</td><td>0x25</td><td></td></tr>
+  <tr class="unknown"><td>$C4C2</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$C4C3-$C4D6</td><td>data</td><td>0x14</td><td></td></tr>
+  <tr class="unknown"><td>$C4D7</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$C4D8</td><td>data</td><td>0x01</td><td></td></tr>
+  <tr class="unknown"><td>$C4D9</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$C4DA</td><td>data</td><td>0x01</td><td></td></tr>
+  <tr class="unknown"><td>$C4DB-$C4DC</td><td>unknown</td><td>0x02</td><td></td></tr>
+  <tr class="data"><td>$C4DD-$C501</td><td>data</td><td>0x25</td><td></td></tr>
+  <tr class="unknown"><td>$C502</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$C503-$C516</td><td>data</td><td>0x14</td><td></td></tr>
+  <tr class="unknown"><td>$C517</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$C518</td><td>data</td><td>0x01</td><td></td></tr>
+  <tr class="unknown"><td>$C519</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$C51A</td><td>data</td><td>0x01</td><td></td></tr>
+  <tr class="unknown"><td>$C51B-$C51C</td><td>unknown</td><td>0x02</td><td></td></tr>
+  <tr class="data"><td>$C51D-$C542</td><td>data</td><td>0x26</td><td></td></tr>
+  <tr class="code"><td>$C543-$C7CA</td><td>code</td><td>0x288</td><td></td></tr>
+  <tr class="data"><td>$C7CB-$C7DE</td><td>data</td><td>0x14</td><td></td></tr>
+  <tr class="code"><td>$C7DF-$C7FE</td><td>code</td><td>0x20</td><td></td></tr>
+  <tr class="data"><td>$C7FF-$C905</td><td>data</td><td>0x107</td><td></td></tr>
+  <tr class="code"><td>$C906-$C9F1</td><td>code</td><td>0xEC</td><td></td></tr>
+  <tr class="data"><td>$C9F2-$C9F6</td><td>data</td><td>0x05</td><td></td></tr>
+  <tr class="code"><td>$C9F7-$C9FF</td><td>code</td><td>0x09</td><td></td></tr>
+  <tr class="unknown"><td>$CA00</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="code"><td>$CA01-$CB92</td><td>code</td><td>0x192</td><td></td></tr>
+  <tr class="data"><td>$CB93-$CBC0</td><td>data</td><td>0x2E</td><td></td></tr>
+  <tr class="data"><td>$CBC1-$CC74</td><td>data</td><td>0xB4</td><td>data indirect</td></tr>
+  <tr class="code"><td>$CC75-$CCDC</td><td>code</td><td>0x68</td><td></td></tr>
+  <tr class="unknown"><td>$CCDD-$CCDE</td><td>unknown</td><td>0x02</td><td></td></tr>
+  <tr class="code"><td>$CCDF-$CD57</td><td>code</td><td>0x79</td><td></td></tr>
+  <tr class="unknown"><td>$CD58-$CD5D</td><td>unknown</td><td>0x06</td><td></td></tr>
+  <tr class="code"><td>$CD5E-$CDDF</td><td>code</td><td>0x82</td><td></td></tr>
+  <tr class="unknown"><td>$CDE0-$CDE1</td><td>unknown</td><td>0x02</td><td></td></tr>
+  <tr class="code"><td>$CDE2-$CE3F</td><td>code</td><td>0x5E</td><td></td></tr>
+  <tr class="unknown"><td>$CE40-$CE46</td><td>unknown</td><td>0x07</td><td></td></tr>
+  <tr class="code"><td>$CE47-$CF5C</td><td>code</td><td>0x116</td><td></td></tr>
+  <tr class="data"><td>$CF5D-$CF6B</td><td>data</td><td>0x0F</td><td></td></tr>
+  <tr class="code"><td>$CF6C-$D0E9</td><td>code</td><td>0x17E</td><td></td></tr>
+  <tr class="data"><td>$D0EA-$D0F4</td><td>data</td><td>0x0B</td><td></td></tr>
+  <tr class="code"><td>$D0F5-$D114</td><td>code</td><td>0x20</td><td></td></tr>
+  <tr class="data"><td>$D115-$D11A</td><td>data</td><td>0x06</td><td></td></tr>
+  <tr class="code"><td>$D11B-$D40A</td><td>code</td><td>0x2F0</td><td></td></tr>
+  <tr class="unknown"><td>$D40B-$D40C</td><td>unknown</td><td>0x02</td><td></td></tr>
+  <tr class="code"><td>$D40D-$D41C</td><td>code</td><td>0x10</td><td></td></tr>
+  <tr class="unknown"><td>$D41D-$D41E</td><td>unknown</td><td>0x02</td><td></td></tr>
+  <tr class="code"><td>$D41F-$D695</td><td>code</td><td>0x277</td><td></td></tr>
+  <tr class="unknown"><td>$D696-$D697</td><td>unknown</td><td>0x02</td><td></td></tr>
+  <tr class="code"><td>$D698-$D6FE</td><td>code</td><td>0x67</td><td></td></tr>
+  <tr class="unknown"><td>$D6FF-$D700</td><td>unknown</td><td>0x02</td><td></td></tr>
+  <tr class="code"><td>$D701-$D8D1</td><td>code</td><td>0x1D1</td><td></td></tr>
+  <tr class="data"><td>$D8D2-$D8F6</td><td>data</td><td>0x25</td><td></td></tr>
+  <tr class="unknown"><td>$D8F7</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$D8F8-$DA5B</td><td>data</td><td>0x164</td><td></td></tr>
+  <tr class="data"><td>$DA5C-$DD0B</td><td>data</td><td>0x2B0</td><td>data indirect</td></tr>
+  <tr class="data"><td>$DD0C-$DD13</td><td>data</td><td>0x08</td><td></td></tr>
+  <tr class="unknown"><td>$DD14</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$DD15-$DD19</td><td>data</td><td>0x05</td><td></td></tr>
+  <tr class="unknown"><td>$DD1A-$DD1B</td><td>unknown</td><td>0x02</td><td></td></tr>
+  <tr class="data"><td>$DD1C-$DD20</td><td>data</td><td>0x05</td><td></td></tr>
+  <tr class="unknown"><td>$DD21-$DD22</td><td>unknown</td><td>0x02</td><td></td></tr>
+  <tr class="data"><td>$DD23-$DD27</td><td>data</td><td>0x05</td><td></td></tr>
+  <tr class="unknown"><td>$DD28-$DD29</td><td>unknown</td><td>0x02</td><td></td></tr>
+  <tr class="data"><td>$DD2A-$DD2E</td><td>data</td><td>0x05</td><td></td></tr>
+  <tr class="unknown"><td>$DD2F</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$DD30-$DD83</td><td>data</td><td>0x54</td><td></td></tr>
+  <tr class="unknown"><td>$DD84</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$DD85-$DD89</td><td>data</td><td>0x05</td><td></td></tr>
+  <tr class="unknown"><td>$DD8A-$DD8B</td><td>unknown</td><td>0x02</td><td></td></tr>
+  <tr class="data"><td>$DD8C-$DD90</td><td>data</td><td>0x05</td><td></td></tr>
+  <tr class="unknown"><td>$DD91-$DD92</td><td>unknown</td><td>0x02</td><td></td></tr>
+  <tr class="data"><td>$DD93-$DD97</td><td>data</td><td>0x05</td><td></td></tr>
+  <tr class="unknown"><td>$DD98-$DD99</td><td>unknown</td><td>0x02</td><td></td></tr>
+  <tr class="data"><td>$DD9A-$DD9E</td><td>data</td><td>0x05</td><td></td></tr>
+  <tr class="unknown"><td>$DD9F</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$DDA0-$DDF3</td><td>data</td><td>0x54</td><td></td></tr>
+  <tr class="unknown"><td>$DDF4</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$DDF5-$DDF9</td><td>data</td><td>0x05</td><td></td></tr>
+  <tr class="unknown"><td>$DDFA-$DDFB</td><td>unknown</td><td>0x02</td><td></td></tr>
+  <tr class="data"><td>$DDFC-$DE00</td><td>data</td><td>0x05</td><td></td></tr>
+  <tr class="unknown"><td>$DE01-$DE02</td><td>unknown</td><td>0x02</td><td></td></tr>
+  <tr class="data"><td>$DE03-$DE07</td><td>data</td><td>0x05</td><td></td></tr>
+  <tr class="unknown"><td>$DE08-$DE09</td><td>unknown</td><td>0x02</td><td></td></tr>
+  <tr class="data"><td>$DE0A-$DE0E</td><td>data</td><td>0x05</td><td></td></tr>
+  <tr class="unknown"><td>$DE0F</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$DE10-$DE6A</td><td>data</td><td>0x5B</td><td></td></tr>
+  <tr class="data"><td>$DE6B-$DE6D</td><td>data</td><td>0x03</td><td>data indirect</td></tr>
+  <tr class="data"><td>$DE6E-$DE71</td><td>data</td><td>0x04</td><td></td></tr>
+  <tr class="data"><td>$DE72-$DE74</td><td>data</td><td>0x03</td><td>data indirect</td></tr>
+  <tr class="data"><td>$DE75-$DE78</td><td>data</td><td>0x04</td><td></td></tr>
+  <tr class="data"><td>$DE79-$DE7B</td><td>data</td><td>0x03</td><td>data indirect</td></tr>
+  <tr class="data"><td>$DE7C-$DE87</td><td>data</td><td>0x0C</td><td></td></tr>
+  <tr class="data"><td>$DE88</td><td>data</td><td>0x01</td><td>data indirect</td></tr>
+  <tr class="data"><td>$DE89-$DE95</td><td>data</td><td>0x0D</td><td></td></tr>
+  <tr class="data"><td>$DE96-$DE97</td><td>data</td><td>0x02</td><td>data indirect</td></tr>
+  <tr class="data"><td>$DE98</td><td>data</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$DE99-$DE9A</td><td>data</td><td>0x02</td><td>data indirect</td></tr>
+  <tr class="data"><td>$DE9B</td><td>data</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$DE9C-$DFFF</td><td>data</td><td>0x164</td><td>data indirect</td></tr>
+  <tr class="data"><td>$E000-$E14D</td><td>data</td><td>0x14E</td><td>data indirect</td></tr>
+  <tr class="unknown"><td>$E14E-$E151</td><td>unknown</td><td>0x04</td><td></td></tr>
+  <tr class="data"><td>$E152-$E181</td><td>data</td><td>0x30</td><td>data indirect</td></tr>
+  <tr class="unknown"><td>$E182-$E185</td><td>unknown</td><td>0x04</td><td></td></tr>
+  <tr class="data"><td>$E186-$E1DD</td><td>data</td><td>0x58</td><td>data indirect</td></tr>
+  <tr class="code"><td>$E1DE-$E448</td><td>code</td><td>0x26B</td><td></td></tr>
+  <tr class="data"><td>$E449-$E53D</td><td>data</td><td>0xF5</td><td></td></tr>
+  <tr class="unknown"><td>$E53E-$E540</td><td>unknown</td><td>0x03</td><td></td></tr>
+  <tr class="data"><td>$E541-$E542</td><td>data</td><td>0x02</td><td></td></tr>
+  <tr class="unknown"><td>$E543</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$E544-$E568</td><td>data</td><td>0x25</td><td></td></tr>
+  <tr class="unknown"><td>$E569-$E56C</td><td>unknown</td><td>0x04</td><td></td></tr>
+  <tr class="data"><td>$E56D-$E5B7</td><td>data</td><td>0x4B</td><td></td></tr>
+  <tr class="unknown"><td>$E5B8</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$E5B9-$E5BD</td><td>data</td><td>0x05</td><td></td></tr>
+  <tr class="unknown"><td>$E5BE</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$E5BF-$E5C2</td><td>data</td><td>0x04</td><td></td></tr>
+  <tr class="unknown"><td>$E5C3</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$E5C4-$E5C6</td><td>data</td><td>0x03</td><td></td></tr>
+  <tr class="unknown"><td>$E5C7</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$E5C8-$E5CD</td><td>data</td><td>0x06</td><td></td></tr>
+  <tr class="unknown"><td>$E5CE</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$E5CF-$E5D2</td><td>data</td><td>0x04</td><td></td></tr>
+  <tr class="unknown"><td>$E5D3</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$E5D4-$E5D5</td><td>data</td><td>0x02</td><td></td></tr>
+  <tr class="unknown"><td>$E5D6</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$E5D7-$E5DA</td><td>data</td><td>0x04</td><td></td></tr>
+  <tr class="unknown"><td>$E5DB</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$E5DC</td><td>data</td><td>0x01</td><td></td></tr>
+  <tr class="unknown"><td>$E5DD</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$E5DE-$E5E1</td><td>data</td><td>0x04</td><td></td></tr>
+  <tr class="unknown"><td>$E5E2</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$E5E3</td><td>data</td><td>0x01</td><td></td></tr>
+  <tr class="unknown"><td>$E5E4</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$E5E5</td><td>data</td><td>0x01</td><td></td></tr>
+  <tr class="unknown"><td>$E5E6</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$E5E7</td><td>data</td><td>0x01</td><td></td></tr>
+  <tr class="unknown"><td>$E5E8</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$E5E9</td><td>data</td><td>0x01</td><td></td></tr>
+  <tr class="unknown"><td>$E5EA</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$E5EB</td><td>data</td><td>0x01</td><td></td></tr>
+  <tr class="unknown"><td>$E5EC</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$E5ED</td><td>data</td><td>0x01</td><td></td></tr>
+  <tr class="unknown"><td>$E5EE</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$E5EF</td><td>data</td><td>0x01</td><td></td></tr>
+  <tr class="unknown"><td>$E5F0</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$E5F1</td><td>data</td><td>0x01</td><td></td></tr>
+  <tr class="unknown"><td>$E5F2</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$E5F3</td><td>data</td><td>0x01</td><td></td></tr>
+  <tr class="unknown"><td>$E5F4</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$E5F5</td><td>data</td><td>0x01</td><td></td></tr>
+  <tr class="unknown"><td>$E5F6</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$E5F7</td><td>data</td><td>0x01</td><td></td></tr>
+  <tr class="unknown"><td>$E5F8</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$E5F9</td><td>data</td><td>0x01</td><td></td></tr>
+  <tr class="unknown"><td>$E5FA</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$E5FB</td><td>data</td><td>0x01</td><td></td></tr>
+  <tr class="unknown"><td>$E5FC</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$E5FD</td><td>data</td><td>0x01</td><td></td></tr>
+  <tr class="unknown"><td>$E5FE</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$E5FF</td><td>data</td><td>0x01</td><td></td></tr>
+  <tr class="unknown"><td>$E600</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$E601</td><td>data</td><td>0x01</td><td></td></tr>
+  <tr class="unknown"><td>$E602</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$E603</td><td>data</td><td>0x01</td><td></td></tr>
+  <tr class="unknown"><td>$E604</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$E605</td><td>data</td><td>0x01</td><td></td></tr>
+  <tr class="unknown"><td>$E606</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$E607</td><td>data</td><td>0x01</td><td></td></tr>
+  <tr class="unknown"><td>$E608</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$E609</td><td>data</td><td>0x01</td><td></td></tr>
+  <tr class="code"><td>$E60A-$E86C</td><td>code</td><td>0x263</td><td></td></tr>
+  <tr class="data"><td>$E86D-$E956</td><td>data</td><td>0xEA</td><td></td></tr>
+  <tr class="code"><td>$E957-$EB57</td><td>code</td><td>0x201</td><td></td></tr>
+  <tr class="data"><td>$EB58-$EB5B</td><td>data</td><td>0x04</td><td></td></tr>
+  <tr class="code"><td>$EB5C-$EC16</td><td>code</td><td>0xBB</td><td></td></tr>
+  <tr class="unknown"><td>$EC17-$EC18</td><td>unknown</td><td>0x02</td><td></td></tr>
+  <tr class="code"><td>$EC19-$ECC4</td><td>code</td><td>0xAC</td><td></td></tr>
+  <tr class="unknown"><td>$ECC5-$ECC6</td><td>unknown</td><td>0x02</td><td></td></tr>
+  <tr class="code"><td>$ECC7</td><td>code</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$ECC8-$ECDB</td><td>data</td><td>0x14</td><td></td></tr>
+  <tr class="data"><td>$ECDC-$EE65</td><td>data</td><td>0x18A</td><td>data indirect</td></tr>
+  <tr class="data"><td>$EE66-$EE79</td><td>data</td><td>0x14</td><td></td></tr>
+  <tr class="data"><td>$EE7A-$F05F</td><td>data</td><td>0x1E6</td><td>data indirect</td></tr>
+  <tr class="data"><td>$F060-$F068</td><td>data</td><td>0x09</td><td></td></tr>
+  <tr class="unknown"><td>$F069</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$F06A-$F072</td><td>data</td><td>0x09</td><td></td></tr>
+  <tr class="unknown"><td>$F073</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$F074-$F07C</td><td>data</td><td>0x09</td><td></td></tr>
+  <tr class="unknown"><td>$F07D</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$F07E-$F086</td><td>data</td><td>0x09</td><td></td></tr>
+  <tr class="unknown"><td>$F087</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="code"><td>$F088-$F0D7</td><td>code</td><td>0x50</td><td></td></tr>
+  <tr class="data"><td>$F0D8-$F0EB</td><td>data</td><td>0x14</td><td></td></tr>
+  <tr class="data"><td>$F0EC-$F253</td><td>data</td><td>0x168</td><td>data indirect</td></tr>
+  <tr class="code"><td>$F254-$F295</td><td>code</td><td>0x42</td><td></td></tr>
+  <tr class="data"><td>$F296-$F2AD</td><td>data</td><td>0x18</td><td></td></tr>
+  <tr class="data"><td>$F2AE-$F36D</td><td>data</td><td>0xC0</td><td>data indirect</td></tr>
+  <tr class="code"><td>$F36E-$F436</td><td>code</td><td>0xC9</td><td></td></tr>
+  <tr class="unknown"><td>$F437-$F43E</td><td>unknown</td><td>0x08</td><td></td></tr>
+  <tr class="code"><td>$F43F-$F4DE</td><td>code</td><td>0xA0</td><td></td></tr>
+  <tr class="data"><td>$F4DF-$F4E7</td><td>data</td><td>0x09</td><td></td></tr>
+  <tr class="unknown"><td>$F4E8</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$F4E9-$F4F1</td><td>data</td><td>0x09</td><td></td></tr>
+  <tr class="unknown"><td>$F4F2</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$F4F3-$F504</td><td>data</td><td>0x12</td><td></td></tr>
+  <tr class="code"><td>$F505-$F580</td><td>code</td><td>0x7C</td><td></td></tr>
+  <tr class="unknown"><td>$F581-$F582</td><td>unknown</td><td>0x02</td><td></td></tr>
+  <tr class="code"><td>$F583-$F5C1</td><td>code</td><td>0x3F</td><td></td></tr>
+  <tr class="unknown"><td>$F5C2-$F5CF</td><td>unknown</td><td>0x0E</td><td></td></tr>
+  <tr class="code"><td>$F5D0-$F661</td><td>code</td><td>0x92</td><td></td></tr>
+  <tr class="unknown"><td>$F662</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="code"><td>$F663-$F675</td><td>code</td><td>0x13</td><td></td></tr>
+  <tr class="unknown"><td>$F676-$F67B</td><td>unknown</td><td>0x06</td><td></td></tr>
+  <tr class="code"><td>$F67C-$F67E</td><td>code</td><td>0x03</td><td></td></tr>
+  <tr class="data"><td>$F67F-$F6EA</td><td>data</td><td>0x6C</td><td>data indirect</td></tr>
+  <tr class="unknown"><td>$F6EB</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$F6EC-$F81C</td><td>data</td><td>0x131</td><td>data indirect</td></tr>
+  <tr class="unknown"><td>$F81D</td><td>unknown</td><td>0x01</td><td></td></tr>
+  <tr class="data"><td>$F81E-$FAE7</td><td>data</td><td>0x2CA</td><td>data indirect</td></tr>
+  <tr class="code"><td>$FAE8-$FC2D</td><td>code</td><td>0x146</td><td></td></tr>
+  <tr class="data"><td>$FC2E-$FCF7</td><td>data</td><td>0xCA</td><td></td></tr>
+  <tr class="unknown"><td>$FCF8-$FCFD</td><td>unknown</td><td>0x06</td><td></td></tr>
+  <tr class="data"><td>$FCFE-$FD4D</td><td>data</td><td>0x50</td><td></td></tr>
+  <tr class="unknown"><td>$FD4E-$FD67</td><td>unknown</td><td>0x1A</td><td></td></tr>
+  <tr class="data"><td>$FD68-$FD6F</td><td>data</td><td>0x08</td><td></td></tr>
+  <tr class="unknown"><td>$FD70-$FD71</td><td>unknown</td><td>0x02</td><td></td></tr>
+  <tr class="data"><td>$FD72-$FD73</td><td>data</td><td>0x02</td><td></td></tr>
+  <tr class="unknown"><td>$FD74-$FD75</td><td>unknown</td><td>0x02</td><td></td></tr>
+  <tr class="data"><td>$FD76-$FD99</td><td>data</td><td>0x24</td><td></td></tr>
+  <tr class="unknown"><td>$FD9A-$FD9F</td><td>unknown</td><td>0x06</td><td></td></tr>
+  <tr class="data"><td>$FDA0-$FDA7</td><td>data</td><td>0x08</td><td></td></tr>
+  <tr class="unknown"><td>$FDA8-$FDAD</td><td>unknown</td><td>0x06</td><td></td></tr>
+  <tr class="data"><td>$FDAE-$FDAF</td><td>data</td><td>0x02</td><td></td></tr>
+  <tr class="unknown"><td>$FDB0-$FDC5</td><td>unknown</td><td>0x16</td><td></td></tr>
+  <tr class="data"><td>$FDC6-$FDC7</td><td>data</td><td>0x02</td><td></td></tr>
+  <tr class="code"><td>$FDC8-$FE4C</td><td>code</td><td>0x85</td><td></td></tr>
+  <tr class="data"><td>$FE4D-$FE8D</td><td>data</td><td>0x41</td><td></td></tr>
+  <tr class="unknown"><td>$FE8E-$FF07</td><td>unknown</td><td>0x7A</td><td></td></tr>
+  <tr class="code"><td>$FF08-$FF0B</td><td>code</td><td>0x04</td><td></td></tr>
+  <tr class="data"><td>$FF0C-$FF13</td><td>data</td><td>0x08</td><td></td></tr>
+  <tr class="code"><td>$FF14-$FF9A</td><td>code</td><td>0x87</td><td></td></tr>
+  <tr class="data"><td>$FF9B-$FFE7</td><td>data</td><td>0x4D</td><td></td></tr>
+  <tr class="code"><td>$FFE8-$FFF9</td><td>code</td><td>0x12</td><td><span class="data">data</span></td></tr>
+  <tr class="data"><td>$FFFA-$FFFD</td><td>data</td><td>0x04</td><td></td></tr>
+  <tr class="unknown"><td>$FFFE-$FFFF</td><td>unknown</td><td>0x02</td><td></td></tr>
+</table>
+
+</body>
+</html>

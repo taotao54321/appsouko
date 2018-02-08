@@ -1,0 +1,6 @@
+@rom_name スーパーマリオブラザーズ (PRG 0)
+@rom_md5 8e3630186e35d477231bf8fd50e54cdd
+@public 1
+
+一通りプレイ
+TASVideosの各種ムービーを再生

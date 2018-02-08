@@ -1,0 +1,9 @@
+@rom_name エイセス・アイアンイーグル3
+@rom_md5 e7c452e6b5bb11eb08b0a8796613bcdd
+@public 1
+
+全面クリア
+チートモード技実行
+
+チートモード技についてはGameFAQs参照
+  http://www.gamefaqs.com/nes/587742-ultimate-air-combat

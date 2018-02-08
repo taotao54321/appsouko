@@ -1,0 +1,40 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Wizardry(NES) 解析 - アイテム鑑定</title>
+</head>
+
+<body>
+
+<h1>Wizardry(NES) 解析 - アイテム鑑定</h1>
+
+<p>BISHOPのIDENTIFYコマンドによるアイテム鑑定について。</p>
+
+<p>IDENTIFY成功率はキャラのLVに依存する。また、呪われたアイテムのIDENTIFYに
+失敗した場合はそのアイテムを強制的に装備させられてしまう可能性がある(確率は
+キャラのLVに依存する)。</p>
+
+<p>IDENTIFY成功率は以下の通り:</p>
+<ul>
+  <li>LV &gt;= 18 の場合、必ず成功する</li>
+  <li>LV &lt; 18 の場合、(10 + 5*LV) / 100</li>
+</ul>
+
+<p>呪いアイテムのIDENTIFY失敗時の強制装備確率は以下の通り:</p>
+<ul>
+  <li>LV &gt;= 12 の場合、装備させられることはない</li>
+  <li>LV &lt; 12 の場合、(35 - 3*LV) / 100</li>
+</ul>
+
+<p>なお、呪いアイテムのIDENTIFYに失敗して強制装備が発生し、かつBISHOPがその
+アイテムを装備できない場合、そのアイテムは「装備していないが、呪われている」
+状態となる。この状態のアイテムはACなどには影響を与えず、同一部位に他のアイテ
+ムを装備することもできるが、TRADEやDROPなどで手放すことはできない。</p>
+
+
+<hr>
+
+<p><a href="./">Back</a></p>
+
+</body>
+</html>

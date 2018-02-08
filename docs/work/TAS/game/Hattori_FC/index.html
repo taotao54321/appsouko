@@ -1,0 +1,46 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title>忍者ハットリくん (FC) TAS</title>
+</head>
+
+<body>
+
+<h1>忍者ハットリくん (FC) TAS</h1>
+
+<p>Takanawa氏の動画に触発されてチクワアタックをやってみました。一応パーフェ
+クトで232本取りましたが、ちゃんと解析してないのでチクワの本数自体は理論値な
+のかどうかわかりません。</p>
+
+<p><a href="Hattori-chikuwa.zip">fm2ファイル</a></p>
+<iframe width="312" height="176" src="http://ext.nicovideo.jp/thumb/sm15502212" scrolling="no" style="border:solid 1px #CCC;" frameborder="0"><a href="http://www.nicovideo.jp/watch/sm15502212">【ニコニコ動画】[TAS] 忍者ハットリくん LEVEL1 チクワアタック 232本 (パーフェクト)</a></iframe>
+
+<p>Takanawa氏の動画:</p>
+<iframe width="312" height="176" src="http://ext.nicovideo.jp/thumb/sm15432136" scrolling="no" style="border:solid 1px #CCC;" frameborder="0"><a href="http://www.nicovideo.jp/watch/sm15432136">【ニコニコ動画】【Tool-assisted】忍者ハットリくん LEVEL 1 チクワ220本</a></iframe>
+
+
+<h2>メモ</h2>
+
+<p>チクワと鉄アレイは合わせて最大255本出現するようです(ボーナスステージ残り
+時間 $03F2 がデクリメントされると同時にどちらかが出現している模様)。また、
+$03F2 は4Fごとにデクリメントされるようです。</p>
+
+<p>影走りの術を使うと移動が2単位になるため、x座標は奇数または偶数に固定され
+ます。画面左端にぶつかることで奇数から偶数に変更できますが、逆はできないよう
+です。</p>
+
+
+<h2>資料</h2>
+
+<ul>
+  <li><a href="memory.txt">メモリマップ</a></li>
+</ul>
+
+
+<hr>
+
+<p><a href="../../">Back</a></p>
+
+</body>
+</html>

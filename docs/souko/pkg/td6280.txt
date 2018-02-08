@@ -1,0 +1,6 @@
+Summary: td6280 - HuC6280 disassembler
+Name: td6280
+Author: TaoTao
+Homepage: http://www6.atpages.jp/appsouko/work/td6280/
+
+HuC6280(PCEに搭載されているCPU)用逆アセンブラ。

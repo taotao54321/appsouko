@@ -1,0 +1,10 @@
+Summary: FDS Study - FDSイメージの情報表示/編集
+Name: FDS Study
+Author: ena
+Homepage: http://fdsstudy.hp.infoseek.co.jp/
+
+FDSイメージの情報表示/編集を行うGUIツール。
+
+iswebライトのサービス終了によりサイトごと消滅してしまいました。転載可とのこ
+となのでこちらに保管しておきます(zip圧縮し直していますが、アーカイブの内容は
+改変していません)。

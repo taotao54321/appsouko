@@ -1,0 +1,8 @@
+@rom_name カイの冒険
+@rom_md5 6bd900b4f8f7fd41164b2ee14c088605
+@public 1
+
+全面クリア
+全面隅々まで回った
+Acmlm氏のWIPムービー(12面まで)を再生
+  http://acmlm.cjb.net:2/emu/nes/fceu/fcs/Quest%20of%20Ki,%20The%20(J).fcm

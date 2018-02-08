@@ -1,0 +1,7 @@
+@rom_name アストロロボSASA
+@rom_md5 27a89f079bca542e3aa36108a390a681
+@public 1
+
+全面クリア(1Pモード)
+04:58.41 のTASムービーを再生(2Pモード)
+  http://www6.atpages.jp/appsouko/work/TAS/game/AstroRoboSasa_FC/

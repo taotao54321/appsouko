@@ -1,0 +1,72 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Wizardry(NES) 解析 - キャラステータス</title>
+</head>
+
+<body>
+
+<h1>Wizardry(NES) 解析 - キャラステータス</h1>
+
+<p>キャラ単位のステータス(ステータス異常、POISON値、沈黙値)について。</p>
+
+
+<h2>ステータス異常</h2>
+
+<p>OKおよびその他のステータス異常は以下の8種類(重複しない):</p>
+<table border="1">
+<thead>
+  <tr><th>値</th><th>名称</th></tr>
+</thead>
+<tbody>
+  <tr><td align="center">0</td><td>OK</td></tr>
+  <tr><td align="center">1</td><td>ASLEEP</td></tr>
+  <tr><td align="center">2</td><td>AFRAID</td></tr>
+  <tr><td align="center">3</td><td>PARALY</td></tr>
+  <tr><td align="center">4</td><td>PETRIF</td></tr>
+  <tr><td align="center">5</td><td>DEAD</td></tr>
+  <tr><td align="center">6</td><td>ASHED</td></tr>
+  <tr><td align="center">7</td><td>LOST</td></tr>
+</tbody>
+</table>
+
+
+<h2>POISON値</h2>
+
+<p>POISON値が非0の場合、毒状態として扱われ、1歩歩くたびにHPが減る(他にもHPが
+減るタイミングがあるが未解析)。</p>
+
+<p>毒によるHP減少量はPOISON値と現在HPに依存する。まず、現在HPが50以上あるか
+どうかで処理を分ける。</p>
+
+<h3>(現在HP) &lt; 50 の場合</h3>
+<p>POISON値がそのままHP減少量となる。ありそうもないことだが、POISON値が 0xFF
+などとなっている場合は逆にHPが回復する(ただし、回復した結果が128以上になると
+負とみなされて即死する)。</p>
+
+<h3>(現在HP) &gt;= 50 の場合</h3>
+<p>HP減少量は現在HPの約1/10。正確には次式で表される:</p>
+<blockquote>
+  (HP減少量) = ((現在HP)/2 + 25*(現在HP)) / 256<br>
+  ※24bit演算なので途中でオーバーフローが発生することはない
+</blockquote>
+
+<p>毒状態で画面下のステータスウィンドウを開かずに歩き回り、その後ステータス
+ウィンドウを開くとHPが減っていないように見えるが、これは表示だけで実際にはHP
+が減っている。</p>
+
+
+<h2>沈黙値</h2>
+
+<p>沈黙値が非0の場合、戦闘中に呪文を唱えても効果が発動しない(&quot;But
+cannot speak&quot; と表示される)。</p>
+
+<p>沈黙値は戦闘に入るごとに0にリセットされる。</p>
+
+
+<hr>
+
+<p><a href="./">Back</a></p>
+
+</body>
+</html>

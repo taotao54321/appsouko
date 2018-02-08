@@ -1,0 +1,53 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Wizardry(NES) 解析 - 行動順</title>
+</head>
+
+<body>
+
+<h1>Wizardry(NES) 解析 - 行動順</h1>
+
+<p>戦闘における行動順について。</p>
+
+
+<h2>行動順位</h2>
+
+<p>戦闘コマンド入力完了後、PT/敵キャラ全員について「行動順位」という値が与え
+られ、この値が小さい者から順に行動する。行動順位が同じ場合は、
+<a href="battle_system.html">キャラ番号</a>の小さい者から順に行動する。</p>
+
+<p>行動順位の値域は [1, 10]。</p>
+
+
+<h2>PTキャラの行動順位決定</h2>
+
+<p>PTキャラの行動順位はキャラのAGIに依存する。まず次式で値 R を求める:</p>
+<blockquote>
+  R = ([0, 9] の乱数) + (AGIボーナス)<br>
+  ※負の場合は0に、9を超えたら9に補正する
+</blockquote>
+<p>ここで、AGIボーナスは</p>
+<ul>
+  <li>AGI &gt;= 15 の場合、14-AGI</li>
+  <li>8 &lt;= AGI &lt; 15 の場合、0</li>
+  <li>6 &lt;= AGI &lt; 8 の場合、1</li>
+  <li>4 &lt;= AGI &lt; 6 の場合、2</li>
+  <li>AGI &lt; 4 の場合、3</li>
+</ul>
+<p>である。</p>
+
+<p>以上で求めた R に1を加えたものが行動順位となる。</p>
+
+
+<h2>敵キャラの行動順位決定</h2>
+
+<p>各敵キャラの行動順位は単純に [2, 9] の乱数となる。</p>
+
+
+<hr>
+
+<p><a href="./">Back</a></p>
+
+</body>
+</html>

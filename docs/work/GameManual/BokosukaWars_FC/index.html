@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.8.1: http://docutils.sourceforge.net/" />
+<title>ボコスカウォーズ (FC) 取扱説明書</title>
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 7056 2011-06-17 10:50:48Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: inherit }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block, pre.math {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+</head>
+<body>
+<div class="document" id="fc">
+<h1 class="title">ボコスカウォーズ (FC) 取扱説明書</h1>
+
+<div class="line-block">
+<div class="line">このたびは「ボコスカウォーズ」をお買い上げいただきまして, 誠にありがとうご
+ざいます.</div>
+<div class="line">ゲームを始める前にこの説明書を読むと, より楽しく遊ぶことができます. 正しい
+方法で遊びましょう.</div>
+</div>
+<div class="section" id="id1">
+<h1>箱裏</h1>
+<div class="line-block">
+<div class="line"><strong>二味ちがうロールプレイング</strong></div>
+<div class="line"><strong>ボコスカウォーズついに登場!!</strong></div>
+</div>
+<p>時は中世, 平和なスレン王国は, バサム帝国の暴君オゴレスにより征服されてしまっ
+た. その時, スレン王の兵士たちは全員木や岩に変えられてしまったのであった. ス
+レン王はひとりバサム城をめざし反撃を開始したのだが……. さあ無事49人の兵士た
+ちを助け出し, オゴレス王を倒すことができるだろうか!</p>
+</div>
+<div class="section" id="id2">
+<h1>説明書</h1>
+<div class="section" id="id3">
+<h2>使用上の注意</h2>
+<ol class="arabic simple">
+<li>精密機器ですので, 極端な温度条件下での使用や保管, および強いショックを与
+えないよう注意してください. また絶対に分解しないでください.</li>
+<li>故障の原因になりますので, 端子部に手を触れたり, 水にぬらすなど汚さないで
+ください.</li>
+<li>シンナー, ベンジン, アルコール等の揮発油でふかないでください.</li>
+<li>カセット交換の際は, 必ず電源をお切りください.</li>
+<li>テレビ画面から, できるだけ離れてゲームをしてください.</li>
+<li>長時間ゲームをする時は, 健康のため, 約2時間ごとに10分から15分の小休止をし
+てください.</li>
+</ol>
+</div>
+<div class="section" id="id4">
+<h2>ストーリー</h2>
+<p>ときは中世. バサム帝国の暴君オゴレスは世界征服をたくらみ, 隣のスレン王国に攻
+め入った. スレン王国は, バサム帝国の強大な軍事力にかなうはずもなく, 帝国に支
+配されることになった. さらにこのときオゴレス王は, スレン王の兵士たちを木や岩
+に変えてしまったのだった. しかし, スレン王にもついに反撃をするチャンスがきた.
+ある日, 街で出会った魔女がその魔法をとく術を教えてくれたのだ. スレン王はたっ
+たひとりでバサム城に向かって突撃を開始した. 兵士たちを助け出し. 再び隊を組み
+オゴレス王を倒すのだ.</p>
+</div>
+<div class="section" id="id5">
+<h2>ゲームのルール</h2>
+<div class="line-block">
+<div class="line">君はスレン王となり, 騎士と兵卒を連れバサム城に攻め入り, 宿敵であるオゴレス
+を倒すのだ. バサム上までの600メートルの道程には, 兵士達が変身させられた木
+や岩があり, 捕らわれている兵卒や数多くの罠が待ち受けている.</div>
+<div class="line">オゴレスを倒すと勝ちとなり, 次のレベルに進む. 途中でスレン王が死んでしまう
+とゲームオーバーだ.</div>
+</div>
+<p><img alt="ゲーム画面" src="screen.png" /></p>
+<ol class="arabic simple">
+<li>敵の総数</li>
+<li>味方の総数(変身している兵士や囚われている兵士を含む)</li>
+<li>操作できる味方の種類</li>
+<li>レベルの表示</li>
+<li>オゴレスまでの距離</li>
+<li>王の強さ</li>
+<li>敵と味方の強さを表し, ○×で勝敗を表示</li>
+</ol>
+<div class="section" id="id6">
+<h3>移動について</h3>
+<p>騎士や兵卒は個々に移動できるわけではない. 騎士は騎士ごと, 兵卒は兵卒ごと, あ
+るいは王を含めて味方全員を操らなければならない.</p>
+</div>
+<div class="section" id="id7">
+<h3>戦闘について</h3>
+<p>敵に体当たりをすると戦闘になり, 戦闘マーク(B:バトルマーク)が表示される. 戦闘
+は敵味方それぞれの強さとそのときの運によって勝敗が決まる.</p>
+</div>
+<div class="section" id="id8">
+<h3>兵士を助けるには</h3>
+<p>兵士をもとの姿に戻すことができるのは, スレン王だけだ. 途中の木や岩を押してみ
+よう. どれが兵士の変身したものなのかは, 体当たりしてみなければわからない.</p>
+</div>
+<div class="section" id="id9">
+<h3>ゲームのレベル</h3>
+<p>このゲームのレベルは5段階ある. オゴレスを倒すごとにレベルが上がり, 敵の強さ
+が10上がる.</p>
+</div>
+</div>
+<div class="section" id="id10">
+<h2>操作方法</h2>
+<dl class="docutils">
+<dt>十字キー</dt>
+<dd>味方の隊を操作する.</dd>
+<dt>START</dt>
+<dd>ゲームを始める.</dd>
+<dt>A, B</dt>
+<dd>移動させる味方を選ぶ. 全員→王→兵卒→騎士の順に変わる.(画面上中央に表示)</dd>
+</dl>
+<p>※このゲームはこちらから攻撃しないかぎり, 向うからは攻撃してこないので, いつ
+でもゲームプレイを中断できる. 従ってポーズ機能はない.</p>
+</div>
+<div class="section" id="id11">
+<h2>キャラクタ紹介</h2>
+<div class="section" id="id12">
+<h3>スレン王国側</h3>
+<p>味方の登場人物は戦闘に勝つと, 強さが10ずつ強くなっていく. また, それぞれに重
+要な役割をもっているので, 障害にぶつかったらもう一度よく考えてみよう.</p>
+<dl class="docutils">
+<dt>王 <img alt="自軍-スレン王" src="friend-king.png" /> 強さ220～320</dt>
+<dd>画面は王を中心に左右にスクロールをし, 敵は領地の中に王が入って来ると活動を
+始める.</dd>
+<dt>騎士 <img alt="自軍-騎士" src="friend-knight.png" /> 強さ150～310</dt>
+<dd>騎士は4連勝すると重騎士に昇格し, このときさらに強さが80強くなる.</dd>
+<dt>兵卒 <img alt="自軍-兵卒" src="friend-soldier.png" /> 強さ30～310</dt>
+<dd>兵卒は3連勝すると重兵卒に昇格し, このときさらに強さが80強くなる. 兵卒は人
+質として捕らえれているものもいる.</dd>
+</dl>
+</div>
+<div class="section" id="id13">
+<h3>バサム帝国側</h3>
+<p>バサム帝国の登場人物は, レベルが高くなるごとに10ずつ強くなる.</p>
+<dl class="docutils">
+<dt>オゴレス王 <img alt="敵軍-オゴレス王" src="enemy-king.png" /> 強さ100</dt>
+<dd>宿敵オゴレスを倒すことができると君の勝ちだ. オゴレスをスレン王以外で倒すの
+は難しいだろう.</dd>
+<dt>親衛隊 <img alt="敵軍-親衛隊" src="enemy-guard.png" /> 強さ250</dt>
+<dd>バサム城に登場する. 親衛隊は最も強い敵だ.</dd>
+<dt>重騎士 <img alt="敵軍-重騎士" src="enemy-heavyknight.png" /> 強さ100</dt>
+<dd>城跡とバサム城に登場する強敵だ. スレン王をしつこく追い回す.</dd>
+<dt>騎士 <img alt="敵軍-騎士" src="enemy-knight.png" /> 強さ50</dt>
+<dd>最初の草原, 次の森林, バサム城の手前の草原に登場する.</dd>
+<dt>兵卒 <img alt="敵軍-兵卒" src="enemy-soldier.png" /> 強さ10</dt>
+<dd>騎士と同じく草原, 森林, 荒野に登場する.</dd>
+<dt>魔術師 <img alt="敵軍-魔術師" src="enemy-summoner.png" /> 強さ30</dt>
+<dd>岩場とバサム城に登場し, 魔術師のいる場所をスレン王が通り過ぎると魔術師は幻
+戦士を呼び出す.</dd>
+<dt>幻戦士 <img alt="敵軍-幻戦士" src="enemy-phantom.png" /> 強さ50</dt>
+<dd>幻戦士は倒してもすぐに復活し, しつこくスレン王を追いかけてきます. 主人の魔
+術師を倒すと消える.</dd>
+<dt>獄吏 <img alt="敵軍-獄吏" src="enemy-jailer.png" /> 強さ30</dt>
+<dd>牢屋の番人. 牢屋付近で捕慮のスレン軍の兵卒を見張っている.</dd>
+</dl>
+<div class="line-block">
+<div class="line">ゲーム中に流れている音楽に合わせて「ボコスカウォーズ」の歌を歌おう.</div>
+<div class="line">歌いながらゲームをすれば勇気100倍!オゴレス王もへっちゃらなのだ!</div>
+</div>
+</div>
+</div>
+<div class="section" id="id14">
+<h2>ボコスカウォーズの歌</h2>
+<div class="line-block">
+<div class="line"><strong>進め進めものども</strong></div>
+<div class="line"><strong>じゃまな敵をけちらせ</strong></div>
+<div class="line"><strong>進め敵の城へ</strong></div>
+<div class="line"><strong>オゴレス倒すのだ</strong></div>
+</div>
+<p><a class="reference external" href="susume.ly"><img alt="susume" src="susume.png" /></a></p>
+<p><a class="footnote-reference" href="#id17" id="id15">[*]</a></p>
+</div>
+<div class="section" id="id16">
+<h2>好評発売中</h2>
+<dl class="docutils">
+<dt>アストロロボSASA 5,500円(〒400)</dt>
+<dd>プラズマガンを打つ反動で移動する少年ロボットSASAと, かわいいNANAの冒険アク
+ションゲーム.</dd>
+<dt>GEIMOS 5,500円(〒400)</dt>
+<dd>3D感覚のリアルなシューティングゲーム. 敵の母艦フォボスを倒して太陽系を飛び
+まわれ!</dd>
+<dt>ASCII STICK 8,800円(〒1000)</dt>
+<dd>操作性, 耐久性とも抜群でゲームセンターそのままの感覚が味わえます.</dd>
+<dt>ぺんぎんくんWARS 5,500円 12月発売予定</dt>
+<dd><div class="first last line-block">
+<div class="line">カワイイぺんぎんくんとネコとパンダなどの動物たちとの愉快なボールゲームです.</div>
+<div class="line"><img alt="penguin" src="penguin.png" /></div>
+</div>
+</dd>
+</dl>
+<hr /><table class="docutils footnote" frame="void" id="id17" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id15">[*]</a></td><td>元楽譜は誤りがあったので適当に修正しました。なお、本文と楽譜で歌詞が
+違うのはそのままにしてあります。</td></tr>
+</tbody>
+</table>
+<p><a class="reference external" href="../">Back</a></p>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,7 @@
+@rom_name 麻雀 (Rev B)
+@rom_md5 38abeee1b7148a5ff13f8f2ef6ab22e9
+@public 1
+
+一通りプレイ
+天和/地和/人和を出すTASムービーを再生
+  http://www6.atpages.jp/appsouko/work/TAS/game/Mahjong_FC/

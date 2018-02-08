@@ -1,0 +1,7 @@
+@rom_name 内藤九段将棋秘伝
+@rom_md5 4e23d764ce4f38d1f9a9e85a3ed86b29
+@public 1
+
+一通りプレイ
+25.64のTASムービーを再生
+  http://www6.atpages.jp/appsouko/work/TAS/game/NaitoShogi_FC/

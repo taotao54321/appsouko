@@ -1,0 +1,22 @@
+@rom_name Zanac (NES)
+@rom_md5 049e3f53884ea5650d1dbf43751ea965
+@public 1
+
+※PRG-ROMのうち半分は全て0のダミーであることに注意
+
+全面クリア
+EDの隠しメッセージを見た
+サウンドテスト(A+B を押しつつリセット、またはゲームオーバー画面で A+B+S を押しつつ T)実行
+自機変更技実行
+エリア11/12用コンティニュー実行
+面セレクト(リセット13回)実行
+ゲームオーバーBGM変化技実行
+10面でのBGM変化技実行
+TASVideosのムービーを全て再生
+  http://tasvideos.org/38S.html (desyncする。まあ元が .fmv だし…)
+  http://tasvideos.org/415S.html (desyncする。まあ元が .fmv だし…)
+  http://tasvideos.org/764S.html (desyncする。不正なステートから開始してる?)
+  http://tasvideos.org/1344S.html
+
+各種裏技についてはGameFAQsを参照
+  http://www.gamefaqs.com/nes/578335-zanac

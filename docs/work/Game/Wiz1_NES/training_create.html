@@ -1,0 +1,123 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Wizardry(NES) 解析 - キャラメイク</title>
+</head>
+
+<body>
+
+<h1>Wizardry(NES) 解析 - キャラメイク</h1>
+
+<p>ボーナスポイント上限は29なので、キャラメイク時に就ける職業は侍まで(初期HP
+を決定するコードなどもそういう前提で書かれている)。</p>
+
+
+<h2>種族別初期特性値</h2>
+
+<p>他機種と同様。特性値上限は一律18。</p>
+
+<table border="1">
+<thead>
+  <tr><th>種族</th><th>STR</th><th>I Q</th><th>PIE</th><th>VIT</th><th>AGI</th><th>LUC</th></tr>
+</thead>
+<tbody>
+  <tr><th>HUM</th><td align="right">8</td><td align="right">8</td><td align="right">5</td><td align="right">8</td><td align="right">8</td><td align="right">9</td></tr>
+  <tr><th>ELF</th><td align="right">7</td><td align="right">10</td><td align="right">10</td><td align="right">6</td><td align="right">9</td><td align="right">6</td></tr>
+  <tr><th>DWA</th><td align="right">10</td><td align="right">7</td><td align="right">10</td><td align="right">10</td><td align="right">5</td><td align="right">6</td></tr>
+  <tr><th>GNO</th><td align="right">7</td><td align="right">7</td><td align="right">10</td><td align="right">8</td><td align="right">10</td><td align="right">7</td></tr>
+  <tr><th>HOB</th><td align="right">5</td><td align="right">7</td><td align="right">7</td><td align="right">6</td><td align="right">10</td><td align="right">15</td></tr>
+</tbody>
+</table>
+
+
+<h2>職業別必要特性値/アラインメント</h2>
+
+<p>他機種と同様。</p>
+
+<table border="1">
+<thead>
+  <tr><th>職業</th><th>STR</th><th>I Q</th><th>PIE</th><th>VIT</th><th>AGI</th><th>LUC</th><th>アラインメント</th></tr>
+</thead>
+<tbody>
+  <tr><th>FIG</th><td align="right">11</td><td align="right">--</td><td align="right">--</td><td align="right">--</td><td align="right">--</td><td align="right">--</td><td>GNE</td></tr>
+  <tr><th>MAG</th><td align="right">--</td><td align="right">11</td><td align="right">--</td><td align="right">--</td><td align="right">--</td><td align="right">--</td><td>GNE</td></tr>
+  <tr><th>PRI</th><td align="right">--</td><td align="right">--</td><td align="right">11</td><td align="right">--</td><td align="right">--</td><td align="right">--</td><td>GE</td></tr>
+  <tr><th>THI</th><td align="right">--</td><td align="right">--</td><td align="right">--</td><td align="right">11</td><td align="right">--</td><td align="right">--</td><td>NE</td></tr>
+  <tr><th>BIS</th><td align="right">--</td><td align="right">12</td><td align="right">12</td><td align="right">--</td><td align="right">--</td><td align="right">--</td><td>GE</td></tr>
+  <tr><th>SAM</th><td align="right">15</td><td align="right">11</td><td align="right">10</td><td align="right">14</td><td align="right">10</td><td align="right">--</td><td>GN</td></tr>
+  <tr><th>LOR</th><td align="right">15</td><td align="right">12</td><td align="right">12</td><td align="right">15</td><td align="right">14</td><td align="right">15</td><td>G</td></tr>
+  <tr><th>NIN</th><td align="right">17</td><td align="right">17</td><td align="right">17</td><td align="right">17</td><td align="right">17</td><td align="right">17</td><td>E</td></tr>
+</tbody>
+</table>
+
+
+<h2>ボーナスポイント</h2>
+
+<p>まず [5, 9] の乱数を発生して一の位を決定。その後、約5%の確率で10を加える
+処理を2回行う。</p>
+
+<p>厳密な確率は以下の通り(乱数値総当たり調査による):</p>
+
+<table border="1">
+<thead>
+  <tr><th>ボーナス</th><th>確率</th></tr>
+</thead>
+<tbody>
+  <tr><td align="right">5</td><td align="right">11917/65536</td></tr>
+  <tr><td align="right">6</td><td align="right">11775/65536</td></tr>
+  <tr><td align="right">7</td><td align="right">11769/65536</td></tr>
+  <tr><td align="right">8</td><td align="right">11776/65536</td></tr>
+  <tr><td align="right">9</td><td align="right">11813/65536</td></tr>
+  <tr><td align="right">15</td><td align="right">1057/65536</td></tr>
+  <tr><td align="right">16</td><td align="right">1333/65536</td></tr>
+  <tr><td align="right">17</td><td align="right">1339/65536</td></tr>
+  <tr><td align="right">18</td><td align="right">1332/65536</td></tr>
+  <tr><td align="right">19</td><td align="right">1255/65536</td></tr>
+  <tr><td align="right">25</td><td align="right">134/65536</td></tr>
+  <tr><td align="right">29</td><td align="right">36/65536</td></tr>
+</tbody>
+</table>
+
+<p>なお、ボーナス26, 27, 28は出現しない。</p>
+
+
+<h2>HP</h2>
+
+<p>職業別に定められた範囲の乱数で初期HPが決定される:</p>
+
+<table border="1">
+<thead>
+  <tr><th>職業</th><th>初期HP範囲</th></tr>
+</thead>
+<tbody>
+  <tr><th>FIG</th><td align="center">[8, 14]</td></tr>
+  <tr><th>MAG</th><td align="center">[2, 6]</td></tr>
+  <tr><th>PRI</th><td align="center">[6, 12]</td></tr>
+  <tr><th>THI</th><td align="center">[4, 8]</td></tr>
+  <tr><th>BIS</th><td align="center">[4, 8]</td></tr>
+  <tr><th>SAM</th><td align="center">[12, 18]</td></tr>
+</tbody>
+</table>
+
+
+<h2>年齢</h2>
+
+<p>年齢は [14, 16] の乱数。週は常に24。</p>
+
+
+<h2>所持金</h2>
+
+<p>所持金は [100, 199] の乱数。</p>
+
+
+<h2>呪文</h2>
+
+<p>未解析</p>
+
+
+<hr>
+
+<p><a href="./">Back</a></p>
+
+</body>
+</html>

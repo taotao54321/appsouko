@@ -1,0 +1,1558 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Wizardry(NES) 解析 - アイテムリスト</title>
+</head>
+
+<body>
+
+<h1>Wizardry(NES) 解析 - アイテムリスト</h1>
+
+<p>呪いのかかったアイテムは店頭に並ばない。</p>
+
+<p>アラインメント不一致装備については、ST値 -1, AC値 +1 として扱う。また、ク
+リティカルフラグが付加されない。</p>
+
+<p>壊れる確率が 255/256 の場合は必ず壊れる(256/256 に補正されると考えてよい)。</p>
+
+<table border="1">
+<thead>
+  <tr>
+    <th>ID</th>
+    <th>確定名</th>
+    <th>不確定名</th>
+    <th>種別</th>
+    <th>装備</th>
+    <th>AC</th>
+    <th>ST</th>
+    <th>AT</th>
+    <th>ダメ</th>
+    <th>在庫</th>
+    <th>買値</th>
+    <th>備考</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td align="right">0</td>
+    <td>BROKEN ITEM</td>
+    <td>BROKEN ITEM</td>
+    <td align="center">装飾</td>
+    <td><tt>--------</tt></td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">1</td>
+    <td>LONG SWORD</td>
+    <td>SWORD</td>
+    <td align="center">武器</td>
+    <td><tt>F----SLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">4</td>
+    <td align="right">0</td>
+    <td align="center">1d8</td>
+    <td align="right">∞</td>
+    <td align="right">25</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">2</td>
+    <td>SHORT SWORD</td>
+    <td>SWORD</td>
+    <td align="center">武器</td>
+    <td><tt>F--T-SLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">3</td>
+    <td align="right">0</td>
+    <td align="center">1d6</td>
+    <td align="right">∞</td>
+    <td align="right">15</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">3</td>
+    <td>ANOINTED MACE</td>
+    <td>STICK</td>
+    <td align="center">武器</td>
+    <td><tt>F-P-BSLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">2</td>
+    <td align="right">0</td>
+    <td align="center">2d3</td>
+    <td align="right">∞</td>
+    <td align="right">30</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">4</td>
+    <td>ANOINTED FLAIL</td>
+    <td>STICK</td>
+    <td align="center">武器</td>
+    <td><tt>F-P--SLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">3</td>
+    <td align="right">0</td>
+    <td align="center">1d7</td>
+    <td align="right">∞</td>
+    <td align="right">150</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">5</td>
+    <td>STAFF</td>
+    <td>STICK</td>
+    <td align="center">武器</td>
+    <td><tt>FMPTBSLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">1d5</td>
+    <td align="right">∞</td>
+    <td align="right">10</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">6</td>
+    <td>DAGGER</td>
+    <td>DAGGER</td>
+    <td align="center">武器</td>
+    <td><tt>FM-T-SLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="center">1d4</td>
+    <td align="right">∞</td>
+    <td align="right">5</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">7</td>
+    <td>SMALL SHIELD</td>
+    <td>SHIELD</td>
+    <td align="center">盾</td>
+    <td><tt>F-PTBSLN</tt></td>
+    <td align="right">-2</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">∞</td>
+    <td align="right">20</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">8</td>
+    <td>LARGE SHIELD</td>
+    <td>SHIELD</td>
+    <td align="center">盾</td>
+    <td><tt>F-P--SLN</tt></td>
+    <td align="right">-3</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">∞</td>
+    <td align="right">40</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">9</td>
+    <td>ROBES</td>
+    <td>ROBE</td>
+    <td align="center">鎧</td>
+    <td><tt>FMPTBSLN</tt></td>
+    <td align="right">-1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">∞</td>
+    <td align="right">15</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">10</td>
+    <td>LEATHER ARMOR</td>
+    <td>ARMOR</td>
+    <td align="center">鎧</td>
+    <td><tt>F-PTBSLN</tt></td>
+    <td align="right">-2</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">∞</td>
+    <td align="right">50</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">11</td>
+    <td>CHAIN MAIL</td>
+    <td>ARMOR</td>
+    <td align="center">鎧</td>
+    <td><tt>F-P--SLN</tt></td>
+    <td align="right">-3</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">∞</td>
+    <td align="right">90</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">12</td>
+    <td>BREAST PLATE</td>
+    <td>ARMOR</td>
+    <td align="center">鎧</td>
+    <td><tt>F-P--SLN</tt></td>
+    <td align="right">-4</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">∞</td>
+    <td align="right">200</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">13</td>
+    <td>PLATE MAIL</td>
+    <td>ARMOR</td>
+    <td align="center">鎧</td>
+    <td><tt>F----SLN</tt></td>
+    <td align="right">-5</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">∞</td>
+    <td align="right">750</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">14</td>
+    <td>HELM</td>
+    <td>HELM</td>
+    <td align="center">兜</td>
+    <td><tt>F----SLN</tt></td>
+    <td align="right">-1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">∞</td>
+    <td align="right">100</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">15</td>
+    <td>∀ofCURING</td>
+    <td>∀</td>
+    <td align="center">道具</td>
+    <td><tt>FMPTBSLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">∞</td>
+    <td align="right">500</td>
+    <td>Use: DIOS<br>壊: BROKEN ITEM (255/256)</td>
+  </tr>
+
+  <tr>
+    <td align="right">16</td>
+    <td>∀ofNEUTRALIZING</td>
+    <td>∀</td>
+    <td align="center">道具</td>
+    <td><tt>FMPTBSLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">∞</td>
+    <td align="right">300</td>
+    <td>Use: LATUMOFIS<br>壊: BROKEN ITEM (255/256)</td>
+  </tr>
+
+  <tr>
+    <td align="right">17</td>
+    <td>SWORDofSLICING</td>
+    <td>SWORD</td>
+    <td align="center">武器</td>
+    <td><tt>F----SLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">5</td>
+    <td align="right">2</td>
+    <td align="center">1d8+1</td>
+    <td align="right">0</td>
+    <td align="right">10000</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">18</td>
+    <td>BLADEofBITING</td>
+    <td>SWORD</td>
+    <td align="center">武器</td>
+    <td><tt>F--T-SLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">4</td>
+    <td align="right">2</td>
+    <td align="center">1d6+1</td>
+    <td align="right">2</td>
+    <td align="right">15000</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">19</td>
+    <td>MACEofPOUNDING</td>
+    <td>STICK</td>
+    <td align="center">武器</td>
+    <td><tt>F-P-BSLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">3</td>
+    <td align="right">2</td>
+    <td align="center">2d4+1</td>
+    <td align="right">0</td>
+    <td align="right">12500</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">20</td>
+    <td>RODofIRON</td>
+    <td>ROD</td>
+    <td align="center">武器</td>
+    <td><tt>-M--B---</tt></td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">0</td>
+    <td align="center">1d6</td>
+    <td align="right">1</td>
+    <td align="right">3000</td>
+    <td>Use: MOGREF<br>壊: BROKEN ITEM (64/256)</td>
+  </tr>
+
+  <tr>
+    <td align="right">21</td>
+    <td>£ofSLEEP</td>
+    <td>£</td>
+    <td align="center">道具</td>
+    <td><tt>FMPTBSLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">1</td>
+    <td align="right">500</td>
+    <td>Use: KATINO<br>壊: BROKEN ITEM (255/256)</td>
+  </tr>
+
+  <tr>
+    <td align="right">22</td>
+    <td>PADDED LEATHER</td>
+    <td>ARMOR</td>
+    <td align="center">鎧</td>
+    <td><tt>F-PTBSLN</tt></td>
+    <td align="right">-3</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">∞</td>
+    <td align="right">1500</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">23</td>
+    <td>SHINY CHAIN</td>
+    <td>ARMOR</td>
+    <td align="center">鎧</td>
+    <td><tt>F-P--SLN</tt></td>
+    <td align="right">-4</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">∞</td>
+    <td align="right">1500</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">24</td>
+    <td>STURDY PLATE</td>
+    <td>ARMOR</td>
+    <td align="center">鎧</td>
+    <td><tt>F----SLN</tt></td>
+    <td align="right">-6</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">1</td>
+    <td align="right">1500</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">25</td>
+    <td>IRON SHIELD</td>
+    <td>SHIELD</td>
+    <td align="center">盾</td>
+    <td><tt>F-PT-SLN</tt></td>
+    <td align="right">-4</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">∞</td>
+    <td align="right">1500</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">26</td>
+    <td>BODY ARMOR</td>
+    <td>ARMOR</td>
+    <td align="center">鎧</td>
+    <td><tt>F-P--SLN</tt></td>
+    <td align="right">-5</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">∞</td>
+    <td align="right">1500</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">27</td>
+    <td>£ofPAIN</td>
+    <td>£</td>
+    <td align="center">道具</td>
+    <td><tt>FMPTBSLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d1</td>
+    <td align="right">∞</td>
+    <td align="right">500</td>
+    <td>Use: BADIOS<br>壊: BROKEN ITEM (64/256)</td>
+  </tr>
+
+  <tr>
+    <td align="right">28</td>
+    <td>£ofFIRE</td>
+    <td>£</td>
+    <td align="center">道具</td>
+    <td><tt>FMPTBSLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">25</td>
+    <td align="right">500</td>
+    <td>Use: HALITO<br>壊: BROKEN ITEM (255/256)</td>
+  </tr>
+
+  <tr>
+    <td align="right">29</td>
+    <td>SWORDofSWISHES</td>
+    <td>SWORD</td>
+    <td align="center">武器</td>
+    <td><tt>F----SLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">-1</td>
+    <td align="right">0</td>
+    <td align="center">1d8</td>
+    <td align="right">0</td>
+    <td align="right">1000</td>
+    <td>呪い</td>
+  </tr>
+
+  <tr>
+    <td align="right">30</td>
+    <td>EPEEofDISMAY</td>
+    <td>SWORD</td>
+    <td align="center">武器</td>
+    <td><tt>F--T-SLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">-1</td>
+    <td align="right">1</td>
+    <td align="center">1d6</td>
+    <td align="right">2</td>
+    <td align="right">1000</td>
+    <td>呪い</td>
+  </tr>
+
+  <tr>
+    <td align="right">31</td>
+    <td>MACEofMISFORTUNE</td>
+    <td>STICK</td>
+    <td align="center">武器</td>
+    <td><tt>F-P-BSLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">-1</td>
+    <td align="right">1</td>
+    <td align="center">2d3</td>
+    <td align="right">0</td>
+    <td align="right">1000</td>
+    <td>呪い</td>
+  </tr>
+
+  <tr>
+    <td align="right">32</td>
+    <td>STUDLY STAFF</td>
+    <td>STICK</td>
+    <td align="center">武器</td>
+    <td><tt>FMPTBSLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">2</td>
+    <td align="right">1</td>
+    <td align="center">1d4+2</td>
+    <td align="right">∞</td>
+    <td align="right">2500</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">33</td>
+    <td>SLAYERofDRAGONS</td>
+    <td>SWORD</td>
+    <td align="center">武器</td>
+    <td><tt>F----SLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="center">1d10+1</td>
+    <td align="right">0</td>
+    <td align="right">10000</td>
+    <td>打撃防御: ?(タイプ15)<br>倍打: ?(タイプ15)</td>
+  </tr>
+
+  <tr>
+    <td align="right">34</td>
+    <td>HELMofHARDINESS</td>
+    <td>HELM</td>
+    <td align="center">兜</td>
+    <td><tt>F----SLN</tt></td>
+    <td align="right">-2</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">3000</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">35</td>
+    <td>ROTTEN LEATHER</td>
+    <td>ARMOR</td>
+    <td align="center">鎧</td>
+    <td><tt>F-PTBSL-</tt></td>
+    <td align="right">-1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">1500</td>
+    <td>呪い</td>
+  </tr>
+
+  <tr>
+    <td align="right">36</td>
+    <td>CORRODED CHAIN</td>
+    <td>ARMOR</td>
+    <td align="center">鎧</td>
+    <td><tt>F-P--SLN</tt></td>
+    <td align="right">-2</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">1500</td>
+    <td>呪い</td>
+  </tr>
+
+  <tr>
+    <td align="right">37</td>
+    <td>BROKEN B-PLATE</td>
+    <td>ARMOR</td>
+    <td align="center">鎧</td>
+    <td><tt>F-P--SLN</tt></td>
+    <td align="right">-3</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">1500</td>
+    <td>呪い</td>
+  </tr>
+
+  <tr>
+    <td align="right">38</td>
+    <td>SCREWY SHIELD</td>
+    <td>SHIELD</td>
+    <td align="center">盾</td>
+    <td><tt>F-PT-SL-</tt></td>
+    <td align="right">+1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">1500</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">39</td>
+    <td>RINGofJEWELS</td>
+    <td>RING</td>
+    <td align="center">装飾</td>
+    <td><tt>FMPTBSLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">5000</td>
+    <td>Use: DUMAPIC<br>壊: BROKEN ITEM (0/256)</td>
+  </tr>
+
+  <tr>
+    <td align="right">40</td>
+    <td>£ofAGONY</td>
+    <td>£</td>
+    <td align="center">道具</td>
+    <td><tt>FMPTBSLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d1</td>
+    <td align="right">0</td>
+    <td align="right">500</td>
+    <td>Use: BADIOS<br>壊: BROKEN ITEM (255/256)</td>
+  </tr>
+
+  <tr>
+    <td align="right">41</td>
+    <td>∀ofGLASS</td>
+    <td>∀</td>
+    <td align="center">道具</td>
+    <td><tt>FMPTBSLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">1</td>
+    <td align="right">1500</td>
+    <td>Use: SOPIC<br>壊: BROKEN ITEM (255/256)</td>
+  </tr>
+
+  <tr>
+    <td align="right">42</td>
+    <td>SWORDofSLASHING</td>
+    <td>SWORD</td>
+    <td align="center">武器</td>
+    <td><tt>F----SLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">6</td>
+    <td align="right">3</td>
+    <td align="center">1d10+2</td>
+    <td align="right">0</td>
+    <td align="right">4000</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">43</td>
+    <td>EPEEofEXCELLENCE</td>
+    <td>SWORD</td>
+    <td align="center">武器</td>
+    <td><tt>F--T-SLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">5</td>
+    <td align="right">3</td>
+    <td align="center">1d6+2</td>
+    <td align="right">0</td>
+    <td align="right">4000</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">44</td>
+    <td>MACEofPOWER</td>
+    <td>STICK</td>
+    <td align="center">武器</td>
+    <td><tt>F-P-BSLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">4</td>
+    <td align="right">2</td>
+    <td align="center">1d8+2</td>
+    <td align="right">0</td>
+    <td align="right">4000</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">45</td>
+    <td>£ofBRIGHTNESS</td>
+    <td>£</td>
+    <td align="center">道具</td>
+    <td><tt>FMPTBSLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">2500</td>
+    <td>Use: LOMILWA<br>壊: BROKEN ITEM (255/256)</td>
+  </tr>
+
+  <tr>
+    <td align="right">46</td>
+    <td>£ofDARKNESS</td>
+    <td>£</td>
+    <td align="center">道具</td>
+    <td><tt>FMPTBSLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">2500</td>
+    <td>Use: DILTO<br>壊: BROKEN ITEM (255/256)</td>
+  </tr>
+
+  <tr>
+    <td align="right">47</td>
+    <td>GLOVESofCOPPER</td>
+    <td>GLOVES</td>
+    <td align="center">小手</td>
+    <td><tt>F----SLN</tt></td>
+    <td align="right">-1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">∞</td>
+    <td align="right">6000</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">48</td>
+    <td>TREATED LEATHER</td>
+    <td>ARMOR</td>
+    <td align="center">鎧</td>
+    <td><tt>F-PTBSLN</tt></td>
+    <td align="right">-4</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">6000</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">49</td>
+    <td>ELVEN CHAIN</td>
+    <td>ARMOR</td>
+    <td align="center">鎧</td>
+    <td><tt>F-P--SLN</tt></td>
+    <td align="right">-5</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">6000</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">50</td>
+    <td>1ST CLASS PLATE</td>
+    <td>ARMOR</td>
+    <td align="center">鎧</td>
+    <td><tt>F-P--SLN</tt></td>
+    <td align="right">-7</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">6000</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">51</td>
+    <td>SHIELDofSUPPORT</td>
+    <td>SHIELD</td>
+    <td align="center">盾</td>
+    <td><tt>F-PT-SLN</tt></td>
+    <td align="right">-5</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">7000</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">52</td>
+    <td>HELMofEVIL</td>
+    <td>HELM</td>
+    <td align="center">兜</td>
+    <td><tt>F----SLN</tt></td>
+    <td align="right">-3</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">8000</td>
+    <td>アラインメント: EVIL<br>Use: BADIOS<br>壊: BROKEN ITEM (0/256)</td>
+  </tr>
+
+  <tr>
+    <td align="right">53</td>
+    <td>∀ofHEALING</td>
+    <td>∀</td>
+    <td align="center">道具</td>
+    <td><tt>FMPTBSLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d1</td>
+    <td align="right">0</td>
+    <td align="right">5000</td>
+    <td>Use: DIAL<br>壊: BROKEN ITEM (255/256)</td>
+  </tr>
+
+  <tr>
+    <td align="right">54</td>
+    <td>RINGofSHIELDING</td>
+    <td>RING</td>
+    <td align="center">装飾</td>
+    <td><tt>FMPTBSLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">10000</td>
+    <td>Use: PORFIC<br>壊: BROKEN ITEM (13/256)</td>
+  </tr>
+
+  <tr>
+    <td align="right">55</td>
+    <td>WERESLAYER</td>
+    <td>SWORD</td>
+    <td align="center">武器</td>
+    <td><tt>F----SLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">5</td>
+    <td align="right">2</td>
+    <td align="center">1d10+1</td>
+    <td align="right">0</td>
+    <td align="right">10000</td>
+    <td>打撃防御: 魔術師<br>倍打: 魔術師</td>
+  </tr>
+
+  <tr>
+    <td align="right">56</td>
+    <td>MASHERofMAGES</td>
+    <td>SWORD</td>
+    <td align="center">武器</td>
+    <td><tt>F--T-SLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">5</td>
+    <td align="right">2</td>
+    <td align="center">1d6+1</td>
+    <td align="right">0</td>
+    <td align="right">10000</td>
+    <td>打撃防御: 獣人<br>倍打: 獣人</td>
+  </tr>
+
+  <tr>
+    <td align="right">57</td>
+    <td>MACEofSNAKES</td>
+    <td>STICK</td>
+    <td align="center">武器</td>
+    <td><tt>F-P-BSLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">3</td>
+    <td align="right">2</td>
+    <td align="center">1d8</td>
+    <td align="right">0</td>
+    <td align="right">10000</td>
+    <td>抵抗: 吸<br>打撃防御: 小人・忍者</td>
+  </tr>
+
+  <tr>
+    <td align="right">58</td>
+    <td>RODofSILENCE</td>
+    <td>ROD</td>
+    <td align="center">武器</td>
+    <td><tt>FMPTBSLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="center">1d5+1</td>
+    <td align="right">0</td>
+    <td align="right">15000</td>
+    <td>Use: MONTINO<br>壊: STAFF (26/256)</td>
+  </tr>
+
+  <tr>
+    <td align="right">59</td>
+    <td>BLADE CUSINART </td>
+    <td>SWORD</td>
+    <td align="center">武器</td>
+    <td><tt>F----SLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">6</td>
+    <td align="right">4</td>
+    <td align="center">1d3+9</td>
+    <td align="right">0</td>
+    <td align="right">15000</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">60</td>
+    <td>RINGofRIGIDITY</td>
+    <td>RING</td>
+    <td align="center">装飾</td>
+    <td><tt>--P-----</tt></td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">15000</td>
+    <td>Use: MANIFO<br>壊: BROKEN ITEM (26/256)</td>
+  </tr>
+
+  <tr>
+    <td align="right">61</td>
+    <td>RODofFLAME</td>
+    <td>ROD</td>
+    <td align="center">装飾</td>
+    <td><tt>-M--BS--</tt></td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">25000</td>
+    <td>Use: MAHALITO<br>壊: BROKEN ITEM (26/256)<br>抵抗: 冷</td>
+  </tr>
+
+  <tr>
+    <td align="right">62</td>
+    <td>CHAINofEVIL</td>
+    <td>ARMOR</td>
+    <td align="center">鎧</td>
+    <td><tt>F-P--SLN</tt></td>
+    <td align="right">-5</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">8000</td>
+    <td>アラインメント: EVIL</td>
+  </tr>
+
+  <tr>
+    <td align="right">63</td>
+    <td>NEUTRAL PLATE</td>
+    <td>ARMOR</td>
+    <td align="center">鎧</td>
+    <td><tt>F-P--SLN</tt></td>
+    <td align="right">-7</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">8000</td>
+    <td>アラインメント: NEUTRAL</td>
+  </tr>
+
+  <tr>
+    <td align="right">64</td>
+    <td>SHIELDofEVIL</td>
+    <td>SHIELD</td>
+    <td align="center">盾</td>
+    <td><tt>F-PT-SLN</tt></td>
+    <td align="right">-5</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">25000</td>
+    <td>アラインメント: EVIL</td>
+  </tr>
+
+  <tr>
+    <td align="right">65</td>
+    <td>RINGofSUFFOCATION</td>
+    <td>RING</td>
+    <td align="center">装飾</td>
+    <td><tt>FMPTBSLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">20000</td>
+    <td>Use: MAKANITO<br>壊: BROKEN ITEM (13/256)</td>
+  </tr>
+
+  <tr>
+    <td align="right">66</td>
+    <td>RINGofMOVEMENT</td>
+    <td>RING</td>
+    <td align="center">兜</td>
+    <td><tt>FMPTBSLN</tt></td>
+    <td align="right">-2</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">25000</td>
+    <td>Use: MALOR<br>壊: HELM (255/256)</td>
+  </tr>
+
+  <tr>
+    <td align="right">67</td>
+    <td>£ofAFFLICTION</td>
+    <td>£</td>
+    <td align="center">道具</td>
+    <td><tt>FMPTBSLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">8000</td>
+    <td>Use: BADIAL<br>壊: BROKEN ITEM (255/256)</td>
+  </tr>
+
+  <tr>
+    <td align="right">68</td>
+    <td>EPEEofDISASTER</td>
+    <td>SWORD</td>
+    <td align="center">武器</td>
+    <td><tt>F--T-SLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">1</td>
+    <td align="right">1</td>
+    <td align="center">1d6</td>
+    <td align="right">0</td>
+    <td align="right">8000</td>
+    <td>呪い</td>
+  </tr>
+
+  <tr>
+    <td align="right">69</td>
+    <td>DAGGERofSLICING </td>
+    <td>DAGGER</td>
+    <td align="center">武器</td>
+    <td><tt>FM-T-SLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">3</td>
+    <td align="right">2</td>
+    <td align="center">1d4+2</td>
+    <td align="right">0</td>
+    <td align="right">8000</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">70</td>
+    <td>MORBID MACE</td>
+    <td>STICK</td>
+    <td align="center">武器</td>
+    <td><tt>F-P-BSLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">1d8</td>
+    <td align="right">0</td>
+    <td align="right">8000</td>
+    <td>呪い</td>
+  </tr>
+
+  <tr>
+    <td align="right">71</td>
+    <td>BENT STAFF</td>
+    <td>STICK</td>
+    <td align="center">武器</td>
+    <td><tt>FMPTBSLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">-2</td>
+    <td align="right">1</td>
+    <td align="center">1d4</td>
+    <td align="right">0</td>
+    <td align="right">8000</td>
+    <td>呪い</td>
+  </tr>
+
+  <tr>
+    <td align="right">72</td>
+    <td>DAGGERofSPEED</td>
+    <td>DAGGER</td>
+    <td align="center">武器</td>
+    <td><tt>-M-----N</tt></td>
+    <td align="right">+3</td>
+    <td align="right">-1</td>
+    <td align="right">7</td>
+    <td align="center">1d4</td>
+    <td align="right">0</td>
+    <td align="right">30000</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">73</td>
+    <td>ROBEofCURSES</td>
+    <td>ROBE</td>
+    <td align="center">鎧</td>
+    <td><tt>FMPTBSLN</tt></td>
+    <td align="right">+2</td>
+    <td align="right">-2</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">8000</td>
+    <td>呪い</td>
+  </tr>
+
+  <tr>
+    <td align="right">74</td>
+    <td>LEATHERofLOSS</td>
+    <td>ARMOR</td>
+    <td align="center">鎧</td>
+    <td><tt>F-PTBSLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">8000</td>
+    <td>呪い</td>
+  </tr>
+
+  <tr>
+    <td align="right">75</td>
+    <td>CHAINofCURSES</td>
+    <td>ARMOR</td>
+    <td align="center">鎧</td>
+    <td><tt>F-P--SLN</tt></td>
+    <td align="right">-1</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">8000</td>
+    <td>呪い</td>
+  </tr>
+
+  <tr>
+    <td align="right">76</td>
+    <td>B-PLATEofFIENDS</td>
+    <td>ARMOR</td>
+    <td align="center">鎧</td>
+    <td><tt>F-P--SLN</tt></td>
+    <td align="right">-2</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">8000</td>
+    <td>呪い</td>
+  </tr>
+
+  <tr>
+    <td align="right">77</td>
+    <td>SHIELDofNOTHING</td>
+    <td>SHIELD</td>
+    <td align="center">盾</td>
+    <td><tt>F-PT-SLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">8000</td>
+    <td>呪い</td>
+  </tr>
+
+  <tr>
+    <td align="right">78</td>
+    <td>HELMofHANGOVERS</td>
+    <td>HELM</td>
+    <td align="center">兜</td>
+    <td><tt>F----SLN</tt></td>
+    <td align="right">+2</td>
+    <td align="right">-2</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">50000</td>
+    <td>呪い</td>
+  </tr>
+
+  <tr>
+    <td align="right">79</td>
+    <td>B-PLATEofBOONS</td>
+    <td>ARMOR</td>
+    <td align="center">鎧</td>
+    <td><tt>F-P--SLN</tt></td>
+    <td align="right">-6</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d1</td>
+    <td align="right">0</td>
+    <td align="right">10000</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">80</td>
+    <td>GLOVESofSILVER</td>
+    <td>GLOVES</td>
+    <td align="center">小手</td>
+    <td><tt>F----SLN</tt></td>
+    <td align="right">-3</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">60000</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">81</td>
+    <td>SABERofEVIL</td>
+    <td>SWORD</td>
+    <td align="center">武器</td>
+    <td><tt>F----SLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">7</td>
+    <td align="right">4</td>
+    <td align="center">1d10+3</td>
+    <td align="right">0</td>
+    <td align="right">50000</td>
+    <td>アラインメント: EVIL</td>
+  </tr>
+
+  <tr>
+    <td align="right">82</td>
+    <td>SOUL SLAYER   </td>
+    <td>SWORD</td>
+    <td align="center">武器</td>
+    <td><tt>F--T-SLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">6</td>
+    <td align="right">4</td>
+    <td align="center">1d6</td>
+    <td align="right">0</td>
+    <td align="right">50000</td>
+    <td>アラインメント: EVIL</td>
+  </tr>
+
+  <tr>
+    <td align="right">83</td>
+    <td>DAGGERofTHIEVES</td>
+    <td>DAGGER</td>
+    <td align="center">武器</td>
+    <td><tt>---T---N</tt></td>
+    <td align="right">0</td>
+    <td align="right">5</td>
+    <td align="right">4</td>
+    <td align="center">1d6</td>
+    <td align="right">0</td>
+    <td align="right">50000</td>
+    <td>SP: NINJAに転職<br>壊: BROKEN ITEM (255/256)</td>
+  </tr>
+
+  <tr>
+    <td align="right">84</td>
+    <td>ARMORofHEROES</td>
+    <td>ARMOR</td>
+    <td align="center">鎧</td>
+    <td><tt>F-P--SLN</tt></td>
+    <td align="right">-7</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">100000</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">85</td>
+    <td>ARMORofLORDS</td>
+    <td>ARMOR</td>
+    <td align="center">鎧</td>
+    <td><tt>------L-</tt></td>
+    <td align="right">-10</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">1000000</td>
+    <td>SP: PTのHP全回復<br>壊: BROKEN ITEM (128/256)<br>打撃防御: ?(タイプ14),?(タイプ15)<br>倍打: 魔術師,僧侶,盗賊<br>ヒーリング: 1<br>クリティカル</td>
+  </tr>
+
+  <tr>
+    <td align="right">86</td>
+    <td>MURAMASA BLADE</td>
+    <td>WEAPON</td>
+    <td align="center">武器</td>
+    <td><tt>-----S--</tt></td>
+    <td align="right">0</td>
+    <td align="right">8</td>
+    <td align="right">3</td>
+    <td align="center">10d5</td>
+    <td align="right">0</td>
+    <td align="right">1000000</td>
+    <td>SP: STR +1<br>壊: BROKEN ITEM (128/256)</td>
+  </tr>
+
+  <tr>
+    <td align="right">87</td>
+    <td>SHURIKEN</td>
+    <td>WEAPON</td>
+    <td align="center">武器</td>
+    <td><tt>-------N</tt></td>
+    <td align="right">0</td>
+    <td align="right">7</td>
+    <td align="right">3</td>
+    <td align="center">1d5+10</td>
+    <td align="right">0</td>
+    <td align="right">50000</td>
+    <td>アラインメント: EVIL<br>SP: 最大HP +1<br>壊: BROKEN ITEM (128/256)<br>抵抗: 吸石<br>クリティカル</td>
+  </tr>
+
+  <tr>
+    <td align="right">88</td>
+    <td>ARMORofFREON</td>
+    <td>ARMOR</td>
+    <td align="center">鎧</td>
+    <td><tt>F-P--SLN</tt></td>
+    <td align="right">-6</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">150000</td>
+    <td>抵抗: 冷</td>
+  </tr>
+
+  <tr>
+    <td align="right">89</td>
+    <td>ARMORofEVIL</td>
+    <td>ARMOR</td>
+    <td align="center">鎧</td>
+    <td><tt>F-P--SLN</tt></td>
+    <td align="right">-9</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">150000</td>
+    <td>アラインメント: EVIL</td>
+  </tr>
+
+  <tr>
+    <td align="right">90</td>
+    <td>SHIELDofDEFENSE</td>
+    <td>SHIELD</td>
+    <td align="center">盾</td>
+    <td><tt>F-PT-SLN</tt></td>
+    <td align="right">-6</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">250000</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">91</td>
+    <td>RINGofHEALING</td>
+    <td>RING</td>
+    <td align="center">装飾</td>
+    <td><tt>FMPTBSLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">300000</td>
+    <td>ヒーリング: 1</td>
+  </tr>
+
+  <tr>
+    <td align="right">92</td>
+    <td>RINGofDISPELLING</td>
+    <td>RING</td>
+    <td align="center">装飾</td>
+    <td><tt>FMPTBSLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d1</td>
+    <td align="right">0</td>
+    <td align="right">500000</td>
+    <td>打撃防御: 僧侶</td>
+  </tr>
+
+  <tr>
+    <td align="right">93</td>
+    <td>RINGofDEATH</td>
+    <td>RING</td>
+    <td align="center">装飾</td>
+    <td><tt>FMPTBSLN</tt></td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">500000</td>
+    <td>呪い<br>ヒーリング: -3</td>
+  </tr>
+
+  <tr>
+    <td align="right">94</td>
+    <td>WERDNA'S AMULET</td>
+    <td>AMULET</td>
+    <td align="center">装飾</td>
+    <td><tt>FMPTBSLN</tt></td>
+    <td align="right">-10</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">999999999999</td>
+    <td>呪い<br>アラインメント: EVIL<br>Use: MALOR<br>SP: PTのHP全回復<br>壊: BROKEN ITEM (0/256)<br>抵抗: 火冷毒吸石呪?<br>打撃防御: (巨人,神話,竜以外の全て)<br>ヒーリング: 5</td>
+  </tr>
+
+  <tr>
+    <td align="right">95</td>
+    <td>STATUEofBEAR</td>
+    <td>STATUE</td>
+    <td align="center">道具</td>
+    <td><tt>--------</tt></td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">96</td>
+    <td>STATUEofFROG</td>
+    <td>STATUE</td>
+    <td align="center">道具</td>
+    <td><tt>--------</tt></td>
+    <td align="right">-2</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">97</td>
+    <td>KEYofBRONZE</td>
+    <td>KEY</td>
+    <td align="center">道具</td>
+    <td><tt>--------</tt></td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">98</td>
+    <td>KEYofSILVER</td>
+    <td>KEY</td>
+    <td align="center">道具</td>
+    <td><tt>--------</tt></td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">99</td>
+    <td>KEYofGOLD</td>
+    <td>KEY</td>
+    <td align="center">道具</td>
+    <td><tt>--------</tt></td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td align="right">100</td>
+    <td>BLUE RIBBON</td>
+    <td>RIBBON</td>
+    <td align="center">道具</td>
+    <td><tt>--------</tt></td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td align="center">0d0</td>
+    <td align="right">0</td>
+    <td align="right">0</td>
+    <td></td>
+  </tr>
+</tbody>
+</table>
+
+<hr>
+
+<p><a href="./">Back</a></p>
+
+</body>
+</html>

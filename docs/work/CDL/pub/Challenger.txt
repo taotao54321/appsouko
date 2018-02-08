@@ -1,0 +1,6 @@
+@rom_name チャレンジャー
+@rom_md5 199c1ff0b775e14e714afd5dc2ae7a96
+@public 1
+
+普通にクリア
+各種裏技を実行

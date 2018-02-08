@@ -1,0 +1,14 @@
+Summary: cdl2txt - FCEUX Code/Data Logger のログをタブ区切りのテキストに変換
+Name: cdl2txt
+Author: TaoTao
+Homepage: http://www6.atpages.jp/appsouko/work/CDL/
+
+FCEUX Code/Data Logger のログをタブ区切りのテキストに変換する。
+変換結果をHTMLや md6502 のオプションファイルに変換するPythonスクリプトも付属。
+
+md6502 (Minachun氏による6502逆アセンブラ)は以下のURLから入手できる:
+http://www.geocities.co.jp/SiliconValley/5457/
+
+ただし、オリジナルの md6502 には大きいデータ領域を指定すると出力バッファが溢
+れる不具合があるため、その対策を施した md6502-mod の使用を推奨:
+http://www6.atpages.jp/appsouko/work/md6502-mod/

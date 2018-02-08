@@ -1,0 +1,10 @@
+Summary: majtools - 麻雀の和了/テンパイ判定ツール
+Name: majtools
+Author: TaoTao
+Homepage: http://www6.atpages.jp/appsouko/work/majtools/
+
+麻雀の手牌が和了/テンパイ形になっているかどうかを判定するコマンドラインツー
+ル。13牌/14牌どちらにも対応。
+
+やっつけ仕事だが、麻雀ゲームで天和/地和が出るかどうかを調べる程度のことはで
+きるはず。

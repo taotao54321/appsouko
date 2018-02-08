@@ -1,0 +1,100 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>各機種のFPS</title>
+</head>
+
+<body>
+
+<h1>各機種のFPS</h1>
+
+<p>フレーム数を時間に直す際に必要になるので、一応まとめておこうと思います
+(2009/08/17 時点の情報)。</p>
+
+<p>とりあえずTASVideosで採用しているFPS(小数第4位を四捨五入)のリストを以下に
+示します(必ずしも実機と同じとは限らないようです)。新しく作ったTASに時間を付
+記する際は、TASVideosのFPSに合わせておくのが多分無難だろうと思います(バラバ
+ラだと混乱するので)。</p>
+
+<table border="1">
+<thead>
+  <tr><th>エミュレータ</th><th>FPS (NTSC)</th><th>FPS (PAL)</th></tr>
+</thead>
+<tbody>
+  <tr><th>FCEU (fcm)</th><td align="right">60.0</td><td align="right">50.0</td></tr>
+  <tr><th>FCEUX (fm2)</th><td align="right">60.099</td><td align="right">50.007</td></tr>
+  <tr><th>snes9x-rr (smv)</th><td align="right">60.0</td><td align="right">50.0</td></tr>
+  <tr><th>ZSNES (zmv)</th><td align="right">60.0</td><td align="right">50.0</td></tr>
+  <tr><th>VBA-rr (vbm)</th><td align="right">60.0</td><td align="right">-</td></tr>
+  <tr><th>mednafen-rr PCE (mcm)</th><td align="right">59.826</td><td align="right">-</td></tr>
+  <tr><th>Dega-rr (mmv)</th><td align="right">60.0</td><td align="right">50.0</td></tr>
+  <tr><th>pcsx-rr (pxm)</th><td align="right">60.0</td><td align="right">50.0</td></tr>
+  <tr><th>Yabause-rr (ymv)</th><td align="right">60.0</td><td align="right">50.0</td></tr>
+  <tr><th>Mupen64 (m64)</th><td align="right">(ゲーム依存)</td><td align="right">-</td></tr>
+  <tr><th>DeSmuME (dsm)</th><td align="right">60.0</td><td align="right">-</td></tr>
+  <tr><th>FBA-rr (fbm)</th><td align="right">60.0</td><td align="right">-</td></tr>
+</tbody>
+</table>
+
+<p>情報源:
+<a href="http://tasvideos.org/forum/viewtopic.php?p=209775#209775">Bisqwit氏のpost</a></p>
+
+<p>メモ:</p>
+<ul>
+  <li>TASVideosではFCEUとFCEUXで異なるFPSを採用している(歴史的理由?)</li>
+  <li>エミュレータ内部ではまた別のFPSが使われていることもある(出力AVIのフレー
+  ムレートについても)</li>
+</ul>
+
+
+<h2>実機のFPS</h2>
+
+<p>とりあえずNESのみ。他機種についてはよく知らないので他のサイト等を参照^^;</p>
+
+<h3>NES</h3>
+
+<p>NTSCの場合:</p>
+<blockquote><pre>
+マスタークロック速度: 236.25/11 MHz
+PPUクロック速度: (マスタークロック速度)/4
+BGオフの場合、常に 341*262 PPUクロック/F で動作
+BGオンの場合、奇数フレームでは 341*262-1 PPUクロック/F, 偶数フレームでは 341*262 PPUクロック/F で動作
+一般的なゲームはほとんどBGオンで動作すると思われるので、BGオフのケースはとりあえず除外すると
+2Fあたり 2*341*262-1 PPUクロックで動作。よって
+  (236.25/11*(10^6)/4) / (2*341*262-1) * 2 = 60.098813897440515530
+</pre></blockquote>
+
+<p>PALの場合:</p>
+<blockquote><pre>
+マスタークロック速度: 26.601712 MHz
+PPUクロック速度: (マスタークロック速度)/5
+常に 341*312 PPUクロック/F で動作。よって
+  (26.601712*(10^6)/5) / (341*312) = 50.006977968268290849
+</pre></blockquote>
+
+<p>TASVideosでのFCEUXのFPSも上記と一致しています(NTSCは微妙に違いますが、何
+らかの計算誤差なのか、上記の導出方法に誤りがあるのかは不明)。</p>
+
+<p>参考資料: <a href="http://wiki.nesdev.com/">NesDevWiki</a></p>
+
+
+<h2>有理数で表してみる</h2>
+
+<p>エンコの際に有用かも。とりあえずNESのみ。</p>
+
+<table border="1">
+<thead>
+  <tr><th>機種</th><th>FPS</th></tr>
+</thead>
+<tbody>
+  <tr><td>NES</td><td>1008307711 / 16777216 = 60.09982293844223022460</td></tr>
+</tbody>
+</table>
+
+
+<hr>
+
+<p><a href="../">Back</a></p>
+
+</body>
+</html>

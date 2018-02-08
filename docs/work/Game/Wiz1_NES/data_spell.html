@@ -1,0 +1,201 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Wizardry(NES) 解析 - 呪文リスト</title>
+</head>
+
+<body>
+
+<h1>Wizardry(NES) 解析 - 呪文リスト</h1>
+
+<p>呪文は全50種(MAGE呪文21種、PRIEST呪文29種)。</p>
+
+
+<h2>MAGE呪文</h2>
+
+<table border="1">
+<thead>
+  <tr><th>LV</th><th>ID</th><th>スペル</th><th>使用時</th><th>概要</th></tr>
+</thead>
+<tbody>
+  <tr><td align="center" rowspan="4">1</td><td align="right">0</td><td>HALITO</td><td>戦闘</td><td>1d8 の火属性単体攻撃</td></tr>
+  <tr><td align="right">1</td><td>MOGREF</td><td>戦闘</td><td>術者のACを2下げる</td></tr>
+  <tr>
+    <td align="right">2</td><td>KATINO</td><td>戦闘</td>
+    <td>
+      敵1グループをASLEEP状態にする。成功率は1体ごとに 49 + 5*(術者LV-対象LV) (%)<br>
+      ただし対象が睡眠弱点を持つ場合、上限を 94% として 49 + 5*(術者LV-対象LV) + 100 (%)<br>
+      ※術者LVが高くなると上式は成り立たなくなる。<a href="spell_detail.html#KATINO">呪文詳細</a>を参照<br>
+      ※既にASLEEP以上の状態にある者は対象外
+    </td>
+  </tr>
+  <tr><td align="right">3</td><td>DUMAPIC</td><td>キャンプ</td><td>方角、座標、階層を知る。B10Fでは効果なし</td></tr>
+
+  <tr><td align="center" rowspan="2">2</td><td align="right">4</td><td>DILTO</td><td>戦闘</td><td>敵1グループのACを2上げる。無効化されない</td></tr>
+  <tr><td align="right">5</td><td>SOPIC</td><td>戦闘</td><td>術者のACを4下げる</td></tr>
+
+  <tr><td align="center" rowspan="2">3</td><td align="right">6</td><td>MAHALITO</td><td>戦闘</td><td>4d6 の火属性グループ攻撃</td></tr>
+  <tr><td align="right">7</td><td>MOLITO</td><td>戦闘</td><td>3d6 の友好属性グループ攻撃</td></tr>
+
+  <tr><td align="center" rowspan="3">4</td><td align="right">8</td><td>MORLIS</td><td>戦闘</td><td>敵1グループのACを<strong>3</strong>上げる(<strong>4ではない</strong>)。無効化されない</td></tr>
+  <tr><td align="right">9</td><td>DALTO</td><td>戦闘</td><td>6d6 の冷気属性グループ攻撃</td></tr>
+  <tr><td align="right">10</td><td>LAHALITO</td><td>戦闘</td><td>6d6 の火属性グループ攻撃</td></tr>
+
+  <tr><td align="center" rowspan="3">5</td><td align="right">11</td><td>MAMORLIS</td><td>戦闘</td><td>敵全体のACを<strong>3</strong>上げる(<strong>4ではない</strong>)。無効化されない</td></tr>
+  <tr><td align="right">12</td><td>MAKANITO</td><td>戦闘</td><td>LV7以下の敵を全滅(不死系には無効)。無効化されない</td></tr>
+  <tr><td align="right">13</td><td>MADALTO</td><td>戦闘</td><td>8d8 の冷気属性グループ攻撃</td></tr>
+
+  <tr>
+    <td align="center" rowspan="4">6</td><td align="right">14</td><td>LAKANITO</td><td>戦闘</td>
+    <td>
+      敵1グループを即死させる(不死系には無効)<br>
+      1体ごとに 6*(モンスターLV) (%) の確率で失敗する
+    </td>
+  </tr>
+  <tr><td align="right">15</td><td>ZILWAN</td><td>戦闘</td><td>10d200 の友好属性単体攻撃(不死系以外には無効)</td></tr>
+  <tr><td align="right">16</td><td>MASOPIC</td><td>戦闘</td><td>PT全体のACを4下げる</td></tr>
+  <tr>
+    <td align="right">17</td><td>HAMAN</td><td>戦闘</td>
+    <td>
+      LVを1消費して恩恵を受ける。LV13未満で唱えると効果なし(LVも消費しない)<br>
+      恩恵は以下の6つからランダムに3つが表示され、その中から1つを選ぶ:
+      <ul>
+        <li>Teleport Enemies</li>
+        <li>Silence Enemies</li>
+        <li>Cure Party</li>
+        <li>Heal Party</li>
+        <li>Augument Magic</li>
+        <li>Protect Party</li>
+      </ul>
+    </td>
+  </tr>
+
+  <tr>
+    <td align="center" rowspan="3">7</td><td align="right">18</td><td>MALOR</td><td>戦闘/キャンプ</td>
+    <td>
+      キャンプ中に唱えた場合、指定した階層/座標へテレポート(B10Fを指定すると無効)<br>
+      戦闘中に唱えた場合、1つ下の階(B10Fにいる場合はB1F)のランダムな座標へテレポート
+    </td>
+  </tr>
+  <tr>
+    <td align="right">19</td><td>MAHAMAN</td><td>戦闘</td>
+    <td>
+      HAMANの恩恵リストに以下を追加したもの:
+      <ul>
+        <li>Raise the Dead!</li>
+      </ul>
+    </td>
+  </tr>
+  <tr><td align="right">20</td><td>TILTOWAIT</td><td>戦闘</td><td>10d15 の友好属性全体攻撃</td></tr>
+</tbody>
+</table>
+
+
+<h2>PRIEST呪文</h2>
+
+<table border="1">
+<thead>
+  <tr><th>LV</th><th>ID</th><th>スペル</th><th>使用時</th><th>概要</th></tr>
+</thead>
+<tbody>
+  <tr><td align="center" rowspan="5">1</td><td align="right">21</td><td>KALKI</td><td>戦闘</td><td>PT全体のACを1下げる</td></tr>
+  <tr><td align="right">22</td><td>DIOS</td><td>戦闘/キャンプ</td><td>1d8 の単体回復</td></tr>
+  <tr><td align="right">23</td><td>BADIOS</td><td>戦闘</td><td>1d8 の友好属性単体攻撃</td></tr>
+  <tr>
+    <td align="right">24</td><td>MILWA</td><td>戦闘/キャンプ</td>
+    <td>
+      光源値に [30, 45] の乱数を加える。ただし最大127まで<br>
+      光源値が 0xFF (無限) の状態で唱えると光源値は [29, 44] の乱数となる
+    </td>
+  </tr>
+  <tr><td align="right">25</td><td>PORFIC</td><td>戦闘</td><td>術者のACを4下げる</td></tr>
+
+  <tr><td align="center" rowspan="4">2</td><td align="right">26</td><td>MATU</td><td>戦闘</td><td>PT全体のACを2下げる</td></tr>
+  <tr><td align="right">27</td><td>CALFO</td><td>宝箱</td><td>95% の確率で宝箱の罠を見破る(複数回使用可)</td></tr>
+  <tr>
+    <td align="right">28</td><td>MANIFO</td><td>戦闘</td>
+    <td>
+      敵1グループをASLEEP状態にする。成功率は1体ごとに 49 + 5*(術者LV-対象LV) (%)<br>
+      ※術者LVが高くなると上式は成り立たなくなる。<a href="spell_detail.html#MANIFO">呪文詳細</a>を参照<br>
+      ※既にASLEEP以上の状態にある者は対象外
+    </td>
+  </tr>
+  <tr>
+    <td align="right">29</td><td>MONTINO</td><td>戦闘</td>
+    <td>
+      敵1グループを黙らせる(沈黙値を [2, 5] の乱数にする)。<br>
+      成功率は1体ごとに 59 + 5*(術者LV-対象LV) (%)<br>
+      ※術者LVが高くなると上式は成り立たなくなる。<a href="spell_detail.html#MONTINO">呪文詳細</a>を参照
+    </td>
+  </tr>
+
+  <tr><td align="center" rowspan="4">3</td><td align="right">30</td><td>LOMILWA</td><td>戦闘/キャンプ</td><td>光源値を 0xFF (無限) にする</td></tr>
+  <tr><td align="right">31</td><td>DIALKO</td><td>戦闘/キャンプ</td><td>単体のPARALY以下のステータス異常を治す</td></tr>
+  <tr><td align="right">32</td><td>LATUMAPIC</td><td>戦闘/キャンプ</td><td>敵識別フラグを 0xFF にする</td></tr>
+  <tr><td align="right">33</td><td>BAMATU</td><td>戦闘</td><td>PT全体のACを4下げる</td></tr>
+
+  <tr><td align="center" rowspan="4">4</td><td align="right">34</td><td>DIAL</td><td>戦闘/キャンプ</td><td>4d4 の単体回復</td></tr>
+  <tr><td align="right">35</td><td>BADIAL</td><td>戦闘</td><td>2d8 の友好属性単体攻撃</td></tr>
+  <tr><td align="right">36</td><td>LATUMOFIS</td><td>戦闘/キャンプ</td><td>単体のPOISON値を0にする</td></tr>
+  <tr><td align="right">37</td><td>MAPORFIC</td><td>戦闘/キャンプ</td><td>永続ACボーナスを-2にする</td></tr>
+
+  <tr><td align="center" rowspan="6">5</td><td align="right">38</td><td>DIALMA</td><td>戦闘/キャンプ</td><td>8d3 の単体回復</td></tr>
+  <tr><td align="right">39</td><td>BADIALMA</td><td>戦闘</td><td>3d8 の友好属性単体攻撃</td></tr>
+  <tr><td align="right">40</td><td>LITOKAN</td><td>戦闘</td><td>3d8 の火属性グループ攻撃</td></tr>
+  <tr><td align="right">41</td><td>KANDI</td><td>キャンプ</td><td>迷宮内にいるキャラの位置を大まかに示す</td></tr>
+  <tr>
+    <td align="right">42</td><td>DI</td><td>キャンプ</td>
+    <td>
+      単体のDEADを治し、HP1で復活させる(POISON値も0になる)<br>
+      成功率は ((対象のVIT)+1)/25。ただし対象のVITが3以下の場合は必ず失敗する<br>
+      成功した場合、対象のVITが1減る<br>
+      失敗した場合、対象はASHEDになる
+    </td>
+  </tr>
+  <tr>
+    <td align="right">43</td><td>BADI</td><td>戦闘</td>
+    <td>
+      敵単体を即死させる。成功率は 49 + 5*(術者LV-対象LV) (%) (上限 74%)<br>
+      ※術者LVが高くなると上式は成り立たなくなる。<a href="spell_detail.html#BADI">呪文詳細</a>を参照
+    </td>
+  </tr>
+
+  <tr><td align="center" rowspan="4">6</td><td align="right">44</td><td>LORTO</td><td>戦闘</td><td>6d6 の友好属性グループ攻撃</td></tr>
+  <tr><td align="right">45</td><td>MADI</td><td>戦闘/キャンプ</td><td>単体のHPを全回復し、PETRIF以下のステータス異常を治し、POISON値を0にする</td></tr>
+  <tr>
+    <td align="right">46</td><td>MABADI</td><td>戦闘</td>
+    <td>
+      敵単体のHPが8以上の場合は [1, 8] の乱数に、8未満の場合は1にする<br>
+      無効化されない限り必ず成功する
+    </td>
+  </tr>
+  <tr>
+    <td align="right">47</td><td>LOKTOFEIT</td><td>戦闘</td>
+    <td>
+      城へ帰還する<br>
+      ただし、代償として全生存者は全アイテムを失い、金は10000で割った余りとなる<br>
+      死亡者(DEAD以上)は何も失わない<br>
+      成功率は 65 + (術者のLV) (%) (上限 95%)。失敗した場合、アイテム/金の消失は起こらない
+    </td>
+  </tr>
+
+  <tr><td align="center" rowspan="4">7</td><td align="right">48</td><td>MALIKTO</td><td>戦闘</td><td>12d6 の友好属性全体攻撃</td></tr>
+  <tr>
+    <td align="right">49</td><td>KADORTO</td><td>キャンプ</td>
+    <td>
+      単体のDEADまたはASHEDを治し、HP満タンで復活させる(POISON値も0になる)<br>
+      成功率は ((対象のVIT)+1)/25。ただし対象のVITが3以下の場合は必ず失敗する<br>
+      成功した場合、対象のVITが1減る<br>
+      失敗した場合、対象がDEADならASHEDに、ASHEDならLOSTになる
+    </td>
+  </tr>
+</tbody>
+</table>
+
+
+<hr>
+
+<p><a href="./">Back</a></p>
+
+</body>
+</html>
