@@ -1,0 +1,144 @@
+Y Y
+B B
+B Y
+Y B
+Y B
+B B
+Y R
+R B
+Y R
+B B
+Y R
+R R
+B R
+Y R
+R R
+B B
+R B
+R B
+Y B
+R B
+Y B
+R Y
+Y B
+B B
+Y R
+R B
+Y B
+Y B
+B B
+Y R
+R R
+B R
+Y B
+B R
+B Y
+Y R
+B B
+Y B
+B B
+Y Y
+Y Y
+B B
+R B
+B B
+R B
+R B
+Y B
+R B
+Y R
+B B
+Y B
+B R
+B Y
+Y R
+B B
+Y B
+B B
+Y Y
+Y Y
+B B
+R B
+B B
+R R
+Y B
+R R
+B B
+R R
+Y B
+R B
+Y R
+B B
+Y R
+R R
+B B
+R B
+B Y
+B Y
+B Y
+B Y
+B Y
+R B
+Y B
+R R
+B B
+R R
+Y B
+R R
+B R
+Y R
+R R
+B R
+Y B
+B R
+R B
+B R
+Y B
+B B
+Y Y
+B B
+R B
+B B
+R B
+B Y
+R B
+Y B
+R R
+B R
+Y B
+B R
+R B
+B B
+R R
+Y B
+R B
+Y B
+R Y
+Y B
+B B
+Y R
+R B
+Y B
+Y B
+Y Y
+R R
+R Y
+B R
+B Y
+Y R
+........
+........
+........
+..YYBB.R
+RRB.YY..
+.BRR..YY
+BYRBB.RY
+RRBYYBRR
+RRYYRRBB
+BYRBBYY.
+.BR.YYR.
+.BY.RBBY
+BYYRRBYR
+RR.B.RYB
+YRBBYYBB
+.YRR.YBR
